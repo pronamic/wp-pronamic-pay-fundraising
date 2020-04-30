@@ -42,32 +42,28 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 			}
 		},
 
-		// Feature supports.
-		supports: {
-		},
-
 		// Edit.
-		edit( { attributes, setAttributes, className, clientId } ) {
+		edit: ( { attributes, setAttributes, className, clientId } ) => {
 			let { target, raised, contributions, color } = attributes;
 
-			const onChangeTarget = ( target ) => {
-				setAttributes( { target: target } );
+			const onChangeTarget = ( updatedTarget ) => {
+				target = updatedTarget;
 
-				updateProgress();
-				updateDetails();
+				setAttributes( { target: updatedTarget } );
 			}
 
-			const onChangeRaised = ( raised ) => {
-				setAttributes( { raised: raised } );
+			const onChangeRaised = ( updatedRaised ) => {
+				raised = updatedRaised;
 
-				updateProgress();
-				updateDetails();
+				setAttributes( { raised: updatedRaised } );
 			}
 
-			const onChangeContributions = ( contributions ) => {
-				setAttributes( { contributions: contributions } );
+			const onChangeContributions = ( updatedContributions ) => {
+				updatedContributions = parseInt( updatedContributions );
 
-				updateDetails();
+				contributions = updatedContributions;
+
+				setAttributes( { contributions: updatedContributions } );
 			}
 
 			const onChangeColor = ( color ) => {
@@ -81,7 +77,14 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 
 				parentBlock.innerBlocks.forEach( ( block ) => {
 					if ( blockType === block.name ) {
-						data.dispatch( 'core/block-editor' ).updateBlockAttributes( block.clientId, attr )
+						if ( attr.hasOwnProperty( 'list' ) ) {
+							attr.list.map( ( item, index ) => {
+								// Merge current block attribute with item updates.
+								attr.list[ index ] = Object.assign( block.attributes.list[ index ], item );
+							} );
+						}
+
+						data.dispatch( 'core/block-editor' ).updateBlockAttributes( block.clientId, attr );
 					}
 
 					recursiveUpdateInnerBlocks( blockType, block, attr );
@@ -111,24 +114,12 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				// Get inner blocks of this block.
 				let block = data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[0];
 
-				// Calculate progress.
-				let target = parseFloat( attributes.target );
-				let raised = parseFloat( attributes.raised );
-
+				// Attribute updates.
 				let attr = {
 					list: [
-						{
-							term: 'Raised',
-							amount: raised
-						},
-						{
-							term: 'Target',
-							amount: target
-						},
-						{
-							term: 'Number of contributions',
-							value: attributes.contributions
-						}
+						{ amount: parseFloat( raised ) },
+						{ amount: parseFloat( target ) },
+						{ value: parseInt( contributions ) }
 					]
 				};
 
@@ -196,7 +187,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 		},
 
 		// Save.
-		save( { attributes } ) {
+		save: ( { attributes } ) => {
 			return (
 				<div className="ppd-block ppd-block-circle">
 					<InnerBlocks.Content />

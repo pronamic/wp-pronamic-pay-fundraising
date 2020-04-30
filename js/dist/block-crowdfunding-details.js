@@ -123,8 +123,36 @@ var _wp$element = wp.element,
           className = _ref.className;
       var list = attributes.list,
           currencySymbol = attributes.currencySymbol;
+
+      var updateCurrencySymbol = function updateCurrencySymbol(currencySymbol) {
+        setAttributes({
+          currencySymbol: currencySymbol
+        });
+      };
+
+      var updateDescriptionTerm = function updateDescriptionTerm(index, term) {
+        list[index].term = term;
+        setAttributes({
+          list: list
+        });
+      };
+
+      var updateDescriptionDetail = function updateDescriptionDetail(index, content) {
+        item = list[index];
+
+        if (item.hasOwnProperty('amount')) {
+          item.amount = content;
+        } else {
+          item.value = content;
+        }
+
+        list[index] = item;
+        setAttributes({
+          list: list
+        });
+      };
+
       var definitions = list.map(function (item, index) {
-        var definition = item.amount ? currencySymbol + ' ' + item.amount : item.value;
         return (
           /*#__PURE__*/
           React.createElement(Fragment, {
@@ -136,13 +164,15 @@ var _wp$element = wp.element,
             className: "ppd-dl-list__label",
             value: item.term,
             onChange: function onChange(content) {
-              return setAttributes({
-                content: content
-              });
+              return updateDescriptionTerm(index, content);
             }
           }),
           /*#__PURE__*/
-          React.createElement(DescriptionDetails, null, item.hasOwnProperty('amount') ?
+          React.createElement(DescriptionDetails, {
+            onChange: function onChange(content) {
+              return updateDescriptionDetail(index, content);
+            }
+          }, item.hasOwnProperty('amount') ?
           /*#__PURE__*/
           React.createElement(React.Fragment, null,
           /*#__PURE__*/
@@ -151,7 +181,7 @@ var _wp$element = wp.element,
             value: currencySymbol,
             onChange: function onChange(content) {
               return setAttributes({
-                content: content
+                currencySymbol: content
               });
             }
           }), ' ' + item.amount) : item.value))
@@ -167,13 +197,33 @@ var _wp$element = wp.element,
     // Save.
     save: function save(_ref2) {
       var attributes = _ref2.attributes;
-      // @todo How to save?!
+      var currencySymbol = attributes.currencySymbol,
+          list = attributes.list;
+      var definitions = list.map(function (item, index) {
+        return (
+          /*#__PURE__*/
+          React.createElement(Fragment, {
+            key: index
+          },
+          /*#__PURE__*/
+          React.createElement("dt", {
+            className: "ppd-dl-list__label"
+          },
+          /*#__PURE__*/
+          React.createElement(RawHTML, null, item.term)),
+          /*#__PURE__*/
+          React.createElement("dd", {
+            className: "ppd-dl-list__value"
+          }, item.hasOwnProperty('amount') ?
+          /*#__PURE__*/
+          React.createElement(React.Fragment, null, currencySymbol + ' ' + item.amount) : item.value))
+        );
+      });
       return (
         /*#__PURE__*/
         React.createElement("dl", {
           className: "ppd-dl-list"
-        }, attributes.list.forEach(function (detail, index) {// ....
-        }))
+        }, definitions)
       );
     }
   });

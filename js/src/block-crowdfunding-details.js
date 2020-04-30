@@ -61,25 +61,47 @@ const { Component, Fragment, RawHTML } = wp.element;
 		edit: ( { attributes, setAttributes, className } ) => {
 			let { list, currencySymbol } = attributes;
 
-			let definitions = list.map( ( item, index ) => {
-				let definition = item.amount ? currencySymbol + ' ' + item.amount : item.value;
+			const updateCurrencySymbol = ( currencySymbol ) => {
+				setAttributes( { currencySymbol: currencySymbol } );
+			};
 
+			const updateDescriptionTerm = ( index, term ) => {
+				list[ index ].term = term;
+
+				setAttributes( { list: list } );
+			};
+
+			const updateDescriptionDetail = ( index, content ) => {
+				item = list[ index ];
+
+				if ( item.hasOwnProperty( 'amount' ) ) {
+					item.amount = content;
+				} else {
+					item.value = content;
+				}
+
+				list[ index ] = item;
+
+				setAttributes( { list: list } );
+			};
+
+			let definitions = list.map( ( item, index ) => {
 				return (
 					<Fragment key={ index }>
 						<RichText
 							tagName="dt"
 							className="ppd-dl-list__label"
 							value={ item.term }
-							onChange={ ( content ) => setAttributes( { content } ) }
+							onChange={ ( content ) => updateDescriptionTerm( index, content ) }
 						/>
-						<DescriptionDetails>
+						<DescriptionDetails onChange={ ( content ) => updateDescriptionDetail( index, content ) }>
 							{
 								item.hasOwnProperty( 'amount' ) ?
 									<>
 										<RichText
 											tagName="span"
 											value={ currencySymbol }
-											onChange={ ( content ) => setAttributes( { content } ) }
+											onChange={ ( content ) => setAttributes( { currencySymbol: content } ) }
 										/>
 										{ ' ' + item.amount }
 									</>
@@ -100,15 +122,33 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 		// Save.
 		save: ( { attributes } ) => {
-			// @todo How to save?!
+			let { currencySymbol, list } = attributes;
+
+			let definitions = list.map( ( item, index ) => {
+				return (
+					<Fragment key={ index }>
+						<dt className="ppd-dl-list__label">
+							<RawHTML>
+								{ item.term }
+							</RawHTML>
+						</dt>
+						<dd className="ppd-dl-list__value">
+							{
+								item.hasOwnProperty( 'amount' ) ?
+									<>
+										{ currencySymbol + ' ' + item.amount }
+									</>
+									:
+									item.value
+							}
+						</dd>
+					</Fragment>
+				);
+			} );
 
 			return (
 				<dl className="ppd-dl-list">
-					{
-						attributes.list.forEach( ( detail, index ) => {
-							// ....
-						} )
-					}
+					{ definitions }
 				</dl>
 			);
 		}

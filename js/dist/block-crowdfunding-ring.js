@@ -60,8 +60,6 @@ var _wp$components2 = wp.components,
         default: '#f9461c'
       }
     },
-    // Feature supports.
-    supports: {},
     // Edit.
     edit: function edit(_ref) {
       var attributes = _ref.attributes,
@@ -73,27 +71,26 @@ var _wp$components2 = wp.components,
           contributions = attributes.contributions,
           color = attributes.color;
 
-      var onChangeTarget = function onChangeTarget(target) {
+      var onChangeTarget = function onChangeTarget(updatedTarget) {
+        target = updatedTarget;
         setAttributes({
-          target: target
+          target: updatedTarget
         });
-        updateProgress();
-        updateDetails();
       };
 
-      var onChangeRaised = function onChangeRaised(raised) {
+      var onChangeRaised = function onChangeRaised(updatedRaised) {
+        raised = updatedRaised;
         setAttributes({
-          raised: raised
+          raised: updatedRaised
         });
-        updateProgress();
-        updateDetails();
       };
 
-      var onChangeContributions = function onChangeContributions(contributions) {
+      var onChangeContributions = function onChangeContributions(updatedContributions) {
+        updatedContributions = parseInt(updatedContributions);
+        contributions = updatedContributions;
         setAttributes({
-          contributions: contributions
+          contributions: updatedContributions
         });
-        updateDetails();
       };
 
       var onChangeColor = function onChangeColor(color) {
@@ -109,6 +106,13 @@ var _wp$components2 = wp.components,
 
         parentBlock.innerBlocks.forEach(function (block) {
           if (blockType === block.name) {
+            if (attr.hasOwnProperty('list')) {
+              attr.list.map(function (item, index) {
+                // Merge current block attribute with item updates.
+                attr.list[index] = Object.assign(block.attributes.list[index], item);
+              });
+            }
+
             data.dispatch('core/block-editor').updateBlockAttributes(block.clientId, attr);
           }
 
@@ -135,20 +139,15 @@ var _wp$components2 = wp.components,
 
       var updateDetails = function updateDetails() {
         // Get inner blocks of this block.
-        var block = data.select('core/block-editor').getBlocksByClientId(clientId)[0]; // Calculate progress.
+        var block = data.select('core/block-editor').getBlocksByClientId(clientId)[0]; // Attribute updates.
 
-        var target = parseFloat(attributes.target);
-        var raised = parseFloat(attributes.raised);
         var attr = {
           list: [{
-            term: 'Raised',
-            amount: raised
+            amount: parseFloat(raised)
           }, {
-            term: 'Target',
-            amount: target
+            amount: parseFloat(target)
           }, {
-            term: 'Number of contributions',
-            value: attributes.contributions
+            value: parseInt(contributions)
           }]
         };
         recursiveUpdateInnerBlocks('pronamic-pay/crowdfunding-details', block, attr);
