@@ -71,6 +71,14 @@ class Blocks {
 			false
 		);
 
+		wp_register_script(
+			'pronamic-crowdfunding-details-editor',
+			plugins_url( '/js/dist/block-crowdfunding-details.js', $this->plugin->file ),
+			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
+			$this->plugin->version,
+			false
+		);
+
 		wp_localize_script(
 			'pronamic-crowdfunding-ring-editor',
 			'pronamic_crowdfunding_ring',
@@ -140,6 +148,19 @@ class Blocks {
 					'value'        => array(
 						'type'    => 'integer',
 						'default' => 0,
+					),
+				),
+			)
+		);
+
+		register_block_type(
+			'pronamic-pay/crowdfunding-details',
+			array(
+				'editor_script'   => 'pronamic-crowdfunding-details-editor',
+				'attributes'      => array(
+					'list'        => array(
+						'type'    => 'array',
+						'default' => array(),
 					),
 				),
 			)

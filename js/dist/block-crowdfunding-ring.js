@@ -77,20 +77,23 @@ var _wp$components2 = wp.components,
         setAttributes({
           target: target
         });
-        updateRingValue();
+        updateProgress();
+        updateDetails();
       };
 
       var onChangeRaised = function onChangeRaised(raised) {
         setAttributes({
           raised: raised
         });
-        updateRingValue();
+        updateProgress();
+        updateDetails();
       };
 
       var onChangeContributions = function onChangeContributions(contributions) {
         setAttributes({
           contributions: contributions
         });
+        updateDetails();
       };
 
       var onChangeColor = function onChangeColor(color) {
@@ -98,6 +101,61 @@ var _wp$components2 = wp.components,
           color: color
         });
       };
+
+      var recursiveUpdateInnerBlocks = function recursiveUpdateInnerBlocks(blockType, parentBlock, attr) {
+        if (!parentBlock.innerBlocks) {
+          return;
+        }
+
+        parentBlock.innerBlocks.forEach(function (block) {
+          if (blockType === block.name) {
+            data.dispatch('core/block-editor').updateBlockAttributes(block.clientId, attr);
+          }
+
+          recursiveUpdateInnerBlocks(blockType, block, attr);
+        });
+      };
+
+      var updateProgress = function updateProgress() {
+        // Get inner blocks of this block.
+        var block = data.select('core/block-editor').getBlocksByClientId(clientId)[0]; // Calculate progress.
+
+        var target = parseFloat(attributes.target);
+        var raised = parseFloat(attributes.raised);
+
+        if (raised > target && 0 == target || 0 == target && 0 == raised) {
+          target = 1;
+        }
+
+        var attr = {
+          value: Math.floor(raised / target * 100)
+        };
+        recursiveUpdateInnerBlocks('pronamic-pay/progress', block, attr);
+      };
+
+      var updateDetails = function updateDetails() {
+        // Get inner blocks of this block.
+        var block = data.select('core/block-editor').getBlocksByClientId(clientId)[0]; // Calculate progress.
+
+        var target = parseFloat(attributes.target);
+        var raised = parseFloat(attributes.raised);
+        var attr = {
+          list: [{
+            term: 'Raised',
+            amount: raised
+          }, {
+            term: 'Target',
+            amount: target
+          }, {
+            term: 'Number of contributions',
+            value: attributes.contributions
+          }]
+        };
+        recursiveUpdateInnerBlocks('pronamic-pay/crowdfunding-details', block, attr);
+      };
+
+      updateProgress();
+      updateDetails(); // Inspector controls.
 
       var colors = [{
         name: 'orange',
@@ -109,39 +167,6 @@ var _wp$components2 = wp.components,
         name: 'green',
         color: '#2ce3be'
       }];
-
-      var updateRingValue = function updateRingValue() {
-        // Get inner blocks of this block.
-        var innerBlocks = data.select('core/block-editor').getBlocksByClientId(clientId)[0].innerBlocks; // Check for child blocks, before using them.
-
-        if (innerBlocks.length < 1) {
-          return;
-        } // Find ring block.
-
-
-        var ring = innerBlocks[0].innerBlocks[0].innerBlocks[0]; // Set new value.
-
-        var value = 0;
-
-        if (attributes.raised !== attributes.target) {
-          value = Math.floor(attributes.raised / attributes.target * 100);
-        }
-
-        data.dispatch('core/block-editor').updateBlockAttributes(ring.clientId, {
-          value: value
-        });
-      };
-
-      updateRingValue(); // Inner blocks template.
-
-      var TEMPLATE = [['core/columns', {}, [['core/column', {
-        width: 30
-      }, [['pronamic-pay/progress', {}]]], ['core/column', {
-        width: 70
-      }, [['core/list', {
-        values: '<li>Opbrengst <span>€ 0,00</span></li><li>Doel <span>€ 0,00</span></li><li>Aantal bijdragen <span>0</span></li>'
-      }]]]]]]; // Inspector controls.
-
       var inspectorControls =
       /*#__PURE__*/
       React.createElement(InspectorControls, null,
@@ -170,9 +195,14 @@ var _wp$components2 = wp.components,
         colors: colors,
         value: color,
         onChange: onChangeColor
-      })));
-      var classes = className;
-      classes += ' ppd-block';
+      }))); // Inner blocks template.
+
+      var TEMPLATE = [['core/columns', {}, [['core/column', {
+        width: 30
+      }, [['pronamic-pay/progress', {}]]], ['core/column', {
+        width: 70
+      }, [['pronamic-pay/crowdfunding-details', {}]]]]]];
+      var classes = className + ' ppd-block';
       classes += ' ppd-block-circle';
       return (
         /*#__PURE__*/

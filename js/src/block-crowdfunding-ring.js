@@ -53,66 +53,98 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 			const onChangeTarget = ( target ) => {
 				setAttributes( { target: target } );
 
-				updateRingValue();
+				updateProgress();
+				updateDetails();
 			}
 
 			const onChangeRaised = ( raised ) => {
 				setAttributes( { raised: raised } );
 
-				updateRingValue();
+				updateProgress();
+				updateDetails();
 			}
 
 			const onChangeContributions = ( contributions ) => {
 				setAttributes( { contributions: contributions } );
+
+				updateDetails();
 			}
 
 			const onChangeColor = ( color ) => {
 				setAttributes( { color: color } );
 			}
 
+			const recursiveUpdateInnerBlocks = ( blockType, parentBlock, attr ) => {
+				if ( ! parentBlock.innerBlocks ) {
+					return;
+				}
+
+				parentBlock.innerBlocks.forEach( ( block ) => {
+					if ( blockType === block.name ) {
+						data.dispatch( 'core/block-editor' ).updateBlockAttributes( block.clientId, attr )
+					}
+
+					recursiveUpdateInnerBlocks( blockType, block, attr );
+				} );
+			};
+
+			const updateProgress = () => {
+				// Get inner blocks of this block.
+				let block = data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[0];
+
+				// Calculate progress.
+				let target = parseFloat( attributes.target );
+				let raised = parseFloat( attributes.raised );
+
+				if ( raised > target && 0 == target || 0 == target && 0 == raised ) {
+					target = 1;
+				}
+
+				let attr = {
+					value: Math.floor( ( raised / target ) * 100 )
+				};
+
+				recursiveUpdateInnerBlocks( 'pronamic-pay/progress', block, attr );
+			}
+
+			const updateDetails = () => {
+				// Get inner blocks of this block.
+				let block = data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[0];
+
+				// Calculate progress.
+				let target = parseFloat( attributes.target );
+				let raised = parseFloat( attributes.raised );
+
+				let attr = {
+					list: [
+						{
+							term: 'Raised',
+							amount: raised
+						},
+						{
+							term: 'Target',
+							amount: target
+						},
+						{
+							term: 'Number of contributions',
+							value: attributes.contributions
+						}
+					]
+				};
+
+				recursiveUpdateInnerBlocks( 'pronamic-pay/crowdfunding-details', block, attr );
+			}
+
+			updateProgress();
+			updateDetails();
+
+			// Inspector controls.
 			const colors = [
 				{ name: 'orange', color: '#f9461c' },
 				{ name: 'purple', color: '#6355ff' },
 				{ name: 'green', color: '#2ce3be' }
 			];
 
-			const updateRingValue = () => {
-				// Get inner blocks of this block.
-				let innerBlocks = data.select( 'core/block-editor' ).getBlocksByClientId( clientId )[0].innerBlocks;
-
-				// Check for child blocks, before using them.
-				if ( innerBlocks.length < 1 ) {
-					return;
-				}
-
-				// Find ring block.
-				let ring = innerBlocks[0].innerBlocks[0].innerBlocks[0];
-
-				// Set new value.
-				let value = 0;
-
-				if ( attributes.raised !== attributes.target ) {
-					value = Math.floor( ( attributes.raised / attributes.target ) * 100 );
-				}
-
-				data.dispatch( 'core/block-editor' ).updateBlockAttributes( ring.clientId, { value: value } )
-			}
-
-			updateRingValue();
-
-			// Inner blocks template.
-			const TEMPLATE = [
-				[ 'core/columns', {}, [
-					[ 'core/column', { width: 30 }, [
-						[ 'pronamic-pay/progress', {} ]
-					] ],
-					[ 'core/column', { width: 70 }, [
-						[ 'core/list', { values: '<li>Opbrengst <span>€ 0,00</span></li><li>Doel <span>€ 0,00</span></li><li>Aantal bijdragen <span>0</span></li>' } ],
-					] ]
-				] ],
-			];
-
-			// Inspector controls.
 			const inspectorControls = (
 				<InspectorControls>
 					<PanelBody>
@@ -140,8 +172,19 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				</InspectorControls>
 			);
 
-			let classes = className;
-			classes += ' ppd-block';
+			// Inner blocks template.
+			const TEMPLATE = [
+				[ 'core/columns', {}, [
+					[ 'core/column', { width: 30 }, [
+						[ 'pronamic-pay/progress', {} ]
+					] ],
+					[ 'core/column', { width: 70 }, [
+						[ 'pronamic-pay/crowdfunding-details', {} ]
+					] ]
+				] ],
+			];
+
+			let classes = className + ' ppd-block';
 			classes += ' ppd-block-circle';
 
 			return (

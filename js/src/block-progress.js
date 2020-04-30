@@ -6,7 +6,7 @@ const { RangeControl, PanelBody } = wp.components;
 	'use strict';
 
 	/**
-	 * Register ring block type.
+	 * Register progress block type.
 	 *
 	 * @param string name     Block name.
 	 * @param object settings Block settings.
@@ -17,7 +17,7 @@ const { RangeControl, PanelBody } = wp.components;
 		title: 'Progress',
 		icon: 'marker',
 		category: 'pronamic-pay',
-		parent: [ 'pronamic-pay/crowdfunding-ring' ],
+		parent: [ 'pronamic-pay/crowdfunding-ring', 'core/column' ],
 
 		// Attributes.
 		attributes: {
@@ -52,6 +52,10 @@ const { RangeControl, PanelBody } = wp.components;
 
 				degrees = ( value / 100 ) * 360;
 
+				if ( value > 100 ) {
+					degrees = 360;
+				}
+
 				if ( value > 50 ) {
 					negativeClass = 'ppd-circle--50';
 				}
@@ -62,19 +66,6 @@ const { RangeControl, PanelBody } = wp.components;
 			let style = {
 				transform: 'rotate( ' + degrees + 'deg )'
 			};
-
-			// Inspector controls.
-			const inspectorControls = (
-				<InspectorControls>
-					<PanelBody>
-						<RangeControl
-							label="Percentage"
-							value={ value }
-							onChange={ onChangeValue }
-						/>
-					</PanelBody>
-				</InspectorControls>
-			);
 
 			let classes = className + ' ppd-circle ' + negativeClass;
 
