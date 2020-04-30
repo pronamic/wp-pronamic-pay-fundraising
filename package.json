@@ -1,0 +1,59 @@
+{
+  "name": "crowdfunding",
+  "version": "1.0.0",
+  "description": "Crowdfunding add-on for the WordPress payment processing library.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wp-pay/crowdfunding"
+  },
+  "keywords": [
+    "wordpress",
+    "wp",
+    "pay",
+    "crowdfunding",
+    "donations",
+    "progress",
+    "target",
+    "addon",
+    "pronamic"
+  ],
+  "author": {
+    "name": "Pronamic",
+    "email": "info@pronamic.nl",
+    "url": "https://www.pronamic.nl/"
+  },
+  "contributors": [
+    {
+      "name": "Remco Tolsma",
+      "email": "info@remcotolsma.nl",
+      "url": "https://www.remcotolsma.nl/"
+    }
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/wp-pay/crowdfunding/issues"
+  },
+  "homepage": "https://www.wp-pay.org/addons/crowdfunding/",
+  "scripts": {
+    "babel": "babel ./js/src -d ./js/dist --source-maps",
+    "eslint": "eslint . --ext .json --ext .js",
+    "postcss": "postcss --use autoprefixer -o crowdfunding.css css/*.css\n",
+    "sass": "sass scss:css",
+    "sass-lint": "sass-lint --verbose"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.9.4",
+    "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.3.0",
+    "eslint-plugin-json": "^1.4.0",
+    "postcss": "^7.0.0",
+    "postcss-cli": "^7.1.1",
+    "postcss-eol": "0.0.8",
+    "sass": "^1.26.3",
+    "sass-lint": "^1.13.1"
+  }
+}

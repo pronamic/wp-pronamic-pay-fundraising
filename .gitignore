@@ -1,0 +1,24 @@
+# Build
+/build/
+
+# Composer
+/composer.lock
+/vendor/
+
+# Composer bin plugin
+/vendor-bin/**/vendor
+
+# Eclipse
+/.buildpath
+/.project
+/.settings
+
+# Node.js
+/package-lock.json
+/node_modules/
+
+# PHPLint
+/.phplint-cache
+
+# WordPress
+/wordpress/
