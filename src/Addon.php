@@ -30,7 +30,7 @@ class Addon {
 	 *
 	 * @param string|array|object $args The add-on arguments.
 	 *
-	 * @return Plugin
+	 * @return Addon
 	 */
 	public static function instance( $args = array() ) {
 		if ( is_null( self::$instance ) ) {

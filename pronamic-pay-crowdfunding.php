@@ -28,7 +28,7 @@
 /**
  * Autoload.
  */
-foreach( glob( __DIR__ . '/src/*' ) as $file ) {
+foreach ( glob( __DIR__ . '/src/*' ) as $file ) {
 	require $file;
 }
 
@@ -37,7 +37,6 @@ foreach( glob( __DIR__ . '/src/*' ) as $file ) {
  */
 \Pronamic\WordPress\Pay\Crowdfunding\Addon::instance(
 	array(
-		//'file'    => __FILE__,
-		'file'    => '/Users/reuel/Sites/pay/wp-content/plugins/pronamic-pay-crowdfunding-addon/pronamic-pay-crowdfunding.php',
+		'file' => __FILE__,
 	)
 );

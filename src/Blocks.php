@@ -143,9 +143,9 @@ class Blocks {
 		register_block_type(
 			'pronamic-pay/progress',
 			array(
-				'editor_script'   => 'pronamic-progress-editor',
-				'attributes'      => array(
-					'value'        => array(
+				'editor_script' => 'pronamic-progress-editor',
+				'attributes'    => array(
+					'value' => array(
 						'type'    => 'integer',
 						'default' => 0,
 					),
@@ -156,9 +156,9 @@ class Blocks {
 		register_block_type(
 			'pronamic-pay/crowdfunding-details',
 			array(
-				'editor_script'   => 'pronamic-crowdfunding-details-editor',
-				'attributes'      => array(
-					'list'        => array(
+				'editor_script' => 'pronamic-crowdfunding-details-editor',
+				'attributes'    => array(
+					'list' => array(
 						'type'    => 'array',
 						'default' => array(),
 					),
