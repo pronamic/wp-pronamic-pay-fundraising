@@ -24,7 +24,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 		// Fraction digits.
 		let fractionDigits = 2;
 
-		if ( 0 === value % 100 ) {
+		if ( 0 === ( value * 100 ) % 100 ) {
 			fractionDigits = 0;
 		}
 

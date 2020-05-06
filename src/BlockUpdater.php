@@ -178,35 +178,41 @@ class BlockUpdater {
 		$parser = new Parser();
 
 		// Get target for use when updating innner blocks.
-		if ( \array_key_exists( 'target', $block['attrs'] ) ) {
-			// Try parsing `target` block attribute.
-			try {
-				$this->target = $parser->parse( $block['attrs']['target'] );
-			} catch ( \Exception $e ) {
-				$this->target = null;
-			}
+		if ( ! \array_key_exists( 'target', $block['attrs'] ) ) {
+			$block['attrs']['target'] = 0;
+		}
+
+		// Try parsing `target` block attribute.
+		try {
+			$this->target = $parser->parse( $block['attrs']['target'] );
+		} catch ( \Exception $e ) {
+			$this->target = null;
 		}
 
 		// Set raised.
-		if ( \array_key_exists( 'raised', $block['attrs'] ) ) {
-			// Try parsing and updating `raised` block attribute.
-			try {
-				$this->raised = $parser->parse( $block['attrs']['raised'] );
+		if ( ! \array_key_exists( 'raised', $block['attrs'] ) ) {
+			$block['attrs']['raised'] = 0;
+		}
 
-				$this->raised = $this->raised->add( $this->add_raised );
+		// Try parsing and updating `raised` block attribute.
+		try {
+			$this->raised = $parser->parse( $block['attrs']['raised'] );
 
-				$block['attrs']['raised'] = \number_format( $this->raised->get_value(), 2, '.', '' );
-			} catch ( \Exception $e ) {
-				$this->raised = null;
-			}
+			$this->raised = $this->raised->add( $this->add_raised );
+
+			$block['attrs']['raised'] = \number_format( $this->raised->get_value(), 2, '.', '' );
+		} catch ( \Exception $e ) {
+			$this->raised = null;
 		}
 
 		// Set number of contributions.
-		if ( \array_key_exists( 'contributions', $block['attrs'] ) ) {
-			$this->contributions = 1 + \intval( $block['attrs']['contributions'] );
-
-			$block['attrs']['contributions'] = $this->contributions;
+		if ( ! \array_key_exists( 'contributions', $block['attrs'] ) ) {
+			$block['attrs']['contributions'] = 0;
 		}
+
+		$this->contributions = 1 + \intval( $block['attrs']['contributions'] );
+
+		$block['attrs']['contributions'] = $this->contributions;
 
 		return $block;
 	}
@@ -244,9 +250,7 @@ class BlockUpdater {
 		 * Attributes.
 		 */
 		// Set `value` attribute.
-		if ( \array_key_exists( 'value', $block['attrs'] ) ) {
-			$block['attrs']['value'] = $progress;
-		}
+		$block['attrs']['value'] = $progress;
 
 		/**
 		 * Inner HTML and content.
@@ -320,7 +324,7 @@ class BlockUpdater {
 		 */
 		$html = new DOMDocument();
 
-		$html->loadHTML( '<?xml encoding="UTF-8">' . $block['innerHTML'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+		$html->loadHTML( '<?xml encoding="UTF-8">' . $block['innerHTML'], \LIBXML_HTML_NOIMPLIED | \LIBXML_HTML_NODEFDTD );
 
 		$descriptions = $html->getElementsByTagName( 'dd' );
 
@@ -330,9 +334,7 @@ class BlockUpdater {
 		// Update number of contributions.
 		$descriptions[2]->nodeValue = $block['attrs']['list'][2]['value'];
 
-		$html = $html->saveHTML();
-
-		$html = \str_replace( '<?xml encoding="UTF-8">', '', $html );
+		$html = $html->saveHTML( $html->documentElement );
 
 		$block['innerHTML']       = $html;
 		$block['innerContent'][0] = $html;

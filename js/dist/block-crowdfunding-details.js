@@ -87,7 +87,7 @@ var _wp$element = wp.element,
 
     var fractionDigits = 2;
 
-    if (0 === value % 100) {
+    if (0 === value * 100 % 100) {
       fractionDigits = 0;
     }
 
