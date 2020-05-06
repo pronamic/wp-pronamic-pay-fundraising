@@ -81,6 +81,18 @@ var _wp$element = wp.element,
 
     return DescriptionDetails;
   }(Component);
+
+  var formatMoney = function formatMoney(value) {
+    value = parseFloat(value); // Fraction digits.
+
+    var fractionDigits = 2;
+
+    if (0 === value % 100) {
+      fractionDigits = 0;
+    }
+
+    return value.toFixed(fractionDigits).replace(/\./g, ',');
+  };
   /**
    * Register details block type.
    *
@@ -184,7 +196,7 @@ var _wp$element = wp.element,
                 currencySymbol: content
               });
             }
-          }), ' ' + item.amount) : item.value))
+          }), ' ' + formatMoney(item.amount)) : item.value))
         );
       });
       return (
@@ -216,7 +228,7 @@ var _wp$element = wp.element,
             className: "ppd-dl-list__value"
           }, item.hasOwnProperty('amount') ?
           /*#__PURE__*/
-          React.createElement(React.Fragment, null, currencySymbol + ' ' + item.amount) : item.value))
+          React.createElement(React.Fragment, null, currencySymbol + ' ' + formatMoney(item.amount)) : item.value))
         );
       });
       return (

@@ -63,7 +63,7 @@ var _wp$components = wp.components,
 
       onChangeValue(value);
       var style = {
-        transform: 'rotate( ' + degrees + 'deg )'
+        transform: 'rotate( ' + degrees.toFixed(2) + 'deg )'
       };
       var classes = className + ' ppd-circle ' + negativeClass;
       return (
@@ -101,7 +101,7 @@ var _wp$components = wp.components,
       }
 
       var style = {
-        transform: 'rotate( ' + degrees + 'deg )'
+        transform: 'rotate( ' + degrees.toFixed(2) + 'deg )'
       };
       return (
         /*#__PURE__*/

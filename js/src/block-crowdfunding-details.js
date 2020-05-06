@@ -18,6 +18,19 @@ const { Component, Fragment, RawHTML } = wp.element;
 		}
 	}
 
+	const formatMoney = ( value ) => {
+		value = parseFloat( value );
+
+		// Fraction digits.
+		let fractionDigits = 2;
+
+		if ( 0 === value % 100 ) {
+			fractionDigits = 0;
+		}
+
+		return value.toFixed( fractionDigits ).replace( /\./g, ',' );
+	};
+
 	/**
 	 * Register details block type.
 	 *
@@ -103,7 +116,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 											value={ currencySymbol }
 											onChange={ ( content ) => setAttributes( { currencySymbol: content } ) }
 										/>
-										{ ' ' + item.amount }
+										{ ' ' + formatMoney( item.amount ) }
 									</>
 								:
 									item.value
@@ -136,7 +149,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 							{
 								item.hasOwnProperty( 'amount' ) ?
 									<>
-										{ currencySymbol + ' ' + item.amount }
+										{ currencySymbol + ' ' + formatMoney( item.amount ) }
 									</>
 									:
 									item.value

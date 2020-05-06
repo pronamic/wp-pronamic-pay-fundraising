@@ -72,6 +72,7 @@ var _wp$components2 = wp.components,
           color = attributes.color;
 
       var onChangeTarget = function onChangeTarget(updatedTarget) {
+        updatedTarget = updatedTarget.replace(/,/g, '.');
         target = updatedTarget;
         setAttributes({
           target: updatedTarget
@@ -79,6 +80,7 @@ var _wp$components2 = wp.components,
       };
 
       var onChangeRaised = function onChangeRaised(updatedRaised) {
+        updatedRaised = updatedRaised.replace(/,/g, '.');
         raised = updatedRaised;
         setAttributes({
           raised: updatedRaised

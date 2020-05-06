@@ -47,12 +47,16 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 			let { target, raised, contributions, color } = attributes;
 
 			const onChangeTarget = ( updatedTarget ) => {
+				updatedTarget = updatedTarget.replace( /,/g, '.' );
+
 				target = updatedTarget;
 
 				setAttributes( { target: updatedTarget } );
 			}
 
 			const onChangeRaised = ( updatedRaised ) => {
+				updatedRaised = updatedRaised.replace( /,/g, '.' );
+
 				raised = updatedRaised;
 
 				setAttributes( { raised: updatedRaised } );
