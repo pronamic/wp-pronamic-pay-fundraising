@@ -134,10 +134,13 @@ class Addon {
 			return;
 		}
 
-		// @todo Get origin post ID for payment.
-		$origin_post_id = 0;
+		$post_id = $payment->get_origin_id();
 
-		$origin_post = \get_post( $origin_post_id );
+		if ( null === $post_id ) {
+			return;
+		}
+
+		$origin_post = \get_post( $post_id );
 
 		if ( null === $origin_post ) {
 			return;
