@@ -94,6 +94,11 @@ var _wp$components = wp.components,
     save: function save(_ref2) {
       var attributes = _ref2.attributes;
       var degrees = attributes.value / 100 * 360;
+
+      if (degrees > 360) {
+        degrees = 360;
+      }
+
       var classes = 'ppd-circle';
 
       if (attributes.value > 50) {

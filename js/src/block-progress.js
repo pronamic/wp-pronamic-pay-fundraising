@@ -85,6 +85,10 @@ const { RangeControl, PanelBody } = wp.components;
 		save( { attributes } ) {
 			let degrees = ( attributes.value / 100 ) * 360;
 
+			if ( degrees > 360 ) {
+				degrees = 360;
+			}
+
 			let classes = 'ppd-circle';
 
 			if ( attributes.value > 50 ) {
