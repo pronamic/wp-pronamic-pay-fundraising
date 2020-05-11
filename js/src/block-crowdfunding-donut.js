@@ -1,6 +1,6 @@
 /* globals pronamic_crowdfunding_donut */
 const { data, ServerSideRenderer } = wp;
-const { updateCategory, registerBlockType } = wp.blocks;
+const { createBlock, updateCategory, registerBlockType } = wp.blocks;
 const { Button, ColorPalette, HTML, InnerBlocks, InspectorControls, Placeholder } = wp.blockEditor;
 const { TextControl, PanelBody } = wp.components;
 const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
@@ -196,6 +196,18 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 					<InnerBlocks.Content />
 				</div>
 			);
+		},
+
+		transforms: {
+			from: [
+				{
+					type: 'block',
+					blocks: [ 'pronamic-pay/crowdfunding-bar', 'pronamic-pay/crowdfunding-compact' ],
+					transform: ( attributes ) => {
+						return createBlock( 'pronamic-pay/crowdfunding-donut', attributes );
+					}
+				}
+			]
 		}
 	} );
 

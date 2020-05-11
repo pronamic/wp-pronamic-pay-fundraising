@@ -5,6 +5,7 @@ var _wp = wp,
     data = _wp.data,
     ServerSideRenderer = _wp.ServerSideRenderer;
 var _wp$blocks = wp.blocks,
+    createBlock = _wp$blocks.createBlock,
     updateCategory = _wp$blocks.updateCategory,
     registerBlockType = _wp$blocks.registerBlockType;
 var _wp$blockEditor = wp.blockEditor,
@@ -224,6 +225,15 @@ var _wp$components2 = wp.components,
         /*#__PURE__*/
         React.createElement(InnerBlocks.Content, null))
       );
+    },
+    transforms: {
+      from: [{
+        type: 'block',
+        blocks: ['pronamic-pay/crowdfunding-donut', 'pronamic-pay/crowdfunding-compact'],
+        transform: function transform(attributes) {
+          return createBlock('pronamic-pay/crowdfunding-bar', attributes);
+        }
+      }]
     }
   });
   /**
