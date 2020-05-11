@@ -1,4 +1,4 @@
-/* globals pronamic_crowdfunding_ring */
+/* globals pronamic_crowdfunding_bar */
 const { data, ServerSideRenderer } = wp;
 const { updateCategory, registerBlockType } = wp.blocks;
 const { Button, ColorPalette, HTML, InnerBlocks, InspectorControls, Placeholder } = wp.blockEditor;
@@ -9,15 +9,15 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 	'use strict';
 
 	/**
-	 * Register crowdfunding ring block type.
+	 * Register crowdfunding bar block type.
 	 *
 	 * @param string name     Block name.
 	 * @param object settings Block settings.
 	 *
 	 * @return WPBlock        Block if registered successfully, otherwise "undefined".
 	 */
-	registerBlockType( 'pronamic-pay/crowdfunding-ring', {
-		title: pronamic_crowdfunding_ring.title,
+	registerBlockType( 'pronamic-pay/crowdfunding-bar', {
+		title: pronamic_crowdfunding_bar.title,
 		icon: 'marker',
 		category: 'pronamic-pay',
 
@@ -111,7 +111,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 					value: Math.floor( ( raised / target ) * 100 )
 				};
 
-				recursiveUpdateInnerBlocks( 'pronamic-pay/progress', block, attr );
+				recursiveUpdateInnerBlocks( 'pronamic-pay/crowdfunding-progress', block, attr );
 			}
 
 			const updateDetails = () => {
@@ -144,17 +144,17 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				<InspectorControls>
 					<PanelBody>
 						<TextControl
-							label={ pronamic_crowdfunding_ring.label_target }
+							label={ pronamic_crowdfunding_bar.label_target }
 							value={ target }
 							onChange={ onChangeTarget }
 						/>
 						<TextControl
-							label={ pronamic_crowdfunding_ring.label_raised }
+							label={ pronamic_crowdfunding_bar.label_raised }
 							value={ raised }
 							onChange={ onChangeRaised }
 						/>
 						<TextControl
-							label={ pronamic_crowdfunding_ring.label_contributions }
+							label={ pronamic_crowdfunding_bar.label_contributions }
 							value={ contributions }
 							onChange={ onChangeContributions }
 						/>
@@ -169,23 +169,16 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 
 			// Inner blocks template.
 			const TEMPLATE = [
-				[ 'core/columns', {}, [
-					[ 'core/column', { width: 30 }, [
-						[ 'pronamic-pay/progress', {} ]
-					] ],
-					[ 'core/column', { width: 70 }, [
-						[ 'pronamic-pay/crowdfunding-details', {} ]
-					] ]
-				] ],
+				[ 'pronamic-pay/crowdfunding-progress', { className: 'is-style-bar' } ],
+				[ 'pronamic-pay/crowdfunding-details', {} ]
 			];
 
-			let classes = className + ' ppd-block';
-			classes += ' ppd-block-circle';
+			let classes = className + ' ppcf-block ppcf-block-bar';
 
 			return (
 				<div className={ classes }>
 					{ inspectorControls }
-					<InnerBlocks template={ TEMPLATE } renderAppender={ false } />
+					<InnerBlocks template={ TEMPLATE } />
 				</div>
 			);
 		},
@@ -193,7 +186,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 		// Save.
 		save: ( { attributes } ) => {
 			return (
-				<div className="ppd-block ppd-block-circle">
+				<div className="ppcf-block ppcf-block-bar">
 					<InnerBlocks.Content />
 				</div>
 			);

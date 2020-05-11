@@ -1,6 +1,6 @@
 "use strict";
 
-/* globals pronamic_crowdfunding_ring */
+/* globals pronamic_crowdfunding_donut */
 var _wp = wp,
     data = _wp.data,
     ServerSideRenderer = _wp.ServerSideRenderer;
@@ -28,7 +28,7 @@ var _wp$components2 = wp.components,
 (function () {
   'use strict';
   /**
-   * Register crowdfunding ring block type.
+   * Register crowdfunding donut block type.
    *
    * @param string name     Block name.
    * @param object settings Block settings.
@@ -36,8 +36,8 @@ var _wp$components2 = wp.components,
    * @return WPBlock        Block if registered successfully, otherwise "undefined".
    */
 
-  registerBlockType('pronamic-pay/crowdfunding-ring', {
-    title: pronamic_crowdfunding_ring.title,
+  registerBlockType('pronamic-pay/crowdfunding-donut', {
+    title: pronamic_crowdfunding_donut.title,
     icon: 'marker',
     category: 'pronamic-pay',
     // Attributes.
@@ -136,7 +136,7 @@ var _wp$components2 = wp.components,
         var attr = {
           value: Math.floor(raised / target * 100)
         };
-        recursiveUpdateInnerBlocks('pronamic-pay/progress', block, attr);
+        recursiveUpdateInnerBlocks('pronamic-pay/crowdfunding-progress', block, attr);
       };
 
       var updateDetails = function updateDetails() {
@@ -175,19 +175,19 @@ var _wp$components2 = wp.components,
       React.createElement(PanelBody, null,
       /*#__PURE__*/
       React.createElement(TextControl, {
-        label: pronamic_crowdfunding_ring.label_target,
+        label: pronamic_crowdfunding_donut.label_target,
         value: target,
         onChange: onChangeTarget
       }),
       /*#__PURE__*/
       React.createElement(TextControl, {
-        label: pronamic_crowdfunding_ring.label_raised,
+        label: pronamic_crowdfunding_donut.label_raised,
         value: raised,
         onChange: onChangeRaised
       }),
       /*#__PURE__*/
       React.createElement(TextControl, {
-        label: pronamic_crowdfunding_ring.label_contributions,
+        label: pronamic_crowdfunding_donut.label_contributions,
         value: contributions,
         onChange: onChangeContributions
       }),
@@ -199,12 +199,11 @@ var _wp$components2 = wp.components,
       }))); // Inner blocks template.
 
       var TEMPLATE = [['core/columns', {}, [['core/column', {
-        width: 30
-      }, [['pronamic-pay/progress', {}]]], ['core/column', {
-        width: 70
+        width: 20
+      }, [['pronamic-pay/crowdfunding-progress', {}]]], ['core/column', {
+        width: 80
       }, [['pronamic-pay/crowdfunding-details', {}]]]]]];
-      var classes = className + ' ppd-block';
-      classes += ' ppd-block-circle';
+      var classes = className + ' ppcf-block ppcf-block-circle';
       return (
         /*#__PURE__*/
         React.createElement("div", {
@@ -212,8 +211,7 @@ var _wp$components2 = wp.components,
         }, inspectorControls,
         /*#__PURE__*/
         React.createElement(InnerBlocks, {
-          template: TEMPLATE,
-          renderAppender: false
+          template: TEMPLATE
         }))
       );
     },
@@ -223,7 +221,7 @@ var _wp$components2 = wp.components,
       return (
         /*#__PURE__*/
         React.createElement("div", {
-          className: "ppd-block ppd-block-circle"
+          className: "ppcf-block ppcf-block-circle"
         },
         /*#__PURE__*/
         React.createElement(InnerBlocks.Content, null))
@@ -250,4 +248,4 @@ var _wp$components2 = wp.components,
     }))
   });
 })();
-//# sourceMappingURL=block-crowdfunding-ring.js.map
+//# sourceMappingURL=block-crowdfunding-donut.js.map

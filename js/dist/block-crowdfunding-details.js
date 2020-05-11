@@ -18,6 +18,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+/* globals pronamic_crowdfunding_details */
 var _wp = wp,
     data = _wp.data;
 var registerBlockType = wp.blocks.registerBlockType;
@@ -47,7 +48,7 @@ var _wp$element = wp.element,
         return (
           /*#__PURE__*/
           React.createElement("dl", {
-            className: "ppd-dl-list"
+            className: "ppcf-dl-list"
           }, this.props.children)
         );
       }
@@ -73,7 +74,7 @@ var _wp$element = wp.element,
         return (
           /*#__PURE__*/
           React.createElement("dd", {
-            className: "ppd-dl-list__value"
+            className: "ppcf-dl-list__value"
           }, this.props.children)
         );
       }
@@ -104,10 +105,10 @@ var _wp$element = wp.element,
 
 
   registerBlockType('pronamic-pay/crowdfunding-details', {
-    title: 'Details',
+    title: pronamic_crowdfunding_details.title,
     icon: 'info',
     category: 'pronamic-pay',
-    parent: ['pronamic-pay/crowdfunding-ring', 'core/column'],
+    parent: ['pronamic-pay/crowdfunding-donut', 'pronamic-pay/crowdfunding-bar', 'pronamic-pay/crowdfunding-compact', 'core/column', 'core/group'],
     // Attributes.
     attributes: {
       currencySymbol: {
@@ -117,13 +118,13 @@ var _wp$element = wp.element,
       list: {
         type: 'array',
         default: [{
-          term: 'Raised',
+          term: pronamic_crowdfunding_details.term_raised,
           amount: '0,00'
         }, {
-          term: 'Target',
+          term: pronamic_crowdfunding_details.term_target,
           amount: '0,00'
         }, {
-          term: 'Number of contributions',
+          term: pronamic_crowdfunding_details.term_contributions,
           value: '0'
         }]
       }
@@ -143,7 +144,9 @@ var _wp$element = wp.element,
       };
 
       var updateDescriptionTerm = function updateDescriptionTerm(index, term) {
+        console.log(index + ' - ' + term);
         list[index].term = term;
+        console.log(list);
         setAttributes({
           list: list
         });
@@ -173,7 +176,7 @@ var _wp$element = wp.element,
           /*#__PURE__*/
           React.createElement(RichText, {
             tagName: "dt",
-            className: "ppd-dl-list__label",
+            className: "ppcf-dl-list__label",
             value: item.term,
             onChange: function onChange(content) {
               return updateDescriptionTerm(index, content);
@@ -219,13 +222,13 @@ var _wp$element = wp.element,
           },
           /*#__PURE__*/
           React.createElement("dt", {
-            className: "ppd-dl-list__label"
+            className: "ppcf-dl-list__label"
           },
           /*#__PURE__*/
           React.createElement(RawHTML, null, item.term)),
           /*#__PURE__*/
           React.createElement("dd", {
-            className: "ppd-dl-list__value"
+            className: "ppcf-dl-list__value"
           }, item.hasOwnProperty('amount') ?
           /*#__PURE__*/
           React.createElement(React.Fragment, null, currencySymbol + ' ' + formatMoney(item.amount)) : item.value))
@@ -234,7 +237,7 @@ var _wp$element = wp.element,
       return (
         /*#__PURE__*/
         React.createElement("dl", {
-          className: "ppd-dl-list"
+          className: "ppcf-dl-list"
         }, definitions)
       );
     }

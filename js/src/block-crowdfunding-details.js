@@ -1,3 +1,4 @@
+/* globals pronamic_crowdfunding_details */
 const { data } = wp;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.blockEditor;
@@ -8,13 +9,13 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 	class DescriptionList extends Component {
 		render() {
-			return <dl className="ppd-dl-list">{ this.props.children }</dl>
+			return <dl className="ppcf-dl-list">{ this.props.children }</dl>
 		}
 	}
 
 	class DescriptionDetails extends Component {
 		render() {
-			return <dd className="ppd-dl-list__value">{ this.props.children }</dd>
+			return <dd className="ppcf-dl-list__value">{ this.props.children }</dd>
 		}
 	}
 
@@ -40,10 +41,10 @@ const { Component, Fragment, RawHTML } = wp.element;
 	 * @return WPBlock        Block if registered successfully, otherwise "undefined".
 	 */
 	registerBlockType( 'pronamic-pay/crowdfunding-details', {
-		title: 'Details',
+		title: pronamic_crowdfunding_details.title,
 		icon: 'info',
 		category: 'pronamic-pay',
-		parent: [ 'pronamic-pay/crowdfunding-ring', 'core/column' ],
+		parent: [ 'pronamic-pay/crowdfunding-donut', 'pronamic-pay/crowdfunding-bar', 'pronamic-pay/crowdfunding-compact', 'core/column', 'core/group' ],
 
 		// Attributes.
 		attributes: {
@@ -55,15 +56,15 @@ const { Component, Fragment, RawHTML } = wp.element;
 				type: 'array',
 				default: [
 					{
-						term: 'Raised',
+						term: pronamic_crowdfunding_details.term_raised,
 						amount: '0,00'
 					},
 					{
-						term: 'Target',
+						term: pronamic_crowdfunding_details.term_target,
 						amount: '0,00'
 					},
 					{
-						term: 'Number of contributions',
+						term: pronamic_crowdfunding_details.term_contributions,
 						value: '0'
 					}
 				]
@@ -79,8 +80,10 @@ const { Component, Fragment, RawHTML } = wp.element;
 			};
 
 			const updateDescriptionTerm = ( index, term ) => {
+				console.log( index + ' - ' + term );
 				list[ index ].term = term;
 
+				console.log( list );
 				setAttributes( { list: list } );
 			};
 
@@ -103,7 +106,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 					<Fragment key={ index }>
 						<RichText
 							tagName="dt"
-							className="ppd-dl-list__label"
+							className="ppcf-dl-list__label"
 							value={ item.term }
 							onChange={ ( content ) => updateDescriptionTerm( index, content ) }
 						/>
@@ -140,12 +143,12 @@ const { Component, Fragment, RawHTML } = wp.element;
 			let definitions = list.map( ( item, index ) => {
 				return (
 					<Fragment key={ index }>
-						<dt className="ppd-dl-list__label">
+						<dt className="ppcf-dl-list__label">
 							<RawHTML>
 								{ item.term }
 							</RawHTML>
 						</dt>
-						<dd className="ppd-dl-list__value">
+						<dd className="ppcf-dl-list__value">
 							{
 								item.hasOwnProperty( 'amount' ) ?
 									<>
@@ -160,7 +163,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 			} );
 
 			return (
-				<dl className="ppd-dl-list">
+				<dl className="ppcf-dl-list">
 					{ definitions }
 				</dl>
 			);

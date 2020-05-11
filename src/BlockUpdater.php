@@ -63,7 +63,6 @@ class BlockUpdater {
 	 */
 	public function __construct() {
 		$this->block_names = array(
-			'pronamic-pay/crowdfunding-ring',
 			'pronamic-pay/crowdfunding-donut',
 			'pronamic-pay/crowdfunding-bar',
 			'pronamic-pay/crowdfunding-compact',
@@ -147,7 +146,7 @@ class BlockUpdater {
 	public function update_inner_blocks( $blocks ) {
 		foreach ( $blocks as &$block ) {
 			switch ( $block['blockName'] ) {
-				case 'pronamic-pay/progress':
+				case 'pronamic-pay/crowdfunding-progress':
 					// Update crowdfunding progress block.
 					$block = $this->update_progress_block( $block );
 
@@ -258,6 +257,11 @@ class BlockUpdater {
 		// Set percentage.
 		$html = \preg_replace( '#[0-9]+%#', $block['attrs']['value'] . '%', $block['innerHTML'] );
 
+		// Restrict bar `width` to 100%.
+		if ( false !== \stripos( $block['innerHTML'], 'is-style-bar' ) && $block['attrs']['value'] > 100 ) {
+			$html = \preg_replace( '#width:[0-9]+%#', 'width:100%', $html );
+		}
+
 		// Set degrees.
 		$degrees = ( $progress / 100 ) * 360;
 
@@ -268,17 +272,17 @@ class BlockUpdater {
 		$html = \preg_replace( '#[0-9\.]+deg#', $degrees . 'deg', $html );
 
 		// Set classes.
-		$classes = 'ppd-circle';
+		$classes = 'ppcf-circle';
 
 		if ( $block['attrs']['value'] > 50 ) {
-			$classes .= ' ppd-circle--50';
+			$classes .= ' ppcf-circle--50';
 		}
 
 		$html = \strtr(
 			$html,
 			array(
-				'ppd-circle ppd-circle--50"' => $classes . '"',
-				'ppd-circle"'                => $classes . '"',
+				'ppcf-circle ppcf-circle--50"' => $classes . '"',
+				'ppcf-circle"'                => $classes . '"',
 			)
 		);
 
