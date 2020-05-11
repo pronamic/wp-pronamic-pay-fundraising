@@ -28,9 +28,7 @@
 /**
  * Autoload.
  */
-foreach ( glob( __DIR__ . '/src/*' ) as $file ) {
-	require $file;
-}
+require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Bootstrap.
