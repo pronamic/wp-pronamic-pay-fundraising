@@ -70,8 +70,10 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				setAttributes( { contributions: updatedContributions } );
 			}
 
-			const onChangeColor = ( color ) => {
-				setAttributes( { color: color } );
+			const onChangeColor = ( updatedColor ) => {
+				color = updatedColor;
+
+				setAttributes( { color: updatedColor } );
 			}
 
 			const recursiveUpdateInnerBlocks = ( blockType, parentBlock, attr ) => {
@@ -81,6 +83,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 
 				parentBlock.innerBlocks.forEach( ( block ) => {
 					if ( blockType === block.name ) {
+						// Update attribute `list`.
 						if ( attr.hasOwnProperty( 'list' ) ) {
 							attr.list.map( ( item, index ) => {
 								// Merge current block attribute with item updates.
@@ -104,10 +107,11 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				let raised = parseFloat( attributes.raised );
 
 				if ( raised > target && 0 == target || 0 == target && 0 == raised ) {
-					target = 1;
+					target = 100;
 				}
 
 				let attr = {
+					color: color,
 					value: Math.floor( ( raised / target ) * 100 )
 				};
 
@@ -120,6 +124,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 
 				// Attribute updates.
 				let attr = {
+					color: color,
 					list: [
 						{ amount: parseFloat( raised ) },
 						{ amount: parseFloat( target ) },

@@ -96,9 +96,10 @@ var _wp$components2 = wp.components,
         });
       };
 
-      var onChangeColor = function onChangeColor(color) {
+      var onChangeColor = function onChangeColor(updatedColor) {
+        color = updatedColor;
         setAttributes({
-          color: color
+          color: updatedColor
         });
       };
 
@@ -109,6 +110,7 @@ var _wp$components2 = wp.components,
 
         parentBlock.innerBlocks.forEach(function (block) {
           if (blockType === block.name) {
+            // Update attribute `list`.
             if (attr.hasOwnProperty('list')) {
               attr.list.map(function (item, index) {
                 // Merge current block attribute with item updates.
@@ -131,10 +133,11 @@ var _wp$components2 = wp.components,
         var raised = parseFloat(attributes.raised);
 
         if (raised > target && 0 == target || 0 == target && 0 == raised) {
-          target = 1;
+          target = 100;
         }
 
         var attr = {
+          color: color,
           value: Math.floor(raised / target * 100)
         };
         recursiveUpdateInnerBlocks('pronamic-pay/crowdfunding-progress', block, attr);
@@ -145,6 +148,7 @@ var _wp$components2 = wp.components,
         var block = data.select('core/block-editor').getBlocksByClientId(clientId)[0]; // Attribute updates.
 
         var attr = {
+          color: color,
           list: [{
             amount: parseFloat(raised)
           }, {

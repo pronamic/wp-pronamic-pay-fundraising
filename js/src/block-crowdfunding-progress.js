@@ -22,6 +22,10 @@ const { RangeControl, PanelBody } = wp.components;
 
 		// Attributes.
 		attributes: {
+			color: {
+				type: 'string',
+				default: '#f9461c'
+			},
 			value: {
 				type: 'integer',
 				default: 0
@@ -42,7 +46,7 @@ const { RangeControl, PanelBody } = wp.components;
 
 		// Edit.
 		edit: ( { attributes, setAttributes, className } ) => {
-			let { value } = attributes;
+			let { color, value } = attributes;
 
 			let degrees = 0;
 
@@ -50,12 +54,6 @@ const { RangeControl, PanelBody } = wp.components;
 
 			const onChangeValue = ( value ) => {
 				setAttributes( { value: value } );
-
-				degrees = ( value / 100 ) * 360;
-
-				if ( value > 100 ) {
-					degrees = 360;
-				}
 
 				if ( value > 50 ) {
 					negativeClass = ' ppcf-circle--50';
@@ -73,17 +71,30 @@ const { RangeControl, PanelBody } = wp.components;
 
 			let isStyleDonut = classes.indexOf( 'is-style-donut' ) > -1;
 
-			let style = {};
+			let barStyle = {};
+			let fillStyle = {};
 			let subClasses = '';
 
 			if ( isStyleDonut ) {
-				style = { transform: 'rotate( ' + degrees.toFixed( 2 ) + 'deg )' };
+				let degrees = ( value / 100 ) * 360;
+
+				barStyle = {
+					borderColor: color,
+					transform: 'rotate( ' + Math.min( degrees, 360 ).toFixed( 2 ) + 'deg )'
+				};
+
+				if ( value > 50 ) {
+					fillStyle = {
+						borderColor: color,
+					};
+				}
 
 				subClasses = 'ppcf-circle' + negativeClass;
 			} else {
-				let width = ( value > 100 ? 100 : value );
-
-				style = { width: width + '%' };
+				barStyle = {
+					background: color,
+					width: Math.min( value,  100 ) + '%'
+				};
 
 				subClasses = 'ppcf-progress';
 			}
@@ -96,13 +107,13 @@ const { RangeControl, PanelBody } = wp.components;
 								<span className="ppcf-circle__label">{ value }%</span>
 
 								<div className="ppcf-circle__slice">
-									<div className="ppcf-circle__slice__bar" style={ style }></div>
-									<div className="ppcf-circle__slice__fill"></div>
+									<div className="ppcf-circle__slice__bar" style={ barStyle }></div>
+									<div className="ppcf-circle__slice__fill" style={ fillStyle }></div>
 								</div>
 							</div>
 						:
 							<div className={ subClasses }>
-								<div className="ppcf-progress__bar" style={ style }>
+								<div className="ppcf-progress__bar" style={ barStyle }>
 									<span className="ppcf-progress__bar__status">
 										{ value }%
 									</span>
@@ -116,6 +127,7 @@ const { RangeControl, PanelBody } = wp.components;
 		// Save.
 		save: ( { attributes } ) => {
 			let className = attributes.className === undefined ? '' : attributes.className ;
+			let { color, value } = attributes;
 
 			// Classes.
 			let classes = className;
@@ -126,27 +138,32 @@ const { RangeControl, PanelBody } = wp.components;
 
 			let isStyleDonut = classes.indexOf( 'is-style-donut' ) > -1;
 
-			let style = {};
+			let barStyle = {};
+			let fillStyle = {};
 			let subClasses = '';
 
 			if ( isStyleDonut ) {
-				let degrees = ( attributes.value / 100 ) * 360;
+				let degrees = ( value / 100 ) * 360;
 
-				if ( degrees > 360 ) {
-					degrees = 360;
-				}
-
-				style = { transform: 'rotate( ' + degrees.toFixed( 2 ) + 'deg )' };
+				barStyle = {
+					borderColor: color,
+					transform: 'rotate( ' + Math.min( degrees, 360 ).toFixed( 2 ) + 'deg )'
+				};
 
 				subClasses = 'ppcf-circle';
 
-				if ( attributes.value > 50 ) {
+				if ( value > 50 ) {
 					subClasses += ' ppcf-circle--50';
+
+					fillStyle = {
+						borderColor: color,
+					};
 				}
 			} else {
-				let width = ( attributes.value > 100 ? 100 : attributes.value );
-
-				style = { width: width + '%' };
+				barStyle = {
+					background: color,
+					width: Math.min( value, 100 ) + '%'
+				};
 
 				subClasses = 'ppcf-progress';
 			}
@@ -156,18 +173,18 @@ const { RangeControl, PanelBody } = wp.components;
 					{
 						isStyleDonut ?
 							<div className={ subClasses }>
-								<span className="ppcf-circle__label">{ attributes.value }%</span>
+								<span className="ppcf-circle__label">{ value }%</span>
 
 								<div className="ppcf-circle__slice">
-									<div className="ppcf-circle__slice__bar" style={ style }></div>
-									<div className="ppcf-circle__slice__fill"></div>
+									<div className="ppcf-circle__slice__bar" style={ barStyle }></div>
+									<div className="ppcf-circle__slice__fill" style={ fillStyle }></div>
 								</div>
 							</div>
 						:
 							<div className={ subClasses }>
-								<div className="ppcf-progress__bar" style={ style }>
+								<div className="ppcf-progress__bar" style={ barStyle }>
 									<span className="ppcf-progress__bar__status">
-										{ attributes.value }%
+										{ value }%
 									</span>
 								</div>
 							</div>

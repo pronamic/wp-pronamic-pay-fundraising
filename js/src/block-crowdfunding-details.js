@@ -15,7 +15,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 	class DescriptionDetails extends Component {
 		render() {
-			return <dd className="ppcf-dl-list__value">{ this.props.children }</dd>
+			return <dd className="ppcf-dl-list__value" style={ this.props.style }>{ this.props.children }</dd>
 		}
 	}
 
@@ -57,15 +57,18 @@ const { Component, Fragment, RawHTML } = wp.element;
 				default: [
 					{
 						term: pronamic_crowdfunding_details.term_raised,
-						amount: '0,00'
-					},
-					{
-						term: pronamic_crowdfunding_details.term_target,
-						amount: '0,00'
+						amount: '0,00',
+						color: null
 					},
 					{
 						term: pronamic_crowdfunding_details.term_contributions,
-						value: '0'
+						value: '0',
+						color: null
+					},
+					{
+						term: pronamic_crowdfunding_details.term_target,
+						amount: '0,00',
+						color: null
 					}
 				]
 			}
@@ -73,17 +76,15 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 		// Edit.
 		edit: ( { attributes, setAttributes, className } ) => {
-			let { list, currencySymbol } = attributes;
+			let { color, currencySymbol, list } = attributes;
 
 			const updateCurrencySymbol = ( currencySymbol ) => {
 				setAttributes( { currencySymbol: currencySymbol } );
 			};
 
 			const updateDescriptionTerm = ( index, term ) => {
-				console.log( index + ' - ' + term );
 				list[ index ].term = term;
 
-				console.log( list );
 				setAttributes( { list: list } );
 			};
 
@@ -101,7 +102,20 @@ const { Component, Fragment, RawHTML } = wp.element;
 				setAttributes( { list: list } );
 			};
 
-			let definitions = list.map( ( item, index ) => {
+			let descriptions = list.map( ( item, index ) => {
+				let labelStyle = {};
+				let valueStyle = {};
+
+				if ( item.color ) {
+					if ( item.color.hasOwnProperty( 'label' ) ) {
+						labelStyle = { color: item.color.label };
+					}
+
+					if ( item.color.hasOwnProperty( 'value' ) ) {
+						valueStyle = { color: item.color.value };
+					}
+				}
+
 				return (
 					<Fragment key={ index }>
 						<RichText
@@ -109,8 +123,9 @@ const { Component, Fragment, RawHTML } = wp.element;
 							className="ppcf-dl-list__label"
 							value={ item.term }
 							onChange={ ( content ) => updateDescriptionTerm( index, content ) }
+							style={ labelStyle }
 						/>
-						<DescriptionDetails onChange={ ( content ) => updateDescriptionDetail( index, content ) }>
+						<DescriptionDetails onChange={ ( content ) => updateDescriptionDetail( index, content ) } style={ valueStyle }>
 							{
 								item.hasOwnProperty( 'amount' ) ?
 									<>
@@ -131,7 +146,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 			return (
 				<DescriptionList className={ className }>
-					{ definitions }
+					{ descriptions }
 				</DescriptionList>
 			);
 		},
@@ -140,21 +155,34 @@ const { Component, Fragment, RawHTML } = wp.element;
 		save: ( { attributes } ) => {
 			let { currencySymbol, list } = attributes;
 
-			let definitions = list.map( ( item, index ) => {
+			let descriptions = list.map( ( item, index ) => {
+				let labelStyle = {};
+				let valueStyle = {};
+
+				if ( item.color ) {
+					if ( item.color.hasOwnProperty( 'label' ) ) {
+						labelStyle = { color: item.color.label };
+					}
+
+					if ( item.color.hasOwnProperty( 'value' ) ) {
+						valueStyle = { color: item.color.value };
+					}
+				}
+
 				return (
 					<Fragment key={ index }>
-						<dt className="ppcf-dl-list__label">
+						<dt className="ppcf-dl-list__label" style={ labelStyle }>
 							<RawHTML>
 								{ item.term }
 							</RawHTML>
 						</dt>
-						<dd className="ppcf-dl-list__value">
+						<dd className="ppcf-dl-list__value" style={ valueStyle }>
 							{
 								item.hasOwnProperty( 'amount' ) ?
 									<>
 										{ currencySymbol + ' ' + formatMoney( item.amount ) }
 									</>
-									:
+								:
 									item.value
 							}
 						</dd>
@@ -164,7 +192,7 @@ const { Component, Fragment, RawHTML } = wp.element;
 
 			return (
 				<dl className="ppcf-dl-list">
-					{ definitions }
+					{ descriptions }
 				</dl>
 			);
 		}

@@ -74,7 +74,8 @@ var _wp$element = wp.element,
         return (
           /*#__PURE__*/
           React.createElement("dd", {
-            className: "ppcf-dl-list__value"
+            className: "ppcf-dl-list__value",
+            style: this.props.style
           }, this.props.children)
         );
       }
@@ -119,13 +120,16 @@ var _wp$element = wp.element,
         type: 'array',
         default: [{
           term: pronamic_crowdfunding_details.term_raised,
-          amount: '0,00'
-        }, {
-          term: pronamic_crowdfunding_details.term_target,
-          amount: '0,00'
+          amount: '0,00',
+          color: null
         }, {
           term: pronamic_crowdfunding_details.term_contributions,
-          value: '0'
+          value: '0',
+          color: null
+        }, {
+          term: pronamic_crowdfunding_details.term_target,
+          amount: '0,00',
+          color: null
         }]
       }
     },
@@ -134,8 +138,9 @@ var _wp$element = wp.element,
       var attributes = _ref.attributes,
           setAttributes = _ref.setAttributes,
           className = _ref.className;
-      var list = attributes.list,
-          currencySymbol = attributes.currencySymbol;
+      var color = attributes.color,
+          currencySymbol = attributes.currencySymbol,
+          list = attributes.list;
 
       var updateCurrencySymbol = function updateCurrencySymbol(currencySymbol) {
         setAttributes({
@@ -144,9 +149,7 @@ var _wp$element = wp.element,
       };
 
       var updateDescriptionTerm = function updateDescriptionTerm(index, term) {
-        console.log(index + ' - ' + term);
         list[index].term = term;
-        console.log(list);
         setAttributes({
           list: list
         });
@@ -167,7 +170,24 @@ var _wp$element = wp.element,
         });
       };
 
-      var definitions = list.map(function (item, index) {
+      var descriptions = list.map(function (item, index) {
+        var labelStyle = {};
+        var valueStyle = {};
+
+        if (item.color) {
+          if (item.color.hasOwnProperty('label')) {
+            labelStyle = {
+              color: item.color.label
+            };
+          }
+
+          if (item.color.hasOwnProperty('value')) {
+            valueStyle = {
+              color: item.color.value
+            };
+          }
+        }
+
         return (
           /*#__PURE__*/
           React.createElement(Fragment, {
@@ -180,13 +200,15 @@ var _wp$element = wp.element,
             value: item.term,
             onChange: function onChange(content) {
               return updateDescriptionTerm(index, content);
-            }
+            },
+            style: labelStyle
           }),
           /*#__PURE__*/
           React.createElement(DescriptionDetails, {
             onChange: function onChange(content) {
               return updateDescriptionDetail(index, content);
-            }
+            },
+            style: valueStyle
           }, item.hasOwnProperty('amount') ?
           /*#__PURE__*/
           React.createElement(React.Fragment, null,
@@ -206,7 +228,7 @@ var _wp$element = wp.element,
         /*#__PURE__*/
         React.createElement(DescriptionList, {
           className: className
-        }, definitions)
+        }, descriptions)
       );
     },
     // Save.
@@ -214,7 +236,24 @@ var _wp$element = wp.element,
       var attributes = _ref2.attributes;
       var currencySymbol = attributes.currencySymbol,
           list = attributes.list;
-      var definitions = list.map(function (item, index) {
+      var descriptions = list.map(function (item, index) {
+        var labelStyle = {};
+        var valueStyle = {};
+
+        if (item.color) {
+          if (item.color.hasOwnProperty('label')) {
+            labelStyle = {
+              color: item.color.label
+            };
+          }
+
+          if (item.color.hasOwnProperty('value')) {
+            valueStyle = {
+              color: item.color.value
+            };
+          }
+        }
+
         return (
           /*#__PURE__*/
           React.createElement(Fragment, {
@@ -222,13 +261,15 @@ var _wp$element = wp.element,
           },
           /*#__PURE__*/
           React.createElement("dt", {
-            className: "ppcf-dl-list__label"
+            className: "ppcf-dl-list__label",
+            style: labelStyle
           },
           /*#__PURE__*/
           React.createElement(RawHTML, null, item.term)),
           /*#__PURE__*/
           React.createElement("dd", {
-            className: "ppcf-dl-list__value"
+            className: "ppcf-dl-list__value",
+            style: valueStyle
           }, item.hasOwnProperty('amount') ?
           /*#__PURE__*/
           React.createElement(React.Fragment, null, currencySymbol + ' ' + formatMoney(item.amount)) : item.value))
@@ -238,7 +279,7 @@ var _wp$element = wp.element,
         /*#__PURE__*/
         React.createElement("dl", {
           className: "ppcf-dl-list"
-        }, definitions)
+        }, descriptions)
       );
     }
   });

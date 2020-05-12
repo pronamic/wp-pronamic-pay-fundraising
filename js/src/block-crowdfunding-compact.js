@@ -108,6 +108,7 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				}
 
 				let attr = {
+					color: color,
 					value: Math.floor( ( raised / target ) * 100 )
 				};
 
@@ -121,7 +122,12 @@ const { SVG, G, Path, Polygon, Rect, Circle } = wp.components;
 				// Attribute updates.
 				let attr = {
 					list: [
-						{ amount: parseFloat( raised ) },
+						{
+							amount: parseFloat( raised ),
+							color: {
+								value: color
+							}
+						},
 						{ amount: parseFloat( target ) },
 						{ value: parseInt( contributions ) }
 					]

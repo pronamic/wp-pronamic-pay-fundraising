@@ -25,6 +25,10 @@ var _wp$components = wp.components,
     parent: ['pronamic-pay/crowdfunding-donut', 'pronamic-pay/crowdfunding-bar', 'pronamic-pay/crowdfunding-compact', 'core/column', 'core/group'],
     // Attributes.
     attributes: {
+      color: {
+        type: 'string',
+        default: '#f9461c'
+      },
       value: {
         type: 'integer',
         default: 0
@@ -43,7 +47,8 @@ var _wp$components = wp.components,
       var attributes = _ref.attributes,
           setAttributes = _ref.setAttributes,
           className = _ref.className;
-      var value = attributes.value;
+      var color = attributes.color,
+          value = attributes.value;
       var degrees = 0;
       var negativeClass = '';
 
@@ -51,11 +56,6 @@ var _wp$components = wp.components,
         setAttributes({
           value: value
         });
-        degrees = value / 100 * 360;
-
-        if (value > 100) {
-          degrees = 360;
-        }
 
         if (value > 50) {
           negativeClass = ' ppcf-circle--50';
@@ -71,18 +71,29 @@ var _wp$components = wp.components,
       }
 
       var isStyleDonut = classes.indexOf('is-style-donut') > -1;
-      var style = {};
+      var barStyle = {};
+      var fillStyle = {};
       var subClasses = '';
 
       if (isStyleDonut) {
-        style = {
-          transform: 'rotate( ' + degrees.toFixed(2) + 'deg )'
+        var _degrees = value / 100 * 360;
+
+        barStyle = {
+          borderColor: color,
+          transform: 'rotate( ' + Math.min(_degrees, 360).toFixed(2) + 'deg )'
         };
+
+        if (value > 50) {
+          fillStyle = {
+            borderColor: color
+          };
+        }
+
         subClasses = 'ppcf-circle' + negativeClass;
       } else {
-        var width = value > 100 ? 100 : value;
-        style = {
-          width: width + '%'
+        barStyle = {
+          background: color,
+          width: Math.min(value, 100) + '%'
         };
         subClasses = 'ppcf-progress';
       }
@@ -107,11 +118,12 @@ var _wp$components = wp.components,
         /*#__PURE__*/
         React.createElement("div", {
           className: "ppcf-circle__slice__bar",
-          style: style
+          style: barStyle
         }),
         /*#__PURE__*/
         React.createElement("div", {
-          className: "ppcf-circle__slice__fill"
+          className: "ppcf-circle__slice__fill",
+          style: fillStyle
         }))) :
         /*#__PURE__*/
         React.createElement("div", {
@@ -120,7 +132,7 @@ var _wp$components = wp.components,
         /*#__PURE__*/
         React.createElement("div", {
           className: "ppcf-progress__bar",
-          style: style
+          style: barStyle
         },
         /*#__PURE__*/
         React.createElement("span", {
@@ -131,7 +143,9 @@ var _wp$components = wp.components,
     // Save.
     save: function save(_ref2) {
       var attributes = _ref2.attributes;
-      var className = attributes.className === undefined ? '' : attributes.className; // Classes.
+      var className = attributes.className === undefined ? '' : attributes.className;
+      var color = attributes.color,
+          value = attributes.value; // Classes.
 
       var classes = className;
 
@@ -140,28 +154,28 @@ var _wp$components = wp.components,
       }
 
       var isStyleDonut = classes.indexOf('is-style-donut') > -1;
-      var style = {};
+      var barStyle = {};
+      var fillStyle = {};
       var subClasses = '';
 
       if (isStyleDonut) {
-        var degrees = attributes.value / 100 * 360;
-
-        if (degrees > 360) {
-          degrees = 360;
-        }
-
-        style = {
-          transform: 'rotate( ' + degrees.toFixed(2) + 'deg )'
+        var degrees = value / 100 * 360;
+        barStyle = {
+          borderColor: color,
+          transform: 'rotate( ' + Math.min(degrees, 360).toFixed(2) + 'deg )'
         };
         subClasses = 'ppcf-circle';
 
-        if (attributes.value > 50) {
+        if (value > 50) {
           subClasses += ' ppcf-circle--50';
+          fillStyle = {
+            borderColor: color
+          };
         }
       } else {
-        var width = attributes.value > 100 ? 100 : attributes.value;
-        style = {
-          width: width + '%'
+        barStyle = {
+          background: color,
+          width: Math.min(value, 100) + '%'
         };
         subClasses = 'ppcf-progress';
       }
@@ -178,7 +192,7 @@ var _wp$components = wp.components,
         /*#__PURE__*/
         React.createElement("span", {
           className: "ppcf-circle__label"
-        }, attributes.value, "%"),
+        }, value, "%"),
         /*#__PURE__*/
         React.createElement("div", {
           className: "ppcf-circle__slice"
@@ -186,11 +200,12 @@ var _wp$components = wp.components,
         /*#__PURE__*/
         React.createElement("div", {
           className: "ppcf-circle__slice__bar",
-          style: style
+          style: barStyle
         }),
         /*#__PURE__*/
         React.createElement("div", {
-          className: "ppcf-circle__slice__fill"
+          className: "ppcf-circle__slice__fill",
+          style: fillStyle
         }))) :
         /*#__PURE__*/
         React.createElement("div", {
@@ -199,12 +214,12 @@ var _wp$components = wp.components,
         /*#__PURE__*/
         React.createElement("div", {
           className: "ppcf-progress__bar",
-          style: style
+          style: barStyle
         },
         /*#__PURE__*/
         React.createElement("span", {
           className: "ppcf-progress__bar__status"
-        }, attributes.value, "%"))))
+        }, value, "%"))))
       );
     }
   });

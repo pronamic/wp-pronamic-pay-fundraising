@@ -135,6 +135,7 @@ var _wp$components2 = wp.components,
         }
 
         var attr = {
+          color: color,
           value: Math.floor(raised / target * 100)
         };
         recursiveUpdateInnerBlocks('pronamic-pay/crowdfunding-progress', block, attr);
@@ -146,7 +147,10 @@ var _wp$components2 = wp.components,
 
         var attr = {
           list: [{
-            amount: parseFloat(raised)
+            amount: parseFloat(raised),
+            color: {
+              value: color
+            }
           }, {
             amount: parseFloat(target)
           }, {
