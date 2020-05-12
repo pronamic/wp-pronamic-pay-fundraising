@@ -237,7 +237,7 @@ class BlockUpdater {
 		$target = $this->target;
 
 		if ( ! ( $target->get_value() > 0 ) ) {
-			$target->set_value( 1 );
+			$target->set_value( 100 );
 		}
 
 		// Calculate progress percentage.
