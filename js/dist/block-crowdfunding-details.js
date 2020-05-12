@@ -123,12 +123,12 @@ var _wp$element = wp.element,
           amount: '0,00',
           color: null
         }, {
-          term: pronamic_crowdfunding_details.term_contributions,
-          value: '0',
-          color: null
-        }, {
           term: pronamic_crowdfunding_details.term_target,
           amount: '0,00',
+          color: null
+        }, {
+          term: pronamic_crowdfunding_details.term_contributions,
+          value: '0',
           color: null
         }]
       }
