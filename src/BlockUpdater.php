@@ -101,6 +101,11 @@ class BlockUpdater {
 			return;
 		}
 
+		// Temporary allow unfiltered HTML for `transform` CSS attribute.
+		\add_filter( 'user_has_cap', array( $this, 'allow_unfiltered_html' ), 10, 2 );
+
+		\kses_init();
+
 		// Update post.
 		\wp_update_post(
 			array(
@@ -108,6 +113,25 @@ class BlockUpdater {
 				'post_content' => $updated_content,
 			)
 		);
+
+		\remove_filter( 'user_has_cap', array( $this, 'allow_unfiltered_html' ) );
+
+		\kses_init();
+	}
+
+	/**
+	 * Allow unfiltered HTML.
+	 *
+	 * @param array $attributes CSS attributes.
+	 *
+	 * @return array
+	 */
+	public function allow_unfiltered_html( $capabilities, $capability ) {
+		if ( in_array( 'unfiltered_html', $capability, true ) ) {
+			$capabilities['unfiltered_html'] = true;
+		}
+
+		return $capabilities;
 	}
 
 	/**
@@ -282,7 +306,7 @@ class BlockUpdater {
 			$html,
 			array(
 				'ppcf-circle ppcf-circle--50"' => $classes . '"',
-				'ppcf-circle"'                => $classes . '"',
+				'ppcf-circle"'                 => $classes . '"',
 			)
 		);
 
