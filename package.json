@@ -37,7 +37,7 @@
   "scripts": {
     "babel": "babel ./js/src -d ./js/dist --source-maps",
     "eslint": "eslint . --ext .json --ext .js",
-    "postcss": "postcss --use autoprefixer -o crowdfunding.css css/*.css\n",
+    "postcss": "postcss --use autoprefixer -o css/crowdfunding.css css/*.css\n",
     "sass": "sass scss:css",
     "sass-lint": "sass-lint --verbose",
     "start": "wp-scripts start",
