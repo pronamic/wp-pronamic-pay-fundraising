@@ -54,45 +54,13 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_scripts() {
-		// Register scripts.
-		wp_register_script(
-			'pronamic-crowdfunding-donut-editor',
-			plugins_url( '/js/dist/block-crowdfunding-donut.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
+		$asset_file = include( plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php' );
 
 		wp_register_script(
-			'pronamic-crowdfunding-bar-editor',
-			plugins_url( '/js/dist/block-crowdfunding-bar.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
-
-		wp_register_script(
-			'pronamic-crowdfunding-compact-editor',
-			plugins_url( '/js/dist/block-crowdfunding-compact.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
-
-		wp_register_script(
-			'pronamic-crowdfunding-progress-editor',
-			plugins_url( '/js/dist/block-crowdfunding-progress.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
-
-		wp_register_script(
-			'pronamic-crowdfunding-details-editor',
-			plugins_url( '/js/dist/block-crowdfunding-details.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
+			'pronamic-crowdfunding-blocks',
+			plugins_url( 'js/dist/index.js', $this->plugin->file ),
+			$asset_file['dependencies'],
+			$asset_file['version']
 		);
 
 		wp_register_script(
@@ -103,7 +71,11 @@ class Blocks {
 			false
 		);
 
-		// Localize scripts.
+		/**
+		 * Unused script localizations.
+		 *
+		 * @todo Translate scripts with @wordpress/i18n.
+		 */
 		wp_localize_script(
 			'pronamic-crowdfunding-donut-editor',
 			'pronamic_crowdfunding_donut',
@@ -215,38 +187,22 @@ class Blocks {
 			),
 		);
 
-		register_block_type(
-			'pronamic-pay/crowdfunding-donut',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-donut-editor',
-				'style'         => 'pronamic-pay-crowdfunding',
-				'attributes'    => $attributes,
-			)
+		$args = array(
+			'editor_script' => 'pronamic-crowdfunding-blocks',
+			'style'         => 'pronamic-pay-crowdfunding',
+			'attributes'    => $attributes,
 		);
 
-		register_block_type(
-			'pronamic-pay/crowdfunding-bar',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-bar-editor',
-				'style'         => 'pronamic-pay-crowdfunding',
-				'attributes'    => $attributes,
-			)
-		);
-
-		register_block_type(
-			'pronamic-pay/crowdfunding-compact',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-compact-editor',
-				'style'         => 'pronamic-pay-crowdfunding',
-				'attributes'    => $attributes,
-			)
-		);
+		register_block_type( 'pronamic-pay/crowdfunding-donut', $args );
+		register_block_type( 'pronamic-pay/crowdfunding-bar', $args );
+		register_block_type( 'pronamic-pay/crowdfunding-compact', $args );
 
 		// Sub blocks.
 		register_block_type(
 			'pronamic-pay/crowdfunding-progress',
 			array(
-				'editor_script' => 'pronamic-crowdfunding-progress-editor',
+				'editor_script' => 'pronamic-crowdfunding-blocks',
+				'style' => 'pronamic-pay-crowdfunding',
 				'attributes'    => array(
 					'value' => array(
 						'type'    => 'integer',
@@ -259,7 +215,8 @@ class Blocks {
 		register_block_type(
 			'pronamic-pay/crowdfunding-details',
 			array(
-				'editor_script' => 'pronamic-crowdfunding-details-editor',
+				'editor_script' => 'pronamic-crowdfunding-blocks',
+				'style' => 'pronamic-pay-crowdfunding',
 				'attributes'    => array(
 					'list' => array(
 						'type'    => 'array',

@@ -1,0 +1,15 @@
+{
+	"name": "pronamic-pay/crowdfunding-progress",
+	"category": "pronamic-pay",
+	"parent": [ "pronamic-pay/crowdfunding-donut", "pronamic-pay/crowdfunding-bar", "pronamic-pay/crowdfunding-compact" ],
+	"attributes": {
+		"color": {
+			"type": "string",
+			"default": "#f9461c"
+		},
+		"value": {
+			"type": "integer",
+			"default": 0
+		}
+	}
+}
