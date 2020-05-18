@@ -18,8 +18,8 @@ export { metadata, name };
 
 // Settings.
 export const settings = {
-	title: __( 'Crowdfunding Compact' ),
-	description: __( 'Add a block that displays crowdfunding information without funding target and progress.' ),
+	title: __( 'Crowdfunding Compact', 'pronamic-pay-crowdfunding' ),
+	description: __( 'Displays raised crowdfunding amount with number of contributions.', 'pronamic-pay-crowdfunding' ),
 	category,
 	icon,
 	example: {},

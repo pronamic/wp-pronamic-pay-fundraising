@@ -1,0 +1,93 @@
+# Copyright (C) 2020 Pronamic
+# This file is distributed under the same license as the Pronamic Pay Crowdfunding Add-On plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pronamic Pay Crowdfunding Add-On 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-pay-"
+"crowdfunding\n"
+"POT-Creation-Date: 2020-05-18T20:28:23+00:00\n"
+"PO-Revision-Date: 2020-05-18 22:30+0200\n"
+"Last-Translator: Reüel van der Steege <reuel@pronamic.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Domain: pronamic-pay-crowdfunding\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "Pronamic Pay Crowdfunding Add-On"
+msgstr "Pronamic Pay Crowdfunding Add-On"
+
+#. Plugin URI of the plugin
+msgid "https://www.pronamic.eu/plugins/pronamic-pay-crowdfunding/"
+msgstr "https://www.pronamic.eu/plugins/pronamic-pay-crowdfunding/"
+
+#. Description of the plugin
+msgid "Extend the Pronamic Pay plugin with blocks for crowdfunding."
+msgstr "Breid de Pronamic Pay-plugin uit met blokken voor crowdfunding."
+
+#. Author of the plugin
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin
+msgid "https://www.pronamic.eu/"
+msgstr "https://www.pronamic.eu/"
+
+#: js/dist/index.js:154 js/src/bar/edit.js:27
+msgid "Raised:"
+msgstr "Opbrengst:"
+
+#: js/dist/index.js:160 js/src/bar/edit.js:31
+msgid "Target:"
+msgstr "Doel:"
+
+#: js/dist/index.js:169 js/dist/index.js:450 js/dist/index.js:994
+#: js/dist/index.js:1009 js/src/bar/edit.js:43 js/src/compact/edit.js:42
+#: js/src/donut/edit.js:36 js/src/donut/edit.js:52
+msgid "Target"
+msgstr "Doel"
+
+#: js/dist/index.js:177 js/dist/index.js:435 js/dist/index.js:458
+#: js/dist/index.js:988 js/dist/index.js:1017 js/src/bar/edit.js:50
+#: js/src/compact/edit.js:26 js/src/compact/edit.js:49 js/src/donut/edit.js:32
+#: js/src/donut/edit.js:59
+msgid "Raised"
+msgstr "Opbrengst"
+
+#: js/dist/index.js:185 js/dist/index.js:466 js/dist/index.js:1000
+#: js/dist/index.js:1025 js/src/bar/edit.js:57 js/src/compact/edit.js:56
+#: js/src/donut/edit.js:40 js/src/donut/edit.js:66
+msgid "Contributions"
+msgstr "Bijdragen"
+
+#: js/dist/index.js:264 js/src/bar/index.js:21
+msgid "Crowdfunding Bar"
+msgstr "Crowdfunding Voortgangsbalk"
+
+#: js/dist/index.js:265 js/src/bar/index.js:22
+msgid "Displays crowdfunding information with progress bar."
+msgstr "Toont crowdfunding informatie met voortgangsbalk."
+
+#: js/dist/index.js:441 js/src/compact/edit.js:30
+msgid "contributions"
+msgstr "bijdragen"
+
+#: js/dist/index.js:541 js/src/compact/index.js:21
+msgid "Crowdfunding Compact"
+msgstr "Crowdfunding Compact"
+
+#: js/dist/index.js:542 js/src/compact/index.js:22
+msgid "Displays raised crowdfunding amount with number of contributions."
+msgstr "Toont opgehaald crowdfunding bedrag met aantal bijdragen."
+
+#: js/dist/index.js:1107 js/src/donut/index.js:21
+msgid "Crowdfunding Donut"
+msgstr "Crowdfunding Voortgangsdonut"
+
+#: js/dist/index.js:1108 js/src/donut/index.js:22
+msgid "Displays crowdfunding information with progress donut."
+msgstr "Toont crowdfunding informatie met voortgangsdonut."

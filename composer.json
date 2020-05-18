@@ -54,6 +54,9 @@
 	},
 	"scripts": {
 		"coveralls": "vendor/bin/php-coveralls -v",
+		"make-i18n-json": "wp i18n make-json languages/*.po --no-purge",
+		"make-pot": "wp pronamic i18n make-pot . languages/pronamic-pay-crowdfunding.pot --slug='pronamic-pay-crowdfunding'",
+		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic-pay-crowdfunding.pot \\;",
 		"phpcbf": "vendor/bin/phpcbf",
 		"phpcs": "vendor/bin/phpcs -s -v",
 		"phplint": "vendor/bin/phplint",

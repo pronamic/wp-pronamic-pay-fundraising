@@ -71,71 +71,12 @@ class Blocks {
 			false
 		);
 
+		// Set script translations.
+		wp_set_script_translations( 'pronamic-crowdfunding-blocks', 'pronamic-pay-crowdfunding', plugin_dir_path( $this->plugin->file ) . 'languages' );
+
 		/**
-		 * Unused script localizations.
-		 *
-		 * @todo Translate scripts with @wordpress/i18n.
+		 * Script localizations.
 		 */
-		wp_localize_script(
-			'pronamic-crowdfunding-donut-editor',
-			'pronamic_crowdfunding_donut',
-			array(
-				'title'               => __( 'Crowdfunding Donut', 'pronamic-pay-crowdfunding' ),
-				'label_target'        => __( 'Target amount', 'pronamic-pay-crowdfunding' ),
-				'label_raised'        => __( 'Raised amount', 'pronamic-pay-crowdfunding' ),
-				'label_contributions' => __( 'Number of contributions', 'pronamic-pay-crowdfunding' ),
-				'label_color'         => __( 'Color', 'pronamic-pay-crowdfunding' ),
-			)
-		);
-
-		wp_localize_script(
-			'pronamic-crowdfunding-bar-editor',
-			'pronamic_crowdfunding_bar',
-			array(
-				'title'               => __( 'Crowdfunding Bar', 'pronamic-pay-crowdfunding' ),
-				'label_target'        => __( 'Target amount', 'pronamic-pay-crowdfunding' ),
-				'label_raised'        => __( 'Raised amount', 'pronamic-pay-crowdfunding' ),
-				'label_contributions' => __( 'Number of contributions', 'pronamic-pay-crowdfunding' ),
-				'label_color'         => __( 'Color', 'pronamic-pay-crowdfunding' ),
-			)
-		);
-
-		wp_localize_script(
-			'pronamic-crowdfunding-compact-editor',
-			'pronamic_crowdfunding_compact',
-			array(
-				'title'               => __( 'Crowdfunding Compact', 'pronamic-pay-crowdfunding' ),
-				'label_target'        => __( 'Target amount', 'pronamic-pay-crowdfunding' ),
-				'label_raised'        => __( 'Raised amount', 'pronamic-pay-crowdfunding' ),
-				'label_contributions' => __( 'Number of contributions', 'pronamic-pay-crowdfunding' ),
-				'term_raised'         => __( 'Raised', 'pronamic-pay-crowdfunding' ),
-				'term_target'         => __( 'Target', 'pronamic-pay-crowdfunding' ),
-				'term_contributions'  => __( 'contributions', 'pronamic-pay-crowdfunding' ),
-				'label_color'         => __( 'Color', 'pronamic-pay-crowdfunding' ),
-			)
-		);
-
-		wp_localize_script(
-			'pronamic-crowdfunding-progress-editor',
-			'pronamic_crowdfunding_progress',
-			array(
-				'title'       => __( 'Crowdfunding Progress', 'pronamic-pay-crowdfunding' ),
-				'label_donut' => __( 'Donut', 'pronamic-pay-crowdfunding' ),
-				'label_bar'   => __( 'Bar', 'pronamic-pay-crowdfunding' ),
-			)
-		);
-
-		wp_localize_script(
-			'pronamic-crowdfunding-details-editor',
-			'pronamic_crowdfunding_details',
-			array(
-				'title'              => __( 'Crowdfunding Details', 'pronamic-pay-crowdfunding' ),
-				'term_raised'        => __( 'Raised', 'pronamic-pay-crowdfunding' ),
-				'term_target'        => __( 'Target', 'pronamic-pay-crowdfunding' ),
-				'term_contributions' => __( 'Contributions', 'pronamic-pay-crowdfunding' ),
-			)
-		);
-
 		wp_localize_script(
 			'pronamic-crowdfunding-remco-editor',
 			'pronamic_crowdfunding_remco',

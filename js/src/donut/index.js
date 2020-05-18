@@ -18,8 +18,8 @@ export { metadata, name };
 
 // Settings.
 export const settings = {
-	title: __( 'Crowdfunding Donut' ),
-	description: __( 'Add a block that displays crowdfunding information with progress donut.' ),
+	title: __( 'Crowdfunding Donut', 'pronamic-pay-crowdfunding' ),
+	description: __( 'Displays crowdfunding information with progress donut.', 'pronamic-pay-crowdfunding' ),
 	category,
 	icon,
 	example: {},
