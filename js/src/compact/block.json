@@ -2,18 +2,26 @@
 	"name": "pronamic-pay/crowdfunding-compact",
 	"category": "pronamic-pay",
 	"attributes": {
-		"target": {
-			"type": "string",
-			"value": "0",
-			"default": "0"
+		"raisedLabel": {
+			"type": "string"
 		},
-		"raised": {
+		"raisedAmount": {
 			"type": "string",
 			"default": "0"
 		},
-		"contributions": {
-			"type": "integer",
-			"default": 0
+		"targetLabel": {
+			"type": "string"
+		},
+		"targetAmount": {
+			"type": "string",
+			"default": "0"
+		},
+		"contributionsLabel": {
+			"type": "string"
+		},
+		"contributionsValue": {
+			"type": "string",
+			"default": "0"
 		},
 		"color": {
 			"type": "string",

@@ -10,8 +10,6 @@ import { SVG, Path } from '@wordpress/components';
 import * as donut from './donut';
 import * as bar from './bar';
 import * as compact from './compact';
-import * as progress from './progress';
-import * as details from './details';
 
 /**
  * Register block.
@@ -30,13 +28,7 @@ const registerBlock = ( block ) => {
 };
 
 // Register blocks.
-[
-	donut,
-	bar,
-	compact,
-	progress,
-	details
-].forEach( registerBlock );
+[ donut, bar, compact ].forEach( registerBlock );
 
 // Set Pronamic Pay category icon.
 updateCategory(

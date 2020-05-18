@@ -6,105 +6,96 @@ import classnames from 'classnames';
 /**
 * WordPress dependencies.
 */
-import { createBlock } from '@wordpress/blocks';
-import { ColorPalette, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { ColorPalette, InspectorControls } from '@wordpress/block-editor';
 import { TextControl, PanelBody } from '@wordpress/components';
-import { select } from '@wordpress/data';
-import { useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { COLORS } from '../constants';
-import { updateDetails, updateProgress } from '../utils';
+import { calculateProgressValue, formatMoney } from '../utils';
+import { CrowdfundingDetails } from '../components/details';
+import { CrowdfundingProgress } from '../components/progress';
 
-// Template.
-const TEMPLATE = [
-	[ 'core/columns', {}, [
-		[ 'core/column', { width: 20 }, [
-			[ 'pronamic-pay/crowdfunding-progress', {} ]
-		] ],
-		[ 'core/column', { width: 80 }, [
-			[ 'pronamic-pay/crowdfunding-details', {} ]
-		] ]
-	] ],
-];
+const DonutEdit = ( { attributes, setAttributes, className } ) => {
+	let {
+		targetLabel,
+		targetAmount,
+		raisedLabel,
+		raisedAmount,
+		contributionsLabel,
+		contributionsValue,
+		color
+	} = attributes;
 
-const DonutEdit = ( { attributes, setAttributes, className, clientId } ) => {
-	let { target, raised, contributions, color } = attributes;
+	if ( ! raisedLabel ) {
+		setAttributes( { raisedLabel: __( 'Raised', 'pronamic-pay-crowdfunding' ) } );
+	}
 
-	const onChangeTarget = useCallback(
-		( target ) => {
-			setAttributes( { target: target.replace( /,/g, '.' ) } );
-		},
-		[ setAttributes ]
-	);
+	if ( ! targetLabel ) {
+		setAttributes( { targetLabel: __( 'Target', 'pronamic-pay-crowdfunding' ) } );
+	}
 
-	const onChangeRaised = useCallback(
-		( raised ) => {
-			setAttributes( { raised: raised.replace( /,/g, '.' ) } );
-		},
-		[ setAttributes ]
-	);
+	if ( ! contributionsLabel ) {
+		setAttributes( { contributionsLabel: __( 'Contributions', 'pronamic-pay-crowdfunding' ) } );
+	}
 
-	const onChangeContributions = useCallback(
-		( contributions ) => {
-			setAttributes( { contributions: parseInt( contributions ) } );
-		},
-		[ setAttributes ]
-	);
-
-	const onChangeColor = useCallback(
-		( color ) => {
-			setAttributes( { color: color } );
-		},
-		[ setAttributes ]
-	);
-
-	// Update progress and details.
-	let block = select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ];
-
-	raised = raised ? raised : 0;
-	target = target ? target : 0;
-	contributions = contributions ? contributions : 0;
-
-	updateProgress( block, color, raised, target );
-	updateDetails( block,  color, raised, target, contributions );
+	raisedAmount = raisedAmount ? raisedAmount : '';
+	targetAmount = targetAmount ? targetAmount : '';
+	contributionsValue = contributionsValue ? contributionsValue : '';
 
 	// Inspector controls.
 	const inspectorControls = (
 		<InspectorControls>
 			<PanelBody>
 				<TextControl
-					label={ __( 'Target' ) }
-					value={ target }
-					onChange={ onChangeTarget }
+					label={ __( 'Target', 'pronamic-pay-crowdfunding' ) }
+					value={ targetAmount }
+					onChange={ ( val ) => {
+						setAttributes( { targetAmount: val.replace( /,/g, '.' ) } )
+					} }
 				/>
 				<TextControl
-					label={ __( 'Raised' ) }
-					value={ raised }
-					onChange={ onChangeRaised }
+					label={ __( 'Raised', 'pronamic-pay-crowdfunding' ) }
+					value={ raisedAmount }
+					onChange={ ( val ) => {
+						setAttributes( { raisedAmount: val.replace( /,/g, '.' ) } )
+					} }
 				/>
 				<TextControl
-					label={ __( 'Contributions' ) }
-					value={ contributions }
-					onChange={ onChangeContributions }
+					label={ __( 'Contributions', 'pronamic-pay-crowdfunding' ) }
+					value={ contributionsValue }
+					onChange={ ( val ) => {
+						setAttributes( { contributionsValue: val } )
+					} }
 				/>
 				<ColorPalette
 					colors={ COLORS }
 					value={ color }
-					onChange={ onChangeColor }
+					onChange={ ( val ) => {
+						setAttributes( { color: val } )
+					} }
 				/>
 			</PanelBody>
 		</InspectorControls>
 	);
 
-	let classes = classnames( {
-		'ppcf-block': true,
-		'ppcf-block-circle': true
-	} );
-
 	return (
-		<div className={ classes }>
+		<div className="ppcf-block ppcf-block-circle">
 			{ inspectorControls }
-			<InnerBlocks template={ TEMPLATE } templateLock={ true } />
+			<div className="ppcf-block-circle__container">
+				<div className="ppcf-block__container__col">
+					<CrowdfundingProgress style="donut" value={ calculateProgressValue( raisedAmount, targetAmount ) } color={ color } />
+				</div>
+				<div className="ppcf-block__container__col">
+					<CrowdfundingDetails
+						setAttributes={ setAttributes }
+						raisedLabel={ raisedLabel }
+						raisedAmount={ raisedAmount }
+						targetLabel={ targetLabel }
+						targetAmount={ targetAmount ? targetAmount : '0' }
+						contributionsLabel={ contributionsLabel }
+						contributionsValue={ contributionsValue ? contributionsValue : '0' }
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };
