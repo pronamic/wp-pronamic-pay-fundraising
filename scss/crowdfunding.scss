@@ -11,10 +11,10 @@ $circle-border-width: 8px;
 	border-radius: 5px;
 	font-size: 16px;
 	margin: 30px 0;
-	padding: 30px;
+	padding: 20px;
 
-	> .wp-block-columns {
-		margin: 0 !important;
+	@media screen and ( min-width: 767px ) {
+		padding: 30px;
 	}
 }
 
@@ -48,9 +48,13 @@ $circle-border-width: 8px;
 	background-color: $inactive-color;
 	border-radius: 50%;
 	position: relative;
-	margin-right: 30px;
+	margin: 0 auto 30px;
 	width: $circle-size;
 	height: $circle-size;
+
+	@media screen and ( min-width: 767px ) {
+		margin: 0 30px 0 0;
+	}
 
 	*,
 	*:before,
@@ -140,12 +144,26 @@ $circle-border-width: 8px;
 
 // Donut block
 .ppcf-block-circle {
-	.ppcf-block-circle__container {
-		align-items: center;
-		display: flex;
+	.ppcf-block__container__col {
+		&:nth-of-type( 2 ) {
+			width: 100%;
+		}
+	}
+
+	@media screen and (min-width: 767px) {
+		.ppcf-block-circle__container {
+			align-items: center;
+			display: flex;
+		}
 	}
 
 	.ppcf-dl-list {
+		margin-left: 10%;
+
+		@media screen and (min-width: 767px) {
+			margin-left: 0;
+		}
+
 		.ppcf-dl-list__label {
 			opacity: .6;
 			width: 65%;
@@ -161,29 +179,58 @@ $circle-border-width: 8px;
 .ppcf-block-bar {
 	.ppcf-dl-list {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 
-		.ppcf-dl-list__value {
-			&:nth-of-type( 1 ) {
-				flex-grow: 2;
-				margin-left: 7px;
-				text-align: left;
-			}
+		@media screen and ( min-width: 767px ) {
+			justify-content: space-between;
+			text-align: left;
 		}
 
 		.ppcf-dl-list__label {
+			text-align: right;
+			padding-right: 3px;
+
+			@media screen and ( min-width: 767px ) {
+				text-align: left;
+			}
+
 			&:nth-of-type( 2 ) {
-				flex-grow: 2;
-				margin-right: 7px;
 				text-align: right;
+
+				@media screen and ( min-width: 767px ) {
+					flex-grow: 2;
+				}
+			}
+		}
+
+		.ppcf-dl-list__value {
+			text-align: left;
+			padding-left: 3px;
+
+			@media screen and ( min-width: 767px ) {
+				text-align: right;
+			}
+
+			&:nth-of-type( 1 ) {
+				text-align: left;
+
+				@media screen and ( min-width: 767px ) {
+					flex-grow: 2;
+				}
 			}
 		}
 
 		.ppcf-dl-list__label,
 		.ppcf-dl-list__value {
 			display: block;
+			flex-basis: 50%;
 			font-weight: 500;
 			width: auto;
+
+			@media screen and ( min-width: 767px ) {
+				flex-basis: auto;
+				margin: 0;
+			}
 
 			&:first-of-type {
 				color: $brand-color;
