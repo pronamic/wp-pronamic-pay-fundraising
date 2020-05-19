@@ -39,7 +39,7 @@ export class CrowdfundingDetails extends Component {
 					multiline="false"
 					value={ formatMoney( raisedAmount ? raisedAmount : '0' ) }
 					onChange={ ( val ) => {
-						setAttributes( { raisedAmount: val.replace( /,/g, '.' ) } );
+						setAttributes( { raisedAmount: val.replace( /,/g, '.' ).replace( /[^\d.-]/g, '' ) } );
 					} }
 					style={ colors.hasOwnProperty( 'raisedAmount' ) && { color: colors.raisedAmount } }
 				/>
@@ -62,7 +62,7 @@ export class CrowdfundingDetails extends Component {
 							multiline="false"
 							value={ formatMoney( targetAmount ? targetAmount : '0' ) }
 							onChange={ ( val ) => {
-								setAttributes( { targetAmount: val.replace( /,/g, '.' ) } );
+								setAttributes( { targetAmount: val.replace( /,/g, '.' ).replace( /[^\d.-]/g, '' ) } );
 							} }
 						/>
 					</>

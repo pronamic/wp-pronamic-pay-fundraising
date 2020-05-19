@@ -108,21 +108,30 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_block_types() {
-		// Main blocks.
+		// Blocks.
 		$attributes = array(
-			'target'        => array(
+			'raisedLabel'        => array(
+				'type' => 'string',
+			),
+			'raisedAmount'       => array(
 				'type'    => 'string',
 				'default' => '0',
 			),
-			'raised'        => array(
+			'targetLabel'        => array(
+				'type' => 'string',
+			),
+			'targetAmount'       => array(
 				'type'    => 'string',
 				'default' => '0',
 			),
-			'contributions' => array(
-				'type'    => 'integer',
-				'default' => 0,
+			'contributionsLabel' => array(
+				'type' => 'string',
 			),
-			'color'         => array(
+			'contributionsValue' => array(
+				'type'    => 'string',
+				'default' => '0',
+			),
+			'color'              => array(
 				'type'    => 'string',
 				'default' => '#f9461c',
 			),
@@ -134,39 +143,43 @@ class Blocks {
 			'attributes'    => $attributes,
 		);
 
-		register_block_type( 'pronamic-pay/crowdfunding-donut', $args );
+		// Donut block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-crowdfunding-donut.php';
+
+			return ob_get_clean();
+		};
+
+		register_block_type(
+			'pronamic-pay/crowdfunding-donut',
+			$args
+		);
+
+		// Bar block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-crowdfunding-bar.php';
+
+			return ob_get_clean();
+		};
+
 		register_block_type( 'pronamic-pay/crowdfunding-bar', $args );
+
+		// Compact block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-crowdfunding-compact.php';
+
+			return ob_get_clean();
+		};
+
 		register_block_type( 'pronamic-pay/crowdfunding-compact', $args );
 
-		// Sub blocks.
-		register_block_type(
-			'pronamic-pay/crowdfunding-progress',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-blocks',
-				'style' => 'pronamic-pay-crowdfunding',
-				'attributes'    => array(
-					'value' => array(
-						'type'    => 'integer',
-						'default' => 0,
-					),
-				),
-			)
-		);
-
-		register_block_type(
-			'pronamic-pay/crowdfunding-details',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-blocks',
-				'style' => 'pronamic-pay-crowdfunding',
-				'attributes'    => array(
-					'list' => array(
-						'type'    => 'array',
-						'default' => array(),
-					),
-				)
-			)
-		);
-
+		// Remco block.
 		register_block_type(
 			'pronamic-pay/crowdfunding-remco',
 			array(

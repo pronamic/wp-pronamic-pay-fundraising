@@ -12,6 +12,9 @@ export default function save ( { attributes } ) {
 		contributionsValue
 	} = attributes;
 
+	// Return early to use server render callback.
+	return null;
+
 	return (
 		<div className="ppcf-block ppcf-block-compact">
 			<dl className="ppcf-dl-list">

@@ -17,6 +17,9 @@ export default function save ( { attributes } ) {
 		contributionsValue
 	} = attributes;
 
+	// Return early to use server render callback.
+	return null;
+
 	// Progress.
 	let barStyle = {},
 		fillStyle = {};

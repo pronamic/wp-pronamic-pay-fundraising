@@ -288,7 +288,9 @@ function save(_ref) {
       raisedLabel = attributes.raisedLabel,
       raisedAmount = attributes.raisedAmount,
       targetLabel = attributes.targetLabel,
-      targetAmount = attributes.targetAmount;
+      targetAmount = attributes.targetAmount; // Return early to use server render callback.
+
+  return null;
   var value = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["calculateProgressValue"])(raisedAmount, targetAmount);
   var barStyle = {
     background: color,
@@ -547,7 +549,9 @@ function save(_ref) {
       raisedLabel = attributes.raisedLabel,
       raisedAmount = attributes.raisedAmount,
       contributionsLabel = attributes.contributionsLabel,
-      contributionsValue = attributes.contributionsValue;
+      contributionsValue = attributes.contributionsValue; // Return early to use server render callback.
+
+  return null;
   return /*#__PURE__*/React.createElement("div", {
     className: "ppcf-block ppcf-block-compact"
   }, /*#__PURE__*/React.createElement("dl", {
@@ -689,7 +693,7 @@ var CrowdfundingDetails = /*#__PURE__*/function (_Component) {
         value: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["formatMoney"])(raisedAmount ? raisedAmount : '0'),
         onChange: function onChange(val) {
           setAttributes({
-            raisedAmount: val.replace(/,/g, '.')
+            raisedAmount: val.replace(/,/g, '.').replace(/[^\d.-]/g, '')
           });
         },
         style: colors.hasOwnProperty('raisedAmount') && {
@@ -712,7 +716,7 @@ var CrowdfundingDetails = /*#__PURE__*/function (_Component) {
         value: Object(_utils__WEBPACK_IMPORTED_MODULE_2__["formatMoney"])(targetAmount ? targetAmount : '0'),
         onChange: function onChange(val) {
           setAttributes({
-            targetAmount: val.replace(/,/g, '.')
+            targetAmount: val.replace(/,/g, '.').replace(/[^\d.-]/g, '')
           });
         }
       })), contributionsValue && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
@@ -1110,7 +1114,9 @@ function save(_ref) {
       targetLabel = attributes.targetLabel,
       targetAmount = attributes.targetAmount,
       contributionsLabel = attributes.contributionsLabel,
-      contributionsValue = attributes.contributionsValue; // Progress.
+      contributionsValue = attributes.contributionsValue; // Return early to use server render callback.
+
+  return null; // Progress.
 
   var barStyle = {},
       fillStyle = {};

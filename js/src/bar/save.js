@@ -13,6 +13,9 @@ export default function save ( { attributes } ) {
 		targetAmount
 	} = attributes;
 
+	// Return early to use server render callback.
+	return null;
+
 	let value = calculateProgressValue( raisedAmount, targetAmount );
 
 	let barStyle = {
