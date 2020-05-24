@@ -17,7 +17,7 @@ $progress = Util::calculate_progress_value( $attributes['raisedAmount'], $attrib
 // Bar style.
 $bar_style = array(
 	'background: ' . $attributes['color'] . ';',
-	'width: ' . sprintf( '%.2F', min( $progress, 100 ) ) . ';',
+	'width: ' . sprintf( '%.2F', min( $progress, 100 ) ) . '%;',
 );
 
 // Amounts.
