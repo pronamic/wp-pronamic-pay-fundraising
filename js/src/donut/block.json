@@ -23,6 +23,17 @@
 			"type": "string",
 			"default": "0"
 		},
+		"currencyCode": {
+			"type": "string",
+			"default": "EUR"
+		},
+		"currencyDecimals": {
+			"type": "string",
+			"default": "2"
+		},
+		"locale": {
+			"type": "string"
+		},
 		"color": {
 			"type": "string",
 			"default": "#f9461c"

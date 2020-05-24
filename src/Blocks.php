@@ -131,6 +131,17 @@ class Blocks {
 				'type'    => 'string',
 				'default' => '0',
 			),
+			"currencyCode"       => array(
+				'type' => 'string',
+			),
+			"currencyDecimals"   => array(
+				'type'    => 'string',
+				'default' => '2',
+			),
+			"locale"             => array(
+				'type'    => 'string',
+				'default' => str_replace( '_', '-', \get_locale() ),
+			),
 			'color'              => array(
 				'type'    => 'string',
 				'default' => '#f9461c',

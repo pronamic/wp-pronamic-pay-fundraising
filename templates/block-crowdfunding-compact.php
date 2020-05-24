@@ -12,10 +12,15 @@ namespace Pronamic\WordPress\Pay\Crowdfunding;
 
 use Pronamic\WordPress\Money\Parser;
 
-// Amounts.
+// Amount.
 $parser = new Parser();
 
 $raised_amount = $parser->parse( $attributes['raisedAmount'] );
+
+// Currency.
+if ( \array_key_exists( 'currencyCode', $attributes ) ) :
+	$raised_amount->set_currency( $attributes['currencyCode'] );
+endif;
 
 ?>
 <div class="ppcf-block ppcf-block-compact">

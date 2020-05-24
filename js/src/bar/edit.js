@@ -17,7 +17,10 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 		raisedAmount,
 		contributionsLabel,
 		contributionsValue,
-		color
+		color,
+		currencyCode,
+		currencyDecimals,
+		locale
 	} = attributes;
 
 	if ( ! raisedLabel ) {
@@ -54,7 +57,7 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 					label={ __( 'Contributions', 'pronamic-pay-crowdfunding' ) }
 					value={ contributionsValue }
 					onChange={ ( val ) => {
-						setAttributes( { contributionsValue: val } )
+						setAttributes( { contributionsValue: val.replace( /[^\d]/g, '' ) } )
 					} }
 				/>
 				<ColorPalette
@@ -86,6 +89,9 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 				raisedAmount={ raisedAmount }
 				targetLabel={ targetLabel }
 				targetAmount={ targetAmount }
+				locale={ locale }
+				currencyCode={ currencyCode }
+				currencyDecimals={ currencyDecimals }
 			/>
 		</div>
 	);

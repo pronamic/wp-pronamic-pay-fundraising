@@ -206,7 +206,13 @@ class BlockUpdater {
 
 			$this->raised_amount = $this->raised_amount->add( $this->add_raised );
 
-			$block['attrs']['raisedAmount'] = \number_format( $this->raised_amount->get_value(), 2, '.', '' );
+			$this->raised_amount->set_currency( $this->add_raised->get_currency() );
+
+			// Update block attributes.
+			$block['attrs']['raisedAmount']     = \number_format( $this->raised_amount->get_value(), 2, '.', '' );
+			$block['attrs']['currencyCode']     = $this->raised_amount->get_currency()->get_alphabetic_code();
+			$block['attrs']['currencyDecimals'] = $this->raised_amount->get_currency()->get_number_decimals();
+			$block['attrs']['locale']           = str_replace( '_', '-', \get_locale() );
 		} catch ( \Exception $e ) {
 			$this->raised_amount = null;
 		}

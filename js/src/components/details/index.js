@@ -9,6 +9,9 @@ export class CrowdfundingDetails extends Component {
 	render() {
 		let {
 			colors,
+			currencyCode,
+			currencyDecimals,
+			locale,
 			raisedLabel,
 			raisedAmount,
 			targetLabel,
@@ -19,6 +22,9 @@ export class CrowdfundingDetails extends Component {
 		} = this.props;
 
 		colors = colors ? colors : {};
+		currencyCode = currencyCode ? currencyCode : 'EUR';
+		currencyDecimals = currencyDecimals ? currencyDecimals : '2';
+		locale = locale ? locale : 'nl-NL';
 
 		return (
 			<dl className="ppcf-dl-list">
@@ -37,9 +43,19 @@ export class CrowdfundingDetails extends Component {
 					tagName="dd"
 					className="ppcf-dl-list__value"
 					multiline="false"
-					value={ formatMoney( raisedAmount ? raisedAmount : '0' ) }
+					value={ formatMoney( raisedAmount ? raisedAmount : '0', currencyCode, currencyDecimals, locale ) }
 					onChange={ ( val ) => {
-						setAttributes( { raisedAmount: val.replace( /,/g, '.' ).replace( /[^\d.-]/g, '' ) } );
+						val = val.replace( /,/g, '.' ).replace( /[^\d.-]/g, '' );
+
+						let lastPeriod = val.lastIndexOf( '.' );
+
+						if ( lastPeriod > -1 ) {
+							let decimals = val.substring( lastPeriod + 1 ).replace( /[0]+$/g, '' ).padEnd( currencyDecimals, '0' );
+
+							val = val.substring( 0, lastPeriod ).replace( /\./g, '' ) + '.' + decimals;
+						}
+
+						setAttributes( { raisedAmount: val } );
 					} }
 					style={ colors.hasOwnProperty( 'raisedAmount' ) && { color: colors.raisedAmount } }
 				/>
@@ -60,7 +76,7 @@ export class CrowdfundingDetails extends Component {
 							tagName="dd"
 							className="ppcf-dl-list__value"
 							multiline="false"
-							value={ formatMoney( targetAmount ? targetAmount : '0' ) }
+							value={ formatMoney( targetAmount ? targetAmount : '0', currencyCode, currencyDecimals, locale ) }
 							onChange={ ( val ) => {
 								setAttributes( { targetAmount: val.replace( /,/g, '.' ).replace( /[^\d.-]/g, '' ) } );
 							} }
@@ -86,7 +102,7 @@ export class CrowdfundingDetails extends Component {
 							multiline="false"
 							value={ parseInt( contributionsValue ? contributionsValue : 0 ).toString() }
 							onChange={ ( val ) => {
-								setAttributes( { contributionsValue: parseInt( val ).toString() } );
+								setAttributes( { contributionsValue: val ? val.replace( /[^\d]/g, '' ) : '0' } );
 							} }
 							style={ colors.hasOwnProperty( 'contributionsValue' ) && { color: colors.contributionsValue } }
 						/>

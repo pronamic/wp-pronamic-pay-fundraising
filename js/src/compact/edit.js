@@ -15,7 +15,10 @@ const CompactEdit = ( { attributes, setAttributes, className } ) => {
 		raisedAmount,
 		contributionsLabel,
 		contributionsValue,
-		color
+		color,
+		currencyCode,
+		currencyDecimals,
+		locale
 	} = attributes;
 
 	if ( ! raisedLabel ) {
@@ -52,7 +55,7 @@ const CompactEdit = ( { attributes, setAttributes, className } ) => {
 					label={ __( 'Contributions', 'pronamic-pay-crowdfunding' ) }
 					value={ contributionsValue }
 					onChange={ ( val ) => {
-						setAttributes( { contributionsValue: val } )
+						setAttributes( { contributionsValue: val.replace( /[^\d]/g, '' ) } )
 					} }
 				/>
 				<ColorPalette
@@ -82,6 +85,9 @@ const CompactEdit = ( { attributes, setAttributes, className } ) => {
 				raisedAmount={ raisedAmount }
 				contributionsLabel={ contributionsLabel }
 				contributionsValue={ contributionsValue }
+				locale={ locale }
+				currencyCode={ currencyCode }
+				currencyDecimals={ currencyDecimals }
 			/>
 		</div>
 	);

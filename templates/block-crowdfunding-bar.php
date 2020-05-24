@@ -1,6 +1,6 @@
 <?php
 /**
- * Block-crowdfunding-bar.php.
+ * Bar crowdfunding block template.
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2020 Pronamic
@@ -25,6 +25,12 @@ $parser = new Parser();
 
 $raised_amount = $parser->parse( $attributes['raisedAmount'] );
 $target_amount = $parser->parse( $attributes['targetAmount'] );
+
+// Currency.
+if ( \array_key_exists( 'currencyCode', $attributes ) ) :
+	$raised_amount->set_currency( $attributes['currencyCode'] );
+	$target_amount->set_currency( $attributes['currencyCode'] );
+endif;
 
 ?>
 <div class="ppcf-block ppcf-block-bar">

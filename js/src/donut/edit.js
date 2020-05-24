@@ -22,7 +22,10 @@ const DonutEdit = ( { attributes, setAttributes, className } ) => {
 		raisedAmount,
 		contributionsLabel,
 		contributionsValue,
-		color
+		color,
+		currencyCode,
+		currencyDecimals,
+		locale
 	} = attributes;
 
 	if ( ! raisedLabel ) {
@@ -63,7 +66,7 @@ const DonutEdit = ( { attributes, setAttributes, className } ) => {
 					label={ __( 'Contributions', 'pronamic-pay-crowdfunding' ) }
 					value={ contributionsValue }
 					onChange={ ( val ) => {
-						setAttributes( { contributionsValue: val } )
+						setAttributes( { contributionsValue: val.replace( /[^\d]/g, '' ) } )
 					} }
 				/>
 				<ColorPalette
@@ -90,9 +93,12 @@ const DonutEdit = ( { attributes, setAttributes, className } ) => {
 						raisedLabel={ raisedLabel }
 						raisedAmount={ raisedAmount }
 						targetLabel={ targetLabel }
-						targetAmount={ targetAmount ? targetAmount : '0' }
+						targetAmount={ targetAmount }
 						contributionsLabel={ contributionsLabel }
 						contributionsValue={ contributionsValue ? contributionsValue : '0' }
+						locale={ locale }
+						currencyCode={ currencyCode }
+						currencyDecimals={ currencyDecimals }
 					/>
 				</div>
 			</div>
