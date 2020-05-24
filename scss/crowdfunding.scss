@@ -19,31 +19,6 @@ $circle-border-width: 8px;
 }
 
 // Progress block
-.ppcf-progress {
-	background: $inactive-color;
-	border-radius: 10px;
-	display: flex;
-	margin: 20px 0 10px;
-	width: 100%;
-	height: 20px;
-
-	.ppcf-progress__bar {
-		background: $brand-color;
-		border-radius: 10px;
-		position: relative;
-
-		.ppcf-progress__bar__status {
-			display: block;
-			font-size: 14px;
-			line-height: 20px;
-			position: relative;
-			top: -20px;
-			text-align: right;
-			white-space: nowrap;
-		}
-	}
-}
-
 .ppcf-circle {
 	background-color: $inactive-color;
 	border-radius: 50%;
@@ -158,64 +133,70 @@ $circle-border-width: 8px;
 	}
 
 	.ppcf-dl-list {
-		margin-left: 10%;
-
-		@media screen and (min-width: 767px) {
-			margin-left: 0;
-		}
-
 		.ppcf-dl-list__label {
 			opacity: .6;
-			width: 65%;
+			width: 70%;
 		}
 
 		.ppcf-dl-list__value {
-			width: 25%;
+			width: 30%;
 		}
 	}
 }
 
 // Bar block.
 .ppcf-block-bar {
-	.ppcf-dl-list {
+	.ppcf-progress {
+		background: $inactive-color;
+		border-radius: 10px;
 		display: flex;
-		justify-content: center;
+		margin: 20px 0 10px;
+		width: 100%;
+		height: 20px;
 
+		.ppcf-progress__bar {
+			background: $brand-color;
+			border-radius: 10px;
+			position: relative;
+
+			.ppcf-progress__bar__status {
+				display: block;
+				font-size: 14px;
+				line-height: 20px;
+				position: relative;
+				top: -20px;
+				text-align: right;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	.ppcf-dl-list {
 		@media screen and ( min-width: 767px ) {
 			justify-content: space-between;
 			text-align: left;
 		}
 
 		.ppcf-dl-list__label {
-			text-align: right;
-			padding-right: 3px;
-
-			@media screen and ( min-width: 767px ) {
-				text-align: left;
-			}
+			text-align: left;
 
 			&:nth-of-type( 2 ) {
-				text-align: right;
-
 				@media screen and ( min-width: 767px ) {
 					flex-grow: 2;
+					padding-right: 3px;
+					text-align: right;
 				}
 			}
 		}
 
 		.ppcf-dl-list__value {
-			text-align: left;
-			padding-left: 3px;
-
-			@media screen and ( min-width: 767px ) {
-				text-align: right;
-			}
+			text-align: right;
 
 			&:nth-of-type( 1 ) {
-				text-align: left;
-
 				@media screen and ( min-width: 767px ) {
 					flex-grow: 2;
+					padding-left: 3px;
+					text-align: left;
 				}
 			}
 		}
@@ -242,6 +223,9 @@ $circle-border-width: 8px;
 		}
 	}
 }
+
+// Fix for Twenty Nineteen theme.
+.entry-content > * > .ppcf-block-bar:first-child { margin-top: 0; }
 
 // Compact block
 .ppcf-block-compact {
