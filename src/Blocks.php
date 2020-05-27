@@ -63,27 +63,8 @@ class Blocks {
 			$asset_file['version']
 		);
 
-		wp_register_script(
-			'pronamic-crowdfunding-remco',
-			plugins_url( '/js/dist/block-crowdfunding-remco.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
-
-		// Set script translations.
+		// Script translations.
 		wp_set_script_translations( 'pronamic-crowdfunding-blocks', 'pronamic-pay-crowdfunding', plugin_dir_path( $this->plugin->file ) . 'languages' );
-
-		/**
-		 * Script localizations.
-		 */
-		wp_localize_script(
-			'pronamic-crowdfunding-remco-editor',
-			'pronamic_crowdfunding_remco',
-			array(
-
-			)
-		);
 	}
 
 	/**
@@ -189,41 +170,6 @@ class Blocks {
 		};
 
 		register_block_type( 'pronamic-pay/crowdfunding-compact', $args );
-
-		// Remco block.
-		register_block_type(
-			'pronamic-pay/crowdfunding-remco',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-remco',
-				'attributes'    => array(
-					'collectedLabel' => array(
-						'type' => 'string',
-					),
-					'collectedAmount' => array(
-						'type' => 'string',	
-					),
-					'goalLabel' => array(
-						'type' => 'string',
-					),
-					'goalAmount' => array(
-						'type' => 'string',	
-					),
-					'numberLabel' => array(
-						'type' => 'string',
-					),
-					'numberValue' => array(
-						'type' => 'string',	
-					),
-				),
-				'render_callback' => function( $attributes, $content ) {
-					ob_start();
-
-					include __DIR__ . '/../templates/block-pronamic-crowdfunding-remco.php';
-
-					return ob_get_clean();
-				}
-			)
-		);
 	}
 
 	/**
