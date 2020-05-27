@@ -9,8 +9,6 @@ import { CrowdfundingDetails } from '../components/details';
 
 const CompactEdit = ( { attributes, setAttributes, className } ) => {
 	let {
-		targetLabel,
-		targetAmount,
 		raisedLabel,
 		raisedAmount,
 		contributionsLabel,
@@ -30,20 +28,12 @@ const CompactEdit = ( { attributes, setAttributes, className } ) => {
 	}
 
 	raisedAmount = raisedAmount ? raisedAmount : '';
-	targetAmount = targetAmount ? targetAmount : '';
 	contributionsValue = contributionsValue ? contributionsValue : '';
 
 	// Inspector controls.
 	const inspectorControls = (
 		<InspectorControls>
 			<PanelBody>
-				<TextControl
-					label={ __( 'Target', 'pronamic-pay-crowdfunding' ) }
-					value={ targetAmount }
-					onChange={ ( val ) => {
-						setAttributes( { targetAmount: val.replace( /,/g, '.' ) } )
-					} }
-				/>
 				<TextControl
 					label={ __( 'Raised', 'pronamic-pay-crowdfunding' ) }
 					value={ raisedAmount }
