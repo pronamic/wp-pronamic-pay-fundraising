@@ -2,7 +2,7 @@
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { postList as icon } from '@wordpress/icons';
+import icon from './icon';
 
 /**
  * Internal dependencies.
