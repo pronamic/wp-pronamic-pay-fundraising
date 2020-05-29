@@ -15,8 +15,6 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 		targetAmount,
 		raisedLabel,
 		raisedAmount,
-		contributionsLabel,
-		contributionsValue,
 		color,
 		currencyCode,
 		currencyDecimals,
@@ -33,7 +31,6 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 
 	raisedAmount = raisedAmount ? raisedAmount : '';
 	targetAmount = targetAmount ? targetAmount : '';
-	contributionsValue = contributionsValue ? contributionsValue : '';
 
 	// Inspector controls.
 	const inspectorControls = (
@@ -51,13 +48,6 @@ const BarEdit = ( { attributes, setAttributes, className } ) => {
 					value={ raisedAmount }
 					onChange={ ( val ) => {
 						setAttributes( { raisedAmount: val.replace( /,/g, '.' ) } )
-					} }
-				/>
-				<TextControl
-					label={ __( 'Contributions', 'pronamic-pay-crowdfunding' ) }
-					value={ contributionsValue }
-					onChange={ ( val ) => {
-						setAttributes( { contributionsValue: val.replace( /[^\d]/g, '' ) } )
 					} }
 				/>
 				<ColorPalette
