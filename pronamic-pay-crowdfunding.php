@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Pronamic Pay Crowdfunding Add-On
+ * Plugin Name: Pronamic Pay Money Campaigns Add-On
  * Plugin URI: https://www.pronamic.eu/plugins/pronamic-pay-crowdfunding/
- * Description: Extend the Pronamic Pay plugin with blocks for crowdfunding.
+ * Description: Extend the Pronamic Pay plugin with money campaigns blocks.
  *
  * Version: 1.0.0
  * Requires at least: 4.7

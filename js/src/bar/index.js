@@ -18,8 +18,8 @@ export { metadata, name };
 
 // Settings.
 export const settings = {
-	title: __( 'Crowdfunding Bar', 'pronamic-pay-crowdfunding' ),
-	description: __( 'Displays crowdfunding information with progress bar.', 'pronamic-pay-crowdfunding' ),
+	title: __( 'Money Campaign Horizontal Progress Bar', 'pronamic-pay-crowdfunding' ),
+	description: __( 'Displays money campaign information with horizontal progress bar.', 'pronamic-pay-crowdfunding' ),
 	category,
 	icon,
 	example: {},
