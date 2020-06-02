@@ -1,15 +1,16 @@
 {
-  "name": "crowdfunding",
+  "name": "fundraising",
   "version": "1.0.0",
-  "description": "Crowdfunding add-on for the WordPress payment processing library.",
+  "description": "Fundraising add-on for the WordPress payment processing library.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wp-pay/crowdfunding"
+    "url": "https://github.com/wp-pay/fundraising"
   },
   "keywords": [
     "wordpress",
     "wp",
     "pay",
+    "fundraising",
     "crowdfunding",
     "donations",
     "progress",
@@ -31,29 +32,42 @@
   ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/wp-pay/crowdfunding/issues"
+    "url": "https://github.com/wp-pay/fundraising/issues"
   },
-  "homepage": "https://www.wp-pay.org/addons/crowdfunding/",
+  "homepage": "https://www.wp-pay.org/addons/fundraising/",
   "scripts": {
     "babel": "babel ./js/src -d ./js/dist --source-maps",
     "eslint": "eslint . --ext .json --ext .js",
-    "postcss": "postcss --use autoprefixer -o crowdfunding.css css/*.css\n",
+    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/*.css -o css/fundraising.min.css",
     "sass": "sass scss:css",
-    "sass-lint": "sass-lint --verbose"
+    "sass-lint": "sass-lint --verbose",
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "autoprefixer": "^9.7.4",
+    "@types/classnames": "^2.2.10",
+    "@wordpress/block-editor": "^3.11.0",
+    "@wordpress/blocks": "^6.16.0",
+    "@wordpress/components": "^9.6.0",
+    "@wordpress/data": "^4.18.0",
+    "@wordpress/element": "^2.14.0",
+    "@wordpress/i18n": "^3.12.0",
+    "@wordpress/icons": "^2.0.0",
+    "@wordpress/scripts": "9.0.0",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-inline-json-import": "^0.3.2",
     "cssnano": "^4.1.10",
-    "eslint": "^6.3.0",
-    "eslint-plugin-json": "^1.4.0",
-    "postcss": "^7.0.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-json": "^2.1.1",
+    "postcss": "^7.0.30",
     "postcss-cli": "^7.1.1",
     "postcss-eol": "0.0.8",
-    "sass": "^1.26.3",
+    "sass": "^1.26.5",
     "sass-lint": "^1.13.1"
   }
 }

@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 /**
  * Blocks
@@ -54,34 +54,17 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_scripts() {
-		// Register crowdfunding ring script.
-		wp_register_script(
-			'pronamic-crowdfunding-ring-editor',
-			plugins_url( '/js/dist/block-crowdfunding-ring.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
-		);
+		$asset_file = include( plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php' );
 
 		wp_register_script(
-			'pronamic-progress-editor',
-			plugins_url( '/js/dist/block-progress.js', $this->plugin->file ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-element' ),
-			$this->plugin->version,
-			false
+			'pronamic-pay-fundraising-blocks',
+			plugins_url( 'js/dist/index.js', $this->plugin->file ),
+			$asset_file['dependencies'],
+			$asset_file['version']
 		);
 
-		wp_localize_script(
-			'pronamic-crowdfunding-ring-editor',
-			'pronamic_crowdfunding_ring',
-			array(
-				'title'               => __( 'Crowdfunding Ring', 'pronamic-pay-crowdfunding' ),
-				'label_target'        => __( 'Target amount', 'pronamic_ideal' ),
-				'label_raised'        => __( 'Raised amount', 'pronamic_ideal' ),
-				'label_contributions' => __( 'Number of contributions', 'pronamic_ideal' ),
-				'label_color'         => __( 'Color', 'pronamic_ideal' ),
-			)
-		);
+		// Script translations.
+		wp_set_script_translations( 'pronamic-pay-fundraising-blocks', 'pronamic-pay-fundraising', plugin_dir_path( $this->plugin->file ) . 'languages' );
 	}
 
 	/**
@@ -93,8 +76,8 @@ class Blocks {
 		$min = SCRIPT_DEBUG ? '' : '.min';
 
 		wp_register_style(
-			'pronamic-pay-crowdfunding',
-			plugins_url( '/css/crowdfunding' . $min . '.css', $this->plugin->file ),
+			'pronamic-pay-fundraising',
+			plugins_url( '/css/fundraising' . $min . '.css', $this->plugin->file ),
 			array(),
 			$this->plugin->version
 		);
@@ -106,44 +89,84 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_block_types() {
-		register_block_type(
-			'pronamic-pay/crowdfunding-ring',
-			array(
-				'editor_script' => 'pronamic-crowdfunding-ring-editor',
-				'style'         => 'pronamic-pay-crowdfunding',
-				'attributes'    => array(
-					'target'        => array(
-						'type'    => 'string',
-						'default' => '0',
-					),
-					'raised'        => array(
-						'type'    => 'string',
-						'default' => '0',
-					),
-					'contributions' => array(
-						'type'    => 'integer',
-						'default' => 0,
-					),
-					'color'         => array(
-						'type'    => 'string',
-						'default' => '#f9461c',
-					),
-				),
-			)
+		// Blocks.
+		$attributes = array(
+			'raisedLabel'        => array(
+				'type' => 'string',
+			),
+			'raisedAmount'       => array(
+				'type'    => 'string',
+				'default' => '0',
+			),
+			'targetLabel'        => array(
+				'type' => 'string',
+			),
+			'targetAmount'       => array(
+				'type'    => 'string',
+				'default' => '0',
+			),
+			'contributionsLabel' => array(
+				'type' => 'string',
+			),
+			'contributionsValue' => array(
+				'type'    => 'string',
+				'default' => '0',
+			),
+			"currencyCode"       => array(
+				'type' => 'string',
+			),
+			"currencyDecimals"   => array(
+				'type'    => 'string',
+				'default' => '2',
+			),
+			"locale"             => array(
+				'type'    => 'string',
+				'default' => str_replace( '_', '-', \get_locale() ),
+			),
+			'color'              => array(
+				'type'    => 'string',
+				'default' => '#f9461c',
+			),
 		);
 
-		register_block_type(
-			'pronamic-pay/progress',
-			array(
-				'editor_script'   => 'pronamic-progress-editor',
-				'attributes'      => array(
-					'value'        => array(
-						'type'    => 'integer',
-						'default' => 0,
-					),
-				),
-			)
+		$args = array(
+			'editor_script' => 'pronamic-pay-fundraising-blocks',
+			'style'         => 'pronamic-pay-fundraising',
+			'attributes'    => $attributes,
 		);
+
+		// Fundraising Progress Circle block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
+
+			return ob_get_clean();
+		};
+
+		register_block_type( 'pronamic-pay/fundraising-progress-circle', $args );
+
+		// Fundraising Progress Bar block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
+
+			return ob_get_clean();
+		};
+
+		register_block_type( 'pronamic-pay/fundraising-progress-bar', $args );
+
+		// Fundraising Progress Text block.
+		$args['render_callback'] = function ( $attributes, $content ) {
+			ob_start();
+
+			include __DIR__ . '/../templates/block-fundraising-progress-text.php';
+
+			return ob_get_clean();
+		};
+
+		register_block_type( 'pronamic-pay/fundraising-progress-text', $args );
 	}
 
 	/**
@@ -152,6 +175,6 @@ class Blocks {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-		\wp_enqueue_style( 'pronamic-pay-crowdfunding' );
+		\wp_enqueue_style( 'pronamic-pay-fundraising' );
 	}
 }

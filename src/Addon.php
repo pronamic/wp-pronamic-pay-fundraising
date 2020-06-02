@@ -1,6 +1,6 @@
 <?php
 /**
- * Crowdfunding Add-on.
+ * Fundraising Add-on.
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2020 Pronamic
@@ -8,7 +8,10 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
+
+use Pronamic\WordPress\Pay\Payments\Payment;
+use Pronamic\WordPress\Pay\Payments\PaymentStatus;
 
 /**
  * Addon.
@@ -30,7 +33,7 @@ class Addon {
 	 *
 	 * @param string|array|object $args The add-on arguments.
 	 *
-	 * @return Plugin
+	 * @return Addon
 	 */
 	public static function instance( $args = array() ) {
 		if ( is_null( self::$instance ) ) {
@@ -115,5 +118,43 @@ class Addon {
 		// Blocks.
 		$this->blocks = new Blocks( $this );
 		$this->blocks->setup();
+
+		// Update blocks on payment status update.
+		\add_action( 'pronamic_payment_status_update', array( $this, 'payment_status_block_update' ), 10, 1 );
+	}
+
+	/**
+	 * Update blocks on payment status update.
+	 *
+	 * @param Payment $payment Payment.
+	 * @return void
+	 */
+	public function payment_status_block_update( Payment $payment ) {
+		if ( PaymentStatus::SUCCESS !== $payment->get_status() ) {
+			return;
+		}
+
+		$post_id = $payment->get_origin_id();
+
+		if ( null === $post_id ) {
+			return;
+		}
+
+		$origin_post = \get_post( $post_id );
+
+		if ( null === $origin_post ) {
+			return;
+		}
+
+		if ( ! \has_blocks( $origin_post->post_content ) ) {
+			return;
+		}
+
+		// Use block updater to update blocks in origin post.
+		$updater = new BlockUpdater();
+
+		$updater->add_raised_money( $payment->get_total_amount() );
+
+		$updater->update_post( $origin_post );
 	}
 }

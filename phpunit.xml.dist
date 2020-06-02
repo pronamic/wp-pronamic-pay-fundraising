@@ -9,7 +9,7 @@
     convertWarningsToExceptions="true"
 >
 	<testsuites>
-		<testsuite name="WordPress Pay Crowdfunding Test Suite">
+		<testsuite name="WordPress Pay Fundraising Test Suite">
 			<directory suffix=".php">tests/src</directory>
 		</testsuite>
 	</testsuites>

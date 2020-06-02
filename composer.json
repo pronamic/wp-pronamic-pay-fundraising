@@ -1,8 +1,8 @@
 {
-	"name": "wp-pay/crowdfunding",
-	"description": "Crowdfunding add-on for the WordPress payment processing library.",
-	"keywords": ["wordpress", "wp", "pay", "crowdfunding", "donations", "progress", "target", "addon", "pronamic"],
-	"homepage": "http://www.wp-pay.org/addons/crowdfunding/",
+	"name": "wp-pay/fundraising",
+	"description": "Fundraising add-on for the WordPress payment processing library.",
+	"keywords": ["wordpress", "wp", "pay", "fundraising", "crowdfunding", "donations", "progress", "target", "addon", "pronamic"],
+	"homepage": "http://www.wp-pay.org/addons/fundraising/",
 	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
@@ -20,22 +20,19 @@
 	],
 	"support": {
 		"email": "support@wp-pay.org",
-		"issues": "https://github.com/wp-pay/crowdfunding/issues",
-		"source": "https://github.com/wp-pay/crowdfunding"
+		"issues": "https://github.com/wp-pay/fundraising/issues",
+		"source": "https://github.com/wp-pay/fundraising"
 	},
 	"autoload": {
 		"psr-4": {
-			"Pronamic\\WordPress\\Pay\\Crowdfunding\\": "src/"
+			"Pronamic\\WordPress\\Pay\\Fundraising\\": "src/"
 		}
 	},
 	"config": {
 		"sort-packages": true
 	},
 	"require": {
-		"php": ">=5.6.20",
-		"justinrainbow/json-schema": "^5.2",
-		"pronamic/wp-money": "^1.2",
-		"wp-pay/core": "^2.3"
+		"php": ">=5.6.20"
 	},
 	"require-dev": {
 		"bamarni/composer-bin-plugin": "^1.3",
@@ -46,15 +43,20 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"phpmd/phpmd": "^2.8",
 		"phpunit/phpunit": "^5.7",
+		"pronamic/wp-money": "^1.2",
 		"roots/wordpress": "^5.3",
 		"sirbrillig/phpcs-import-detection": "^1.2",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"squizlabs/php_codesniffer": "^3.5",
 		"wp-coding-standards/wpcs": "^2.2",
+		"wp-pay/core": "dev-develop as 2.3.2",
 		"wp-phpunit/wp-phpunit": "^5.3"
 	},
 	"scripts": {
 		"coveralls": "vendor/bin/php-coveralls -v",
+		"make-i18n-json": "wp i18n make-json languages/*.po --no-purge",
+		"make-pot": "wp pronamic i18n make-pot . languages/pronamic-pay-fundraising.pot --slug='pronamic-pay-fundraising'",
+		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic-pay-fundraising.pot \\;",
 		"phpcbf": "vendor/bin/phpcbf",
 		"phpcs": "vendor/bin/phpcs -s -v",
 		"phplint": "vendor/bin/phplint",

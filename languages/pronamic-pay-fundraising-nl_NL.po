@@ -1,0 +1,99 @@
+# Copyright (C) 2020 Pronamic
+# This file is distributed under the same license as the Pronamic Pay Fundraising Add-On plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pronamic Pay Fundraising Add-On 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-pay-"
+"fundraising\n"
+"POT-Creation-Date: 2020-06-02T11:56:57+00:00\n"
+"PO-Revision-Date: 2020-06-02 14:34+0200\n"
+"Last-Translator: Reüel van der Steege <reuel@pronamic.nl>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Domain: pronamic-pay-fundraising\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "Pronamic Pay Fundraising Add-On"
+msgstr "Pronamic Pay Fundraising Add-On"
+
+#. Plugin URI of the plugin
+msgid "https://www.pronamic.eu/plugins/pronamic-pay-fundraising/"
+msgstr "https://www.pronamic.eu/plugins/pronamic-pay-fundraising/"
+
+#. Description of the plugin
+msgid "Extend the Pronamic Pay plugin with fundraising blocks."
+msgstr "Breid de Pronamic Pay plugin uit met blokken voor geldinzameling."
+
+#. Author of the plugin
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin
+msgid "https://www.pronamic.eu/"
+msgstr "https://www.pronamic.eu/"
+
+#: js/dist/index.js:6 js/src/progress-bar/edit.js:51
+#: js/src/progress-circle/edit.js:31 js/src/progress-circle/edit.js:58
+#: js/src/progress-text/edit.js:23 js/src/progress-text/edit.js:38
+msgid "Raised"
+msgstr "Opbrengst"
+
+#: js/dist/index.js:6 js/src/progress-bar/edit.js:44
+#: js/src/progress-circle/edit.js:35 js/src/progress-circle/edit.js:51
+msgid "Target"
+msgstr "Doel"
+
+#: js/dist/index.js:6 js/src/progress-circle/edit.js:39
+#: js/src/progress-circle/edit.js:65 js/src/progress-text/edit.js:45
+msgid "Contributions"
+msgstr "Bijdragen"
+
+#: js/dist/index.js:6 js/src/progress-circle/index.js:21
+msgid "Fundraising Progress Circle"
+msgstr "Geldinzameling-voortgang (cirkel)"
+
+#: js/dist/index.js:6 js/src/progress-circle/index.js:22
+msgid "Displays fundraising information with circular progress chart."
+msgstr "Toont informatie over geldinzameling met cirkeldiagram."
+
+#: js/dist/index.js:6 js/src/progress-bar/edit.js:29
+msgid "Raised:"
+msgstr "Opbrengst:"
+
+#: js/dist/index.js:6 js/src/progress-bar/edit.js:33
+msgid "Target:"
+msgstr "Doel:"
+
+#: js/dist/index.js:6 js/src/progress-bar/index.js:21
+msgid "Fundraising Progress Bar"
+msgstr "Geldinzameling-voortgang (balk)"
+
+#: js/dist/index.js:6 js/src/progress-bar/index.js:22
+msgid "Displays fundraising raised and target amount with progress bar."
+msgstr "Toont geldinzameling opbrengst en doelbedrag met voortgangsbalk."
+
+#: js/dist/index.js:6 js/src/progress-text/edit.js:27
+msgid "contributions"
+msgstr "bijdragen"
+
+#: js/dist/index.js:6 js/src/progress-text/index.js:21
+msgid "Fundraising Progress"
+msgstr "Geldinzameling-voortgang"
+
+#: js/dist/index.js:6 js/src/progress-text/index.js:22
+msgid "Displays fundraising raised amount and number of contributions."
+msgstr "Toont opgehaald bedrag en het aantal bijdragen voor geldinzameling."
+
+#~ msgid "Fundraising Compact"
+#~ msgstr "Fundraising Compact"
+
+#~ msgid "Fundraising Donut"
+#~ msgstr "Fundraising Voortgangsdonut"
+
+#~ msgid "Displays crowdfunding information with progress donut."
+#~ msgstr "Toont crowdfunding informatie met voortgangsdonut."
