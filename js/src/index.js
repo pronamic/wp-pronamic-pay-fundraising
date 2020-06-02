@@ -7,9 +7,9 @@ import { SVG, Path } from '@wordpress/components';
 /**
  * Internal dependencies.
  */
-import * as donut from './donut';
-import * as bar from './bar';
-import * as compact from './compact';
+import * as FundraisingProgressCircle from './progress-circle';
+import * as FundraisingProgressBar from './progress-bar';
+import * as FundraisingProgressText from './progress-text';
 
 /**
  * Register block.
@@ -28,7 +28,11 @@ const registerBlock = ( block ) => {
 };
 
 // Register blocks.
-[ donut, bar, compact ].forEach( registerBlock );
+[
+	FundraisingProgressCircle,
+	FundraisingProgressBar,
+	FundraisingProgressText
+].forEach( registerBlock );
 
 // Set Pronamic Pay category icon.
 updateCategory(

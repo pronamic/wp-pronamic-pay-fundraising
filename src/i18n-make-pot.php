@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 /*
  * The `pronamic i18n make-pot` command requires the `i18n make-pot` command.
@@ -63,13 +63,13 @@ namespace Pronamic\WordPress\Pay\Crowdfunding;
 		}
 
 		// @link https://github.com/wp-cli/i18n-command/blob/v2.0.1/i18n-command.php
-		\WP_CLI::add_command( 'pronamic i18n make-pot', '\Pronamic\WordPress\Pay\Crowdfunding\MakePotCommand' );
+		\WP_CLI::add_command( 'pronamic i18n make-pot', '\Pronamic\WordPress\Pay\Fundraising\MakePotCommand' );
 
 		/*
 		 * Usage example:
 		 *
-		 * wp pronamic i18n make-pot . languages/pronamic-pay-crowdfunding.pot --slug="pronamic-pay-crowdfunding"
-		 * wp i18n make-json languages/pronamic-pay-crowdfunding-nl_NL.po --no-purge
+		 * wp pronamic i18n make-pot . languages/pronamic-pay-fundraising.pot --slug="pronamic-pay-fundraising"
+		 * wp i18n make-json languages/pronamic-pay-fundraising-nl_NL.po --no-purge
 		 */
 	}
 );

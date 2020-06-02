@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 use Pronamic\WordPress\Money\Money;
 use Pronamic\WordPress\Money\Parser;
@@ -62,9 +62,9 @@ class BlockUpdater {
 	 */
 	public function __construct() {
 		$this->block_names = array(
-			'pronamic-pay/crowdfunding-donut',
-			'pronamic-pay/crowdfunding-bar',
-			'pronamic-pay/crowdfunding-compact',
+			'pronamic-pay/fundraising-progress-circle',
+			'pronamic-pay/fundraising-progress-bar',
+			'pronamic-pay/fundraising-progress-text',
 		);
 	}
 
@@ -81,7 +81,7 @@ class BlockUpdater {
 	/**
 	 * Update post.
 	 *
-	 * @param WP_Post $post Post to update crowdfunding blocks in.
+	 * @param WP_Post $post Post to update fundraising blocks in.
 	 */
 	public function update_post( WP_Post $post ) {
 		$post_content = $post->post_content;
@@ -159,9 +159,9 @@ class BlockUpdater {
 	 * @return array
 	 */
 	public function update_block( $block ) {
-		// Update crowdfunding block.
+		// Update fundraising block.
 		if ( \in_array( $block['blockName'], $this->block_names, true ) ) {
-			$block = $this->update_crowdfunding_block( $block );
+			$block = $this->update_fundraising_block( $block );
 		}
 
 		// Update inner blocks.
@@ -175,12 +175,12 @@ class BlockUpdater {
 	}
 
 	/**
-	 * Update crowdfunding block.
+	 * Update fundraising block.
 	 *
 	 * @param array $block Block.
 	 * @return array
 	 */
-	public function update_crowdfunding_block( $block ) {
+	public function update_fundraising_block( $block ) {
 		$parser = new Parser();
 
 		// Get target amount for use when updating innner blocks.

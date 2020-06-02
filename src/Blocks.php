@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 /**
  * Blocks
@@ -57,14 +57,14 @@ class Blocks {
 		$asset_file = include( plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php' );
 
 		wp_register_script(
-			'pronamic-crowdfunding-blocks',
+			'pronamic-pay-fundraising-blocks',
 			plugins_url( 'js/dist/index.js', $this->plugin->file ),
 			$asset_file['dependencies'],
 			$asset_file['version']
 		);
 
 		// Script translations.
-		wp_set_script_translations( 'pronamic-crowdfunding-blocks', 'pronamic-pay-crowdfunding', plugin_dir_path( $this->plugin->file ) . 'languages' );
+		wp_set_script_translations( 'pronamic-pay-fundraising-blocks', 'pronamic-pay-fundraising', plugin_dir_path( $this->plugin->file ) . 'languages' );
 	}
 
 	/**
@@ -76,8 +76,8 @@ class Blocks {
 		$min = SCRIPT_DEBUG ? '' : '.min';
 
 		wp_register_style(
-			'pronamic-pay-crowdfunding',
-			plugins_url( '/css/crowdfunding' . $min . '.css', $this->plugin->file ),
+			'pronamic-pay-fundraising',
+			plugins_url( '/css/fundraising' . $min . '.css', $this->plugin->file ),
 			array(),
 			$this->plugin->version
 		);
@@ -130,46 +130,43 @@ class Blocks {
 		);
 
 		$args = array(
-			'editor_script' => 'pronamic-crowdfunding-blocks',
-			'style'         => 'pronamic-pay-crowdfunding',
+			'editor_script' => 'pronamic-pay-fundraising-blocks',
+			'style'         => 'pronamic-pay-fundraising',
 			'attributes'    => $attributes,
 		);
 
-		// Donut block.
+		// Fundraising Progress Circle block.
 		$args['render_callback'] = function ( $attributes, $content ) {
 			ob_start();
 
-			include __DIR__ . '/../templates/block-crowdfunding-donut.php';
+			include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
 
 			return ob_get_clean();
 		};
 
-		register_block_type(
-			'pronamic-pay/crowdfunding-donut',
-			$args
-		);
+		register_block_type( 'pronamic-pay/fundraising-progress-circle', $args );
 
-		// Bar block.
+		// Fundraising Progress Bar block.
 		$args['render_callback'] = function ( $attributes, $content ) {
 			ob_start();
 
-			include __DIR__ . '/../templates/block-crowdfunding-bar.php';
+			include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
 
 			return ob_get_clean();
 		};
 
-		register_block_type( 'pronamic-pay/crowdfunding-bar', $args );
+		register_block_type( 'pronamic-pay/fundraising-progress-bar', $args );
 
-		// Compact block.
+		// Fundraising Progress Text block.
 		$args['render_callback'] = function ( $attributes, $content ) {
 			ob_start();
 
-			include __DIR__ . '/../templates/block-crowdfunding-compact.php';
+			include __DIR__ . '/../templates/block-fundraising-progress-text.php';
 
 			return ob_get_clean();
 		};
 
-		register_block_type( 'pronamic-pay/crowdfunding-compact', $args );
+		register_block_type( 'pronamic-pay/fundraising-progress-text', $args );
 	}
 
 	/**
@@ -178,6 +175,6 @@ class Blocks {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-		\wp_enqueue_style( 'pronamic-pay-crowdfunding' );
+		\wp_enqueue_style( 'pronamic-pay-fundraising' );
 	}
 }

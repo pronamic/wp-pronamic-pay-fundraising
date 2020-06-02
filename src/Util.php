@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 /**
  * Util.

@@ -3,9 +3,13 @@
  */
 import { RichText } from '@wordpress/block-editor';
 import { Component } from '@wordpress/element';
+
+/**
+ * Internal dependencies.
+ */
 import { formatMoney } from '../../utils';
 
-export class CrowdfundingDetails extends Component {
+export class FundraisingDetails extends Component {
 	render() {
 		let {
 			colors,
@@ -27,10 +31,10 @@ export class CrowdfundingDetails extends Component {
 		locale = locale ? locale : 'nl-NL';
 
 		return (
-			<dl className="ppcf-dl-list">
+			<dl className="ppfr-dl-list">
 				<RichText
 					tagName="dt"
-					className="ppcf-dl-list__label"
+					className="ppfr-dl-list__label"
 					multiline="false"
 					value={ raisedLabel }
 					onChange={ ( val ) => {
@@ -41,7 +45,7 @@ export class CrowdfundingDetails extends Component {
 
 				<RichText
 					tagName="dd"
-					className="ppcf-dl-list__value"
+					className="ppfr-dl-list__value"
 					multiline="false"
 					value={ formatMoney( raisedAmount ? raisedAmount : '0', currencyCode, currencyDecimals, locale ) }
 					onChange={ ( val ) => {
@@ -64,7 +68,7 @@ export class CrowdfundingDetails extends Component {
 					<>
 						<RichText
 							tagName="dt"
-							className="ppcf-dl-list__label"
+							className="ppfr-dl-list__label"
 							multiline="false"
 							value={ targetLabel }
 							onChange={ ( val ) => {
@@ -74,7 +78,7 @@ export class CrowdfundingDetails extends Component {
 
 						<RichText
 							tagName="dd"
-							className="ppcf-dl-list__value"
+							className="ppfr-dl-list__value"
 							multiline="false"
 							value={ formatMoney( targetAmount ? targetAmount : '0', currencyCode, currencyDecimals, locale ) }
 							onChange={ ( val ) => {
@@ -88,7 +92,7 @@ export class CrowdfundingDetails extends Component {
 					<>
 						<RichText
 							tagName="dt"
-							className="ppcf-dl-list__label"
+							className="ppfr-dl-list__label"
 							multiline="false"
 							value={ contributionsLabel }
 							onChange={ ( val ) => {
@@ -98,7 +102,7 @@ export class CrowdfundingDetails extends Component {
 
 						<RichText
 							tagName="dd"
-							className="ppcf-dl-list__value"
+							className="ppfr-dl-list__value"
 							multiline="false"
 							value={ parseInt( contributionsValue ? contributionsValue : 0 ).toString() }
 							onChange={ ( val ) => {

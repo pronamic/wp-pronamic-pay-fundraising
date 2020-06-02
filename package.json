@@ -1,15 +1,16 @@
 {
-  "name": "crowdfunding",
+  "name": "fundraising",
   "version": "1.0.0",
-  "description": "Crowdfunding add-on for the WordPress payment processing library.",
+  "description": "Fundraising add-on for the WordPress payment processing library.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wp-pay/crowdfunding"
+    "url": "https://github.com/wp-pay/fundraising"
   },
   "keywords": [
     "wordpress",
     "wp",
     "pay",
+    "fundraising",
     "crowdfunding",
     "donations",
     "progress",
@@ -31,13 +32,13 @@
   ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/wp-pay/crowdfunding/issues"
+    "url": "https://github.com/wp-pay/fundraising/issues"
   },
-  "homepage": "https://www.wp-pay.org/addons/crowdfunding/",
+  "homepage": "https://www.wp-pay.org/addons/fundraising/",
   "scripts": {
     "babel": "babel ./js/src -d ./js/dist --source-maps",
     "eslint": "eslint . --ext .json --ext .js",
-    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/*.css -o css/crowdfunding.min.css",
+    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/*.css -o css/fundraising.min.css",
     "sass": "sass scss:css",
     "sass-lint": "sass-lint --verbose",
     "start": "wp-scripts start",

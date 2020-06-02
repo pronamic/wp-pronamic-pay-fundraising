@@ -1,6 +1,6 @@
 <?php
 /**
- * Crowdfunding Add-on.
+ * Fundraising Add-on.
  *
  * @author    Pronamic <info@pronamic.eu>
  * @copyright 2005-2020 Pronamic
@@ -8,7 +8,7 @@
  * @package   Pronamic\WordPress\Pay
  */
 
-namespace Pronamic\WordPress\Pay\Crowdfunding;
+namespace Pronamic\WordPress\Pay\Fundraising;
 
 use Pronamic\WordPress\Pay\Payments\Payment;
 use Pronamic\WordPress\Pay\Payments\PaymentStatus;

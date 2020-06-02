@@ -1,0 +1,42 @@
+{
+	"name": "pronamic-pay/fundraising-progress-bar",
+	"category": "pronamic-pay",
+	"attributes": {
+		"raisedLabel": {
+			"type": "string"
+		},
+		"raisedAmount": {
+			"type": "string",
+			"default": "0"
+		},
+		"targetLabel": {
+			"type": "string"
+		},
+		"targetAmount": {
+			"type": "string",
+			"default": "0"
+		},
+		"contributionsLabel": {
+			"type": "string"
+		},
+		"contributionsValue": {
+			"type": "string",
+			"default": "0"
+		},
+		"currencyCode": {
+			"type": "string",
+			"default": "EUR"
+		},
+		"currencyDecimals": {
+			"type": "string",
+			"default": "2"
+		},
+		"locale": {
+			"type": "string"
+		},
+		"color": {
+			"type": "string",
+			"default": "#f9461c"
+		}
+	}
+}
