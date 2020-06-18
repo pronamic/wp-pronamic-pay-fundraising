@@ -17,7 +17,7 @@ namespace Pronamic\WordPress\Pay\Fundraising;
  */
 \WP_CLI::add_hook(
 	'after_add_command:i18n make-pot',
-	function () {
+	function() {
 
 		/**
 		 * Title: Make pot command.

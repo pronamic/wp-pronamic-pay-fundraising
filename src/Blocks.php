@@ -136,7 +136,7 @@ class Blocks {
 		);
 
 		// Fundraising Progress Circle block.
-		$args['render_callback'] = function ( $attributes, $content ) {
+		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
 			include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
@@ -147,7 +147,7 @@ class Blocks {
 		register_block_type( 'pronamic-pay/fundraising-progress-circle', $args );
 
 		// Fundraising Progress Bar block.
-		$args['render_callback'] = function ( $attributes, $content ) {
+		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
 			include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
@@ -158,7 +158,7 @@ class Blocks {
 		register_block_type( 'pronamic-pay/fundraising-progress-bar', $args );
 
 		// Fundraising Progress Text block.
-		$args['render_callback'] = function ( $attributes, $content ) {
+		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
 			include __DIR__ . '/../templates/block-fundraising-progress-text.php';
