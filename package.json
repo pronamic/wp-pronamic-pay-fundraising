@@ -38,7 +38,7 @@
   "scripts": {
     "babel": "babel ./js/src -d ./js/dist --source-maps",
     "eslint": "eslint . --ext .json --ext .js",
-    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/*.css -o css/fundraising.min.css",
+    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/fundraising.css -o css/fundraising.min.css",
     "sass": "sass scss:css",
     "sass-lint": "sass-lint --verbose",
     "start": "wp-scripts start",
