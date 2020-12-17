@@ -1,6 +1,6 @@
 {
   "name": "fundraising",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fundraising add-on for the WordPress payment processing library.",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
   "scripts": {
     "babel": "babel ./js/src -d ./js/dist --source-maps",
     "eslint": "eslint . --ext .json --ext .js",
-    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/*.css -o css/fundraising.min.css",
+    "postcss": "postcss css/*.css --use autoprefixer --dir css; postcss css/fundraising.css -o css/fundraising.min.css",
     "sass": "sass scss:css",
     "sass-lint": "sass-lint --verbose",
     "start": "wp-scripts start",

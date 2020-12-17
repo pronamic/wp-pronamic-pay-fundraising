@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [1.1.0][1.1.0] - 2020-12-17
+- Fix editor style.
+- Updated plugin bootstrap.
+
 ## 1.0.0 - 2019-05-06
 - First release.
 
 [unreleased]: https://github.com/wp-pay/fundraising/compare/1.0.0...HEAD
+[1.1.0]: https://github.com/wp-pay/fundraising/compare/1.0.0...HEAD

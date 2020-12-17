@@ -18,6 +18,12 @@ $circle-border-width: 8px;
 	}
 }
 
+.edit-post-visual-editor {
+	.ppfr-block {
+		box-sizing: content-box;
+	}
+}
+
 // Progress circle.
 .ppfr-circle {
 	background-color: $inactive-color;
