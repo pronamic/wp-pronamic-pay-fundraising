@@ -3,7 +3,7 @@
  * Block updater.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2020 Pronamic
+ * @copyright 2005-2021 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay
  */
@@ -58,7 +58,7 @@ class BlockUpdater {
 	public $contributions;
 
 	/**
-	 * Blcok updater constructor.
+	 * Block updater constructor.
 	 */
 	public function __construct() {
 		$this->block_names = array(
@@ -183,7 +183,7 @@ class BlockUpdater {
 	public function update_fundraising_block( $block ) {
 		$parser = new Parser();
 
-		// Get target amount for use when updating innner blocks.
+		// Get target amount for use when updating inner blocks.
 		if ( ! \array_key_exists( 'targetAmount', $block['attrs'] ) ) {
 			$block['attrs']['targetAmount'] = 0;
 		}

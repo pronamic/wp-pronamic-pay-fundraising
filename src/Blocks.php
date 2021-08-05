@@ -3,7 +3,7 @@
  * Editor Blocks.
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2020 Pronamic
+ * @copyright 2005-2021 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay
  */
@@ -54,7 +54,7 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_scripts() {
-		$asset_file = include( plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php' );
+		$asset_file = include plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php';
 
 		wp_register_script(
 			'pronamic-pay-fundraising-blocks',
@@ -112,14 +112,14 @@ class Blocks {
 				'type'    => 'string',
 				'default' => '0',
 			),
-			"currencyCode"       => array(
+			'currencyCode'       => array(
 				'type' => 'string',
 			),
-			"currencyDecimals"   => array(
+			'currencyDecimals'   => array(
 				'type'    => 'string',
 				'default' => '2',
 			),
-			"locale"             => array(
+			'locale'             => array(
 				'type'    => 'string',
 				'default' => str_replace( '_', '-', \get_locale() ),
 			),
