@@ -136,6 +136,8 @@ class Blocks {
 		);
 
 		// Fundraising Progress Circle block.
+		$args['title'] = __( 'Fundraising Progress Circle', 'pronamic_ideal' );
+
 		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
@@ -147,6 +149,8 @@ class Blocks {
 		register_block_type( 'pronamic-pay/fundraising-progress-circle', $args );
 
 		// Fundraising Progress Bar block.
+		$args['title'] = __( 'Fundraising Progress Bar', 'pronamic_ideal' );
+
 		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
@@ -158,6 +162,8 @@ class Blocks {
 		register_block_type( 'pronamic-pay/fundraising-progress-bar', $args );
 
 		// Fundraising Progress Text block.
+		$args['title'] = __( 'Fundraising Progress', 'pronamic_ideal' );
+
 		$args['render_callback'] = function( $attributes, $content ) {
 			ob_start();
 
