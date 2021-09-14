@@ -121,8 +121,8 @@ class BlockUpdater {
 	/**
 	 * Allow unfiltered HTML.
 	 *
-	 * @param array $attributes CSS attributes.
-	 *
+	 * @param array $capabilities Capabilities.
+	 * @param array $capability Capability.
 	 * @return array
 	 */
 	public function allow_unfiltered_html( $capabilities, $capability ) {
