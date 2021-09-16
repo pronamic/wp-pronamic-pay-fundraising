@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [2.0.2] - 2021-09-16
+- Fixed blocks not loading in editor ([pronamic/wp-pronamic-pay#204](https://github.com/pronamic/wp-pronamic-pay/issues/204)).
+
 ## [2.0.1] - 2021-09-03
 - Added block titles ([pronamic/wp-pronamic-pay#185](https://github.com/pronamic/wp-pronamic-pay/issues/185)).
 
@@ -24,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 1.0.0 - 2019-05-06
 - First release.
 
-[unreleased]: https://github.com/wp-pay/fundraising/compare/2.0.1...HEAD
+[unreleased]: https://github.com/wp-pay/fundraising/compare/2.0.2...HEAD
+[2.0.1]: https://github.com/wp-pay/fundraising/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/wp-pay/fundraising/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/wp-pay/fundraising/compare/1.1.1...2.0.0
 [1.1.1]: https://github.com/wp-pay/fundraising/compare/1.1.0...1.1.1
