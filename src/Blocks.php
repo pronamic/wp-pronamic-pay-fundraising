@@ -60,7 +60,8 @@ class Blocks {
 			'pronamic-pay-fundraising-blocks',
 			plugins_url( 'js/dist/index.js', $this->plugin->file ),
 			$asset_file['dependencies'],
-			$asset_file['version']
+			$asset_file['version'],
+			false
 		);
 
 		// Script translations.

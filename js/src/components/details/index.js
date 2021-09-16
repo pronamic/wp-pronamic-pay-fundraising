@@ -40,7 +40,7 @@ export class FundraisingDetails extends Component {
 					onChange={ ( val ) => {
 						setAttributes( { raisedLabel: val } );
 					} }
-					style={ colors.hasOwnProperty( 'raisedLabel' ) && { color: colors.raisedLabel } }
+					style={ colors.hasOwnProperty( 'raisedLabel' ) && { color: colors.raisedLabel } || {} }
 				/>
 
 				<RichText
@@ -61,7 +61,7 @@ export class FundraisingDetails extends Component {
 
 						setAttributes( { raisedAmount: val } );
 					} }
-					style={ colors.hasOwnProperty( 'raisedAmount' ) && { color: colors.raisedAmount } }
+					style={ colors.hasOwnProperty( 'raisedAmount' ) && { color: colors.raisedAmount } || {} }
 				/>
 
 				{ targetAmount &&
@@ -108,7 +108,7 @@ export class FundraisingDetails extends Component {
 							onChange={ ( val ) => {
 								setAttributes( { contributionsValue: val ? val.replace( /[^\d]/g, '' ) : '0' } );
 							} }
-							style={ colors.hasOwnProperty( 'contributionsValue' ) && { color: colors.contributionsValue } }
+							style={ colors.hasOwnProperty( 'contributionsValue' ) && { color: colors.contributionsValue } || {} }
 						/>
 					</>
 				}
