@@ -60,7 +60,7 @@
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "postcss-eol": "0.0.8",
-    "sass": "^1.40.1",
+    "sass": "^1.42.0",
     "sass-lint": "^1.13.1"
   }
 }
