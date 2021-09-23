@@ -54,18 +54,22 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_scripts() {
-		$asset_file = include plugin_dir_path( $this->plugin->file ) . 'js/dist/index.asset.php';
+		$asset_file = include __DIR__ . '/../js/dist/index.asset.php';
 
-		wp_register_script(
+		\wp_register_script(
 			'pronamic-pay-fundraising-blocks',
-			plugins_url( 'js/dist/index.js', $this->plugin->file ),
+			\plugins_url( '../js/dist/index.js', __FILE__ ),
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			false
 		);
 
 		// Script translations.
-		wp_set_script_translations( 'pronamic-pay-fundraising-blocks', 'pronamic-pay-fundraising', plugin_dir_path( $this->plugin->file ) . 'languages' );
+		\wp_set_script_translations(
+			'pronamic-pay-fundraising-blocks',
+			'pronamic-pay-fundraising',
+			__DIR__ . '/../languages'
+		);
 	}
 
 	/**
@@ -76,9 +80,9 @@ class Blocks {
 	public function register_styles() {
 		$min = SCRIPT_DEBUG ? '' : '.min';
 
-		wp_register_style(
+		\wp_register_style(
 			'pronamic-pay-fundraising',
-			plugins_url( '/css/fundraising' . $min . '.css', $this->plugin->file ),
+			\plugins_url( '../css/fundraising' . $min . '.css', __FILE__ ),
 			array(),
 			$this->plugin->version
 		);
