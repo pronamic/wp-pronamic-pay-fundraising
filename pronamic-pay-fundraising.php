@@ -17,6 +17,7 @@
  *
  * Depends: wp-pay/core
  *
+ * Update URI: https://www.pronamic.eu/plugins/pronamic-pay-fundraising/
  * GitHub URI: https://github.com/wp-pay/fundraising
  *
  * @author    Pronamic <info@pronamic.eu>
