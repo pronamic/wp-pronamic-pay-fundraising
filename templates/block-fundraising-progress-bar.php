@@ -40,9 +40,9 @@ endif;
 		</div>
 	</div>
 	<dl class="ppfr-dl-list">
-		<dt class="ppfr-dl-list__label" style="color:<?php echo \esc_html( $attributes['color'] ); ?>"><?php echo $attributes['raisedLabel']; ?></dt>
+		<dt class="ppfr-dl-list__label" style="color:<?php echo \esc_html( $attributes['color'] ); ?>"><?php echo \wp_kses_post( $attributes['raisedLabel'] ); ?></dt>
 		<dd class="ppfr-dl-list__value" style="color:<?php echo \esc_html( $attributes['color'] ); ?>"><?php echo \esc_html( $raised_amount->format_i18n_non_trailing_zeros() ); ?></dd>
-		<dt class="ppfr-dl-list__label"><?php echo $attributes['targetLabel']; ?></dt>
+		<dt class="ppfr-dl-list__label"><?php echo \wp_kses_post( $attributes['targetLabel'] ); ?></dt>
 		<dd class="ppfr-dl-list__value"><?php echo \esc_html( $target_amount->format_i18n_non_trailing_zeros() ); ?></dd>
 	</dl>
 </div>
