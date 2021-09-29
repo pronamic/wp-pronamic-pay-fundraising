@@ -41,7 +41,9 @@
     "sass": "sass scss:css",
     "sass-lint": "sass-lint --verbose",
     "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "build": "npm-run-all build-*",
+    "build-wp-scripts": "wp-scripts build",
+    "build-blocks-json": "rsync -a --prune-empty-dirs --include '*/' --include 'block.json' --exclude '*' js/src/ js/dist/blocks/"
   },
   "devDependencies": {
     "@types/classnames": "^2.3.0",

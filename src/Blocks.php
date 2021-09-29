@@ -94,90 +94,47 @@ class Blocks {
 	 * @return void
 	 */
 	public function register_block_types() {
-		// Blocks.
-		$attributes = array(
-			'raisedLabel'        => array(
-				'type' => 'string',
-			),
-			'raisedAmount'       => array(
-				'type'    => 'string',
-				'default' => '0',
-			),
-			'targetLabel'        => array(
-				'type' => 'string',
-			),
-			'targetAmount'       => array(
-				'type'    => 'string',
-				'default' => '0',
-			),
-			'contributionsLabel' => array(
-				'type' => 'string',
-			),
-			'contributionsValue' => array(
-				'type'    => 'string',
-				'default' => '0',
-			),
-			'currencyCode'       => array(
-				'type' => 'string',
-			),
-			'currencyDecimals'   => array(
-				'type'    => 'string',
-				'default' => '2',
-			),
-			'locale'             => array(
-				'type'    => 'string',
-				'default' => str_replace( '_', '-', \get_locale() ),
-			),
-			'color'              => array(
-				'type'    => 'string',
-				'default' => '#f9461c',
-			),
-		);
-
-		$args = array(
-			'editor_script' => 'pronamic-pay-fundraising-blocks',
-			'style'         => 'pronamic-pay-fundraising',
-			'attributes'    => $attributes,
-		);
-
 		// Fundraising Progress Circle block.
-		$args['title'] = __( 'Fundraising Progress Circle', 'pronamic_ideal' );
+		register_block_type_from_metadata(
+			__DIR__ . '/../js/dist/blocks/progress-circle',
+			array(
+				'render_callback' => function( $attributes, $content ) {
+					ob_start();
 
-		$args['render_callback'] = function( $attributes, $content ) {
-			ob_start();
+					include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
 
-			include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
-
-			return ob_get_clean();
-		};
-
-		register_block_type( 'pronamic-pay/fundraising-progress-circle', $args );
+					return ob_get_clean();
+				},
+			)
+		);
 
 		// Fundraising Progress Bar block.
-		$args['title'] = __( 'Fundraising Progress Bar', 'pronamic_ideal' );
+		register_block_type_from_metadata(
+			__DIR__ . '/../js/dist/blocks/progress-bar',
+			array(
+				'render_callback' => function( $attributes, $content ) {
+					ob_start();
 
-		$args['render_callback'] = function( $attributes, $content ) {
-			ob_start();
+					include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
 
-			include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
-
-			return ob_get_clean();
-		};
-
-		register_block_type( 'pronamic-pay/fundraising-progress-bar', $args );
+					return ob_get_clean();
+				},
+			)
+		);
 
 		// Fundraising Progress Text block.
-		$args['title'] = __( 'Fundraising Progress', 'pronamic_ideal' );
+		register_block_type_from_metadata(
+			__DIR__ . '/../js/dist/blocks/progress-text',
+			array(
+				'render_callback' => function ( $attributes, $content ) {
+					ob_start();
 
-		$args['render_callback'] = function( $attributes, $content ) {
-			ob_start();
+					include __DIR__ . '/../templates/block-fundraising-progress-text.php';
 
-			include __DIR__ . '/../templates/block-fundraising-progress-text.php';
-
-			return ob_get_clean();
-		};
-
-		register_block_type( 'pronamic-pay/fundraising-progress-text', $args );
+					return ob_get_clean();
+				},
+			)
+		);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 {
 	"name": "pronamic-pay/fundraising-progress-bar",
+	"title": "Fundraising Progress Bar",
 	"category": "pronamic-pay",
 	"attributes": {
 		"raisedLabel": {
@@ -38,5 +39,8 @@
 			"type": "string",
 			"default": "#f9461c"
 		}
-	}
+	},
+	"editorScript": "file:../index.js",
+	"style": "pronamic-pay-fundraising",
+	"textdomain": "pronamic-pay-fundraising"
 }

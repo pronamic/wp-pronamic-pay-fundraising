@@ -110,7 +110,7 @@ class Addon {
 			return;
 		}
 
-		if ( ! \function_exists( '\register_block_type' ) ) {
+		if ( ! \function_exists( '\register_block_type_from_metadata' ) ) {
 			// @todo Add admin notice if blocks can not be registered.
 			return;
 		}
