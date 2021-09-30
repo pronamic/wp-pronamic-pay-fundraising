@@ -35,7 +35,7 @@ endif;
 ?>
 <div class="ppfr-block ppfr-block-bar">
 	<div class="ppfr-progress">
-		<div class="ppfr-progress__bar" style="<?php echo \esc_html( \implode( ' ', $bar_style ) ); ?>">
+		<div class="ppfr-progress__bar" style="<?php echo \esc_attr( \implode( ' ', $bar_style ) ); ?>">
 			<span class="ppfr-progress__bar__status"><?php echo \esc_html( $progress ); ?>%</span>
 		</div>
 	</div>

@@ -51,11 +51,11 @@ endif;
 <div class="ppfr-block ppfr-block-circle">
 	<div class="ppfr-block-circle__container">
 		<div class="ppfr-block__container__col">
-			<div class="<?php echo \esc_html( \implode( ' ', $classes ) ); ?>">
+			<div class="<?php echo \esc_attr( \implode( ' ', $classes ) ); ?>">
 				<span class="ppfr-circle__label"><?php echo \esc_html( $progress ); ?>%</span>
 				<div class="ppfr-circle__slice">
-					<div class="ppfr-circle__slice__bar" style="<?php echo \esc_html( \implode( ' ', $bar_style ) ); ?>"></div>
-					<div class="ppfr-circle__slice__fill" style="<?php echo \esc_html( \implode( ' ', $fill_style ) ); ?>"></div>
+					<div class="ppfr-circle__slice__bar" style="<?php echo \esc_attr( \implode( ' ', $bar_style ) ); ?>"></div>
+					<div class="ppfr-circle__slice__fill" style="<?php echo \esc_attr( \implode( ' ', $fill_style ) ); ?>"></div>
 				</div>
 			</div>
 		</div>
