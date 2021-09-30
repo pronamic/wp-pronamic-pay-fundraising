@@ -55,7 +55,7 @@
 		],
 		"coveralls": "vendor/bin/php-coveralls -v",
 		"make-i18n-json": "wp i18n make-json languages/*.po --no-purge",
-		"make-pot": "wp pronamic i18n make-pot . languages/pronamic-pay-fundraising.pot --slug='pronamic-pay-fundraising'",
+		"make-pot": "wp i18n make-pot . languages/pronamic-pay-fundraising.pot --slug='pronamic-pay-fundraising' --exclude='js/src,tests,wordpress'",
 		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic-pay-fundraising.pot \\;",
 		"phpcbf": "vendor/bin/phpcbf",
 		"phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v",
