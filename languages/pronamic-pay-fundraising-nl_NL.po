@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Pronamic Pay Fundraising Add-On 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-pay-"
 "fundraising\n"
-"POT-Creation-Date: 2020-06-02T11:56:57+00:00\n"
-"PO-Revision-Date: 2020-12-17 13:04+0100\n"
-"Last-Translator: Reüel van der Steege <reuel@pronamic.nl>\n"
+"POT-Creation-Date: 2021-09-30T09:48:47+00:00\n"
+"PO-Revision-Date: 2021-09-30 11:49+0200\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "X-Domain: pronamic-pay-fundraising\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -37,54 +37,69 @@ msgstr "Pronamic"
 msgid "https://www.pronamic.eu/"
 msgstr "https://www.pronamic.eu/"
 
-#: js/dist/index.js:6 js/src/progress-bar/edit.js:51
-#: js/src/progress-circle/edit.js:31 js/src/progress-circle/edit.js:58
-#: js/src/progress-text/edit.js:23 js/src/progress-text/edit.js:38
-msgid "Raised"
-msgstr "Opbrengst"
-
-#: js/dist/index.js:6 js/src/progress-bar/edit.js:44
-#: js/src/progress-circle/edit.js:35 js/src/progress-circle/edit.js:51
-msgid "Target"
-msgstr "Doel"
-
-#: js/dist/index.js:6 js/src/progress-circle/edit.js:39
-#: js/src/progress-circle/edit.js:65 js/src/progress-text/edit.js:45
-msgid "Contributions"
-msgstr "Bijdragen"
-
-#: js/dist/index.js:6 js/src/progress-circle/index.js:21
+#: js/dist/index.js:1
 msgid "Fundraising Progress Circle"
 msgstr "Geldinzameling-voortgang (cirkel)"
 
-#: js/dist/index.js:6 js/src/progress-circle/index.js:22
+#: js/dist/index.js:1
 msgid "Displays fundraising information with circular progress chart."
 msgstr "Toont informatie over geldinzameling met cirkeldiagram."
 
-#: js/dist/index.js:6 js/src/progress-bar/edit.js:29
-msgid "Raised:"
-msgstr "Opbrengst:"
+#: js/dist/index.js:1
+msgid "Raised"
+msgstr "Opbrengst"
 
-#: js/dist/index.js:6 js/src/progress-bar/edit.js:33
-msgid "Target:"
-msgstr "Doel:"
+#: js/dist/index.js:1
+msgid "Target"
+msgstr "Doel"
 
-#: js/dist/index.js:6 js/src/progress-bar/index.js:21
+#: js/dist/index.js:1
+msgid "Contributions"
+msgstr "Bijdragen"
+
+#: js/dist/index.js:1
 msgid "Fundraising Progress Bar"
 msgstr "Geldinzameling-voortgang (balk)"
 
-#: js/dist/index.js:6 js/src/progress-bar/index.js:22
+#: js/dist/index.js:1
 msgid "Displays fundraising raised and target amount with progress bar."
 msgstr "Toont geldinzameling opbrengst en doelbedrag met voortgangsbalk."
 
-#: js/dist/index.js:6 js/src/progress-text/edit.js:27
-msgid "contributions"
-msgstr "bijdragen"
+#: js/dist/index.js:1
+msgid "Raised:"
+msgstr "Opbrengst:"
 
-#: js/dist/index.js:6 js/src/progress-text/index.js:21
+#: js/dist/index.js:1
+msgid "Target:"
+msgstr "Doel:"
+
+#: js/dist/index.js:1
 msgid "Fundraising Progress"
 msgstr "Geldinzameling-voortgang"
 
-#: js/dist/index.js:6 js/src/progress-text/index.js:22
+#: js/dist/index.js:1
 msgid "Displays fundraising raised amount and number of contributions."
 msgstr "Toont opgehaald bedrag en het aantal bijdragen voor geldinzameling."
+
+#: js/dist/index.js:1
+msgid "contributions"
+msgstr "bijdragen"
+
+#: js/dist/blocks/progress-bar/block.json
+msgctxt "block title"
+msgid "Fundraising Progress Bar"
+msgstr "Geldinzameling-voortgang (balk)"
+
+#: js/dist/blocks/progress-circle/block.json
+msgctxt "block title"
+msgid "Fundraising Progress Circle"
+msgstr "Geldinzameling-voortgang (cirkel)"
+
+#: js/dist/blocks/progress-text/block.json
+msgctxt "block title"
+msgid "Fundraising Progress"
+msgstr "Geldinzameling-voortgang"
+
+#~ msgctxt "block title"
+#~ msgid "Fundraising Progresss"
+#~ msgstr "Geldinzameling-voortgang"

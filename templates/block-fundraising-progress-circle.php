@@ -51,21 +51,21 @@ endif;
 <div class="ppfr-block ppfr-block-circle">
 	<div class="ppfr-block-circle__container">
 		<div class="ppfr-block__container__col">
-			<div class="<?php echo \esc_html( \implode( ' ', $classes ) ); ?>">
+			<div class="<?php echo \esc_attr( \implode( ' ', $classes ) ); ?>">
 				<span class="ppfr-circle__label"><?php echo \esc_html( $progress ); ?>%</span>
 				<div class="ppfr-circle__slice">
-					<div class="ppfr-circle__slice__bar" style="<?php echo \esc_html( \implode( ' ', $bar_style ) ); ?>"></div>
-					<div class="ppfr-circle__slice__fill" style="<?php echo \esc_html( \implode( ' ', $fill_style ) ); ?>"></div>
+					<div class="ppfr-circle__slice__bar" style="<?php echo \esc_attr( \implode( ' ', $bar_style ) ); ?>"></div>
+					<div class="ppfr-circle__slice__fill" style="<?php echo \esc_attr( \implode( ' ', $fill_style ) ); ?>"></div>
 				</div>
 			</div>
 		</div>
 		<div class="ppfr-block__container__col">
 			<dl class="ppfr-dl-list">
-				<dt class="ppfr-dl-list__label"><?php echo $attributes['raisedLabel']; ?></dt>
+				<dt class="ppfr-dl-list__label"><?php echo \wp_kses_post( $attributes['raisedLabel'] ); ?></dt>
 				<dd class="ppfr-dl-list__value"><?php echo \esc_html( $raised_amount->format_i18n_non_trailing_zeros() ); ?></dd>
-				<dt class="ppfr-dl-list__label"><?php echo $attributes['targetLabel']; ?></dt>
+				<dt class="ppfr-dl-list__label"><?php echo \wp_kses_post( $attributes['targetLabel'] ); ?></dt>
 				<dd class="ppfr-dl-list__value"><?php echo \esc_html( $target_amount->format_i18n_non_trailing_zeros() ); ?></dd>
-				<dt class="ppfr-dl-list__label"><?php echo $attributes['contributionsLabel']; ?></dt>
+				<dt class="ppfr-dl-list__label"><?php echo \wp_kses_post( $attributes['contributionsLabel'] ); ?></dt>
 				<dd class="ppfr-dl-list__value"><?php echo esc_html( intval( $attributes['contributionsValue'] ) ); ?></dd>
 			</dl>
 		</div>

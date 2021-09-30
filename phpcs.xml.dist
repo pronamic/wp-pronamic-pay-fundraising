@@ -5,8 +5,13 @@
 
 	<exclude-pattern>tests/bootstrap.php</exclude-pattern>
 	<exclude-pattern>tests/wp-config.php</exclude-pattern>
+	<exclude-pattern>js/dist/index.asset.php</exclude-pattern>
 
 	<rule ref="VariableAnalysis"/>
+
+	<rule ref="PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass">
+		<exclude-pattern>src/i18n-make-pot.php</exclude-pattern>
+	</rule>
 
 	<rule ref="PronamicWP">
 		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_key"/>
