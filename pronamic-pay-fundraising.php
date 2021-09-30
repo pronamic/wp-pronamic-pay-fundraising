@@ -5,7 +5,7 @@
  * Description: Extend the Pronamic Pay plugin with fundraising blocks.
  *
  * Version: 2.0.0
- * Requires at least: 4.7
+ * Requires at least: 5.5
  *
  * Author: Pronamic
  * Author URI: https://www.pronamic.eu/
