@@ -15,7 +15,7 @@ use Pronamic\WordPress\Money\Parser;
 $progress = Util::calculate_progress_value( $attributes['raisedAmount'], $attributes['targetAmount'] );
 
 // Classes.
-$classes = array( 'ppfr-circle' );
+$classes = [ 'ppfr-circle' ];
 
 if ( $progress > 50 ) :
 	$classes[] = 'ppfr-circle--50';
@@ -24,12 +24,12 @@ endif;
 // Circle style.
 $degrees = ( $progress / 100 ) * 360;
 
-$bar_style = array(
+$bar_style = [
 	'border-color: ' . $attributes['color'] . ';',
 	'transform: ' . sprintf( 'rotate( %.2Fdeg )', min( $degrees, 360 ) ) . ';',
-);
+];
 
-$fill_style = array();
+$fill_style = [];
 
 if ( $progress > 50 ) :
 	$fill_style[] = 'border-color: ' . $attributes['color'] . ';';

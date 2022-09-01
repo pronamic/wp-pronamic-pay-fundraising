@@ -15,10 +15,10 @@ use Pronamic\WordPress\Money\Parser;
 $progress = Util::calculate_progress_value( $attributes['raisedAmount'], $attributes['targetAmount'] );
 
 // Bar style.
-$bar_style = array(
+$bar_style = [
 	'background: ' . $attributes['color'] . ';',
 	'width: ' . sprintf( '%.2F', min( $progress, 100 ) ) . '%;',
-);
+];
 
 // Amounts.
 $parser = new Parser();

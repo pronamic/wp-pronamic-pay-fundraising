@@ -61,11 +61,11 @@ class BlockUpdater {
 	 * Block updater constructor.
 	 */
 	public function __construct() {
-		$this->block_names = array(
+		$this->block_names = [
 			'pronamic-pay/fundraising-progress-circle',
 			'pronamic-pay/fundraising-progress-bar',
 			'pronamic-pay/fundraising-progress-text',
-		);
+		];
 	}
 
 	/**
@@ -101,19 +101,19 @@ class BlockUpdater {
 		}
 
 		// Temporary allow unfiltered HTML for `transform` CSS attribute.
-		\add_filter( 'user_has_cap', array( $this, 'allow_unfiltered_html' ), 10, 2 );
+		\add_filter( 'user_has_cap', [ $this, 'allow_unfiltered_html' ], 10, 2 );
 
 		\kses_init();
 
 		// Update post.
 		\wp_update_post(
-			array(
+			[
 				'ID'           => $post->ID,
 				'post_content' => $updated_content,
-			)
+			]
 		);
 
-		\remove_filter( 'user_has_cap', array( $this, 'allow_unfiltered_html' ) );
+		\remove_filter( 'user_has_cap', [ $this, 'allow_unfiltered_html' ] );
 
 		\kses_init();
 	}

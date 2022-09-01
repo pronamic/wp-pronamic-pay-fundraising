@@ -41,11 +41,11 @@ class Blocks {
 	 */
 	public function setup() {
 		// Initialize.
-		add_action( 'init', array( $this, 'register_scripts' ) );
-		add_action( 'init', array( $this, 'register_styles' ) );
-		add_action( 'init', array( $this, 'register_block_types' ) );
+		add_action( 'init', [ $this, 'register_scripts' ] );
+		add_action( 'init', [ $this, 'register_styles' ] );
+		add_action( 'init', [ $this, 'register_block_types' ] );
 
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ) );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_styles' ] );
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Blocks {
 		\wp_register_style(
 			'pronamic-pay-fundraising',
 			\plugins_url( '../css/fundraising' . $min . '.css', __FILE__ ),
-			array(),
+			[],
 			$this->plugin->version
 		);
 	}
@@ -97,7 +97,7 @@ class Blocks {
 		// Fundraising Progress Circle block.
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-circle',
-			array(
+			[
 				'render_callback' => function( $attributes, $content ) {
 					ob_start();
 
@@ -105,13 +105,13 @@ class Blocks {
 
 					return ob_get_clean();
 				},
-			)
+			]
 		);
 
 		// Fundraising Progress Bar block.
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-bar',
-			array(
+			[
 				'render_callback' => function( $attributes, $content ) {
 					ob_start();
 
@@ -119,13 +119,13 @@ class Blocks {
 
 					return ob_get_clean();
 				},
-			)
+			]
 		);
 
 		// Fundraising Progress Text block.
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-text',
-			array(
+			[
 				'render_callback' => function ( $attributes, $content ) {
 					ob_start();
 
@@ -133,7 +133,7 @@ class Blocks {
 
 					return ob_get_clean();
 				},
-			)
+			]
 		);
 	}
 
