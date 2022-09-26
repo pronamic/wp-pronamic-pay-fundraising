@@ -35,7 +35,7 @@ class Addon {
 	 *
 	 * @return Addon
 	 */
-	public static function instance( $args = array() ) {
+	public static function instance( $args = [] ) {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self( $args );
 		}
@@ -69,20 +69,20 @@ class Addon {
 	 *
 	 * @param array $args Arguments.
 	 */
-	public function __construct( $args = array() ) {
+	public function __construct( $args = [] ) {
 		$args = wp_parse_args(
 			$args,
-			array(
+			[
 				'file'    => null,
-				'options' => array(),
-			)
+				'options' => [],
+			]
 		);
 
 		$this->file = $args['file'];
 
 		// Version from plugin file header.
 		if ( null !== $args['file'] ) {
-			$file_data = get_file_data( $this->file, array( 'Version' => 'Version' ) );
+			$file_data = get_file_data( $this->file, [ 'Version' => 'Version' ] );
 
 			if ( \array_key_exists( 'Version', $file_data ) ) {
 				$this->version = $file_data['Version'];
@@ -90,7 +90,7 @@ class Addon {
 		}
 
 		// Actions.
-		$plugins_loaded_function = array( $this, 'plugins_loaded' );
+		$plugins_loaded_function = [ $this, 'plugins_loaded' ];
 
 		if ( ! \has_action( 'plugins_loaded', $plugins_loaded_function ) ) {
 			\add_action( 'plugins_loaded', $plugins_loaded_function );
@@ -120,7 +120,7 @@ class Addon {
 		$this->blocks->setup();
 
 		// Update blocks on payment status update.
-		\add_action( 'pronamic_payment_status_update', array( $this, 'payment_status_block_update' ), 10, 1 );
+		\add_action( 'pronamic_payment_status_update', [ $this, 'payment_status_block_update' ], 10, 1 );
 	}
 
 	/**

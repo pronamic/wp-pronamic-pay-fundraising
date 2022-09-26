@@ -29,7 +29,13 @@
 		}
 	},
 	"config": {
-		"sort-packages": true
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"roots/wordpress-core-installer": true,
+			"bamarni/composer-bin-plugin": true
+		}
 	},
 	"require": {
 		"php": ">=5.6.20",
@@ -58,7 +64,7 @@
 		"make-i18n-json": "wp i18n make-json languages/*.po --no-purge",
 		"make-pot": "wp i18n make-pot . languages/pronamic-pay-fundraising.pot --slug='pronamic-pay-fundraising' --exclude='js/src,tests,wordpress'",
 		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic-pay-fundraising.pot \\;",
-		"phpcbf": "vendor/bin/phpcbf",
+		"phpcbf": "XDEBUG_MODE=off vendor/bin/phpcbf",
 		"phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v",
 		"phplint": "vendor/bin/phplint",
 		"phpmd": "vendor/bin/phpmd src,tests text phpmd.ruleset.xml --suffixes php",

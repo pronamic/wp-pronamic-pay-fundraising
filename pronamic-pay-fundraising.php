@@ -34,7 +34,7 @@ if ( ! class_exists( '\Pronamic\WordPress\Pay\Fundraising\Addon' ) ) {
  * Bootstrap.
  */
 \Pronamic\WordPress\Pay\Fundraising\Addon::instance(
-	array(
+	[
 		'file' => __FILE__,
-	)
+	]
 );
