@@ -176,7 +176,7 @@ class BlockUpdater {
 			$block_post = \get_post( $block['attrs']['ref'] );
 
 			if ( null !== $block_post ) {
-				$this->update_post($block_post);
+				$this->update_post( $block_post );
 			}
 		}
 
