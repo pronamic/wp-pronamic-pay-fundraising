@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Variables
 $brand-color: #f9461c;
 $inactive-color: #eee;
@@ -7,8 +9,6 @@ $circle-border-width: 8px;
 
 // Fundraising block.
 .ppfr-block {
-	border: 1px solid $border-color;
-	border-radius: 5px;
 	font-size: 16px;
 	margin: 30px 0;
 	padding: 20px;
@@ -67,7 +67,7 @@ $circle-border-width: 8px;
 	}
 
 	.ppfr-circle__slice {
-		clip: rect(0, $circle-size, $circle-size, $circle-size / 2);
+		clip: rect(0, $circle-size, $circle-size, math.div($circle-size, 2));
 		position: absolute;
 		width: $circle-size;
 		height: $circle-size;
@@ -75,7 +75,7 @@ $circle-border-width: 8px;
 		.ppfr-circle__slice__bar {
 			border: $circle-border-width solid $brand-color;
 			border-radius: 50%;
-			clip: rect(0, $circle-size / 2, $circle-size, 0);
+			clip: rect(0, math.div($circle-size, 2), $circle-size, 0);
 			position: absolute;
 			transform: rotate(0deg);
 			width: $circle-size - ( $circle-border-width * 2 );
@@ -90,7 +90,7 @@ $circle-border-width: 8px;
 			.ppfr-circle__slice__fill {
 				border: $circle-border-width solid $brand-color;
 				border-radius: 50%;
-				clip: rect(0, $circle-size / 2, $circle-size, 0);
+				clip: rect(0, math.div($circle-size, 2), $circle-size, 0);
 				position: absolute;
 				transform: rotate(180deg);
 				width: $circle-size - ( $circle-border-width * 2 );
