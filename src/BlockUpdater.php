@@ -171,6 +171,15 @@ class BlockUpdater {
 			}
 		}
 
+		// Update fundraising blocks in reusable block.
+		if ( 'core/block' === $block['blockName'] && isset( $block['attrs']['ref'] ) ) {
+			$block_post = \get_post( $block['attrs']['ref'] );
+
+			if ( null !== $block_post ) {
+				$this->update_post( $block_post );
+			}
+		}
+
 		return $block;
 	}
 
