@@ -40,6 +40,20 @@
 			"default": "#f9461c"
 		}
 	},
+	"supports": {
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		}
+	},
 	"editorScript": "file:../../index.js",
 	"style": "pronamic-pay-fundraising",
 	"textdomain": "pronamic-pay-fundraising"

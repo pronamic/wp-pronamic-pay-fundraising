@@ -36,4 +36,25 @@ class Util {
 
 		return (int) floor( ( $raised / $target ) * 100 );
 	}
+
+	/**
+	 * Get block classes.
+	 *
+	 * @param array       $attributes Block attributes.
+	 * @param string|null $class_name Optional class name to include.
+	 * @return string
+	 */
+	public static function get_block_classes( array $attributes, ?string $class_name ): string {
+		$classes = [];
+
+		if ( ! empty( $class_name ) ) {
+			$classes = [ $class_name ];
+		}
+
+		if ( \array_key_exists( 'borderColor', $attributes ) && ! empty( $attributes['borderColor'] ) ) {
+			$classes[] = 'has-border-color has-' . $attributes['borderColor'] . '-border-color';
+		}
+
+		return implode( ' ', $classes );
+	}
 }
