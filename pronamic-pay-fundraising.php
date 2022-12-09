@@ -16,6 +16,7 @@
  *
  * License: GPL-3.0-or-later
  *
+ * Requires Plugins: pronamic-ideal
  * Depends: wp-pay/core
  *
  * Update URI: https://www.pronamic.eu/plugins/pronamic-pay-fundraising/
