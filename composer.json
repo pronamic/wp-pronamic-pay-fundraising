@@ -69,7 +69,7 @@
 		"phplint": "vendor/bin/phplint",
 		"phpmd": "vendor/bin/phpmd src,tests text phpmd.ruleset.xml --suffixes php",
 		"phpunit": "vendor/bin/phpunit --colors=always",
-		"phpstan": "vendor/bin/phpstan analyse",
+		"phpstan": "vendor/bin/phpstan analyse --memory-limit=-1",
 		"post-install-cmd": "echo 'Optionally run: composer bin all install'",
 		"post-update-cmd": "echo 'Optionally run: composer bin all update'",
 		"psalm": "vendor/bin/psalm",
