@@ -33,7 +33,7 @@ if ( \array_key_exists( 'currencyCode', $attributes ) ) :
 endif;
 
 ?>
-<div class="ppfr-block ppfr-block-bar">
+<div class="<?php echo esc_attr( Util::get_block_classes( $attributes, 'ppfr-block ppfr-block-bar' ) ); ?>" <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<div class="ppfr-progress">
 		<div class="ppfr-progress__bar" style="<?php echo \esc_attr( \implode( ' ', $bar_style ) ); ?>">
 			<span class="ppfr-progress__bar__status"><?php echo \esc_html( $progress ); ?>%</span>

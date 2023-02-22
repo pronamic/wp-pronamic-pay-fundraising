@@ -23,7 +23,7 @@ if ( \array_key_exists( 'currencyCode', $attributes ) ) :
 endif;
 
 ?>
-<div class="ppfr-block ppfr-block-compact">
+<div class="<?php echo esc_attr( Util::get_block_classes( $attributes, 'ppfr-block ppfr-block-compact' ) ); ?>" <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<dl class="ppfr-dl-list">
 		<dt class="ppfr-dl-list__label"><?php echo \wp_kses_post( $attributes['raisedLabel'] ); ?></dt>
 		<dd class="ppfr-dl-list__value" style="color:<?php echo \esc_attr( $attributes['color'] ); ?>"><?php echo \esc_html( $raised_amount->format_i18n_non_trailing_zeros() ); ?></dd>

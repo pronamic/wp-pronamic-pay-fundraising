@@ -48,7 +48,7 @@ if ( \array_key_exists( 'currencyCode', $attributes ) ) :
 endif;
 
 ?>
-<div class="ppfr-block ppfr-block-circle">
+<div class="<?php echo esc_attr( Util::get_block_classes( $attributes, 'ppfr-block ppfr-block-circle' ) ); ?>" <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<div class="ppfr-block-circle__container">
 		<div class="ppfr-block__container__col">
 			<div class="<?php echo \esc_attr( \implode( ' ', $classes ) ); ?>">
