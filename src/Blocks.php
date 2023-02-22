@@ -84,7 +84,7 @@ class Blocks {
 			'pronamic-pay-fundraising',
 			\plugins_url( '../css/fundraising' . $min . '.css', __FILE__ ),
 			[],
-			$this->plugin->version
+			\hash_file( 'crc32b', __DIR__ . '/../css/fundraising' . $min . '.css' )
 		);
 	}
 
