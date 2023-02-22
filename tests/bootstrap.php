@@ -3,7 +3,7 @@
  * Bootstrap tests
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2022 Pronamic
+ * @copyright 2005-2023 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Fundraising
  */
@@ -18,7 +18,7 @@ require_once getenv( 'WP_PHPUNIT__DIR' ) . '/includes/functions.php';
  * Manually load plugin.
  */
 function _manually_load_plugin() {
-	require dirname( __FILE__ ) . '/../pronamic-pay-fundraising.php';
+	require __DIR__ . '/../pronamic-pay-fundraising.php';
 
 	global $pronamic_ideal;
 

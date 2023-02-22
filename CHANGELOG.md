@@ -6,6 +6,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.1.1] - 2023-01-31
+### Composer
+
+- Changed `php` from `>=8.0` to `>=7.4`.
+Full set of changes: [`3.1.0...3.1.1`][3.1.1]
+
+[3.1.1]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.1.0...v3.1.1
+
+## [3.1.0] - 2022-12-23
+
+### Commits
+
+- Updated fundraising blocks in reusable block (#1). ([71b3288](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/71b3288967537cc347d6246334e669969a8b0f82))
+
+### Composer
+
+- Changed `php` from `>=5.6.20` to `>=8.0`.
+- Changed `pronamic/wp-money` from `^2.0` to `v2.2.0`.
+	Release notes: https://github.com/pronamic/wp-money/releases/tag/v3.0.3
+- Changed `wp-pay/core` from `^4.4` to `v4.6.0`.
+	Release notes: https://github.com/pronamic/wp-pay-core/releases/tag/v3.0.3
+Full set of changes: [`3.0.3...3.1.0`][3.1.0]
+
+[3.1.0]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.0.3...v3.1.0
+
 ## [3.0.3] - 2022-09-27
 - Updated version number in `readme.txt`.
 
