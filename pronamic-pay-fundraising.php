@@ -4,7 +4,7 @@
  * Plugin URI: https://www.pronamic.eu/plugins/pronamic-pay-fundraising/
  * Description: Extend the Pronamic Pay plugin with fundraising blocks.
  *
- * Version: 3.1.1
+ * Version: 3.2.0
  * Requires at least: 5.5
  * Requires PHP: 7.4
  *

@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.0] - 2023-02-23
+
+### Commits
+
+- Added support for block border control. ([950af6b](https://github.com/wp-pay/fundraising/commit/950af6b120ea111c7ef9c5f493cfec81e96dbf5b))
+- Removed default border from block. ([a6b7bdf](https://github.com/wp-pay/fundraising/commit/a6b7bdfd831dff4c771159eee071b131c3f6a9b1))
+
+Full set of changes: [`3.1.1...3.2.0`][3.2.0]
+
+[3.2.0]: https://github.com/wp-pay/fundraising/compare/v3.1.1...v3.2.0
+
 ## [3.1.1] - 2023-01-31
 ### Composer
 
