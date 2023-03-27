@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.1] - 2023-03-27
+
+### Commits
+
+- Set Composer type to WordPress plugin. ([c4d9ac1](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/c4d9ac112cd844812880852b2c0a199a52648aca))
+- Updated .gitattributes ([6801225](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/6801225e251217892b64d789d30b0ab431c7c4b0))
+
+Full set of changes: [`3.2.0...3.2.1`][3.2.1]
+
+[3.2.1]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.0...v3.2.1
+
 ## [3.2.0] - 2023-02-23
 
 ### Commits
