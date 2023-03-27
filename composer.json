@@ -4,6 +4,7 @@
 	"keywords": ["wordpress", "wp", "pay", "fundraising", "crowdfunding", "donations", "progress", "target", "addon", "pronamic"],
 	"homepage": "http://www.wp-pay.org/addons/fundraising/",
 	"license": "GPL-3.0-or-later",
+	"type": "wordpress-plugin",
 	"authors": [
 		{
 			"name": "Pronamic",
