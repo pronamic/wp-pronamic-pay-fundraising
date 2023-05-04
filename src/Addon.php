@@ -95,6 +95,13 @@ class Addon {
 		if ( ! \has_action( 'plugins_loaded', $plugins_loaded_function ) ) {
 			\add_action( 'plugins_loaded', $plugins_loaded_function );
 		}
+
+		$load_textdomain_function = [ $this, 'load_textdomain' ];
+
+		if ( ! \has_action( 'init', $load_textdomain_function ) ) {
+			\add_action( 'init', $load_textdomain_function );
+			\add_action( 'change_locale', $load_textdomain_function );
+		}
 	}
 
 	/**
@@ -116,6 +123,17 @@ class Addon {
 
 		// Update blocks on payment status update.
 		\add_action( 'pronamic_payment_status_update', [ $this, 'payment_status_block_update' ], 10, 1 );
+	}
+
+	/**
+	 * Load WordPress Money textdomain.
+	 *
+	 * @return void
+	 */
+	public function load_textdomain() {
+		$rel_path = \dirname( \plugin_basename( $this->file ) ) . '/vendor/pronamic/wp-money/languages/';
+
+		\load_plugin_textdomain( 'pronamic-money', false, $rel_path );
 	}
 
 	/**

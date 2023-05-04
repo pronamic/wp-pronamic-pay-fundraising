@@ -46,6 +46,7 @@ class Blocks {
 		add_action( 'init', [ $this, 'register_block_types' ] );
 
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_styles' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'set_script_translations' ] );
 	}
 
 	/**
@@ -57,18 +58,11 @@ class Blocks {
 		$asset_file = include __DIR__ . '/../js/dist/index.asset.php';
 
 		\wp_register_script(
-			'pronamic-pay-fundraising-blocks',
-			\plugins_url( '../js/dist/index.js', __FILE__ ),
+			'pronamic-pay-fundraising',
+			\plugins_url( '/js/dist/index.js', $this->plugin->file ),
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			false
-		);
-
-		// Script translations.
-		\wp_set_script_translations(
-			'pronamic-pay-fundraising-blocks',
-			'pronamic-pay-fundraising',
-			__DIR__ . '/../languages'
 		);
 	}
 
@@ -144,5 +138,20 @@ class Blocks {
 	 */
 	public function enqueue_styles() {
 		\wp_enqueue_style( 'pronamic-pay-fundraising' );
+	}
+
+	/**
+	 * Set script translations.
+	 *
+	 * @return void
+	 */
+	public function set_script_translations() {
+		\wp_enqueue_script( 'pronamic-pay-fundraising' );
+
+		\wp_set_script_translations(
+			'pronamic-pay-fundraising',
+			'pronamic-pay-fundraising',
+			\dirname( __DIR__ ) . '/languages'
+		);
 	}
 }
