@@ -28,9 +28,10 @@
  * @package   Pronamic\WordPress\Pay\Fundraising
  */
 
-if ( ! class_exists( '\Pronamic\WordPress\Pay\Fundraising\Addon' ) ) {
-	return;
-}
+/**
+ * Autoload.
+ */
+require_once __DIR__ . '/vendor/autoload_packages.php';
 
 /**
  * Bootstrap.

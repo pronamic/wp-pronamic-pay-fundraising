@@ -105,11 +105,6 @@ class Addon {
 	 * @return void
 	 */
 	public function plugins_loaded() {
-		if ( ! \function_exists( '\pronamic_pay_plugin' ) ) {
-			// @todo Add admin notice if Pronamic Pay is not active.
-			return;
-		}
-
 		if ( ! \function_exists( '\register_block_type_from_metadata' ) ) {
 			// @todo Add admin notice if blocks can not be registered.
 			return;
