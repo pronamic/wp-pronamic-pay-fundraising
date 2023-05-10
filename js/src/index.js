@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies.
  */
-import { registerBlockType, updateCategory } from '@wordpress/blocks';
+import { getBlockType, registerBlockType, updateCategory } from '@wordpress/blocks';
 import { SVG, Path } from '@wordpress/components';
 
 /**
@@ -24,7 +24,9 @@ const registerBlock = ( block ) => {
 
 	const { name, settings } = block;
 
-	registerBlockType( name, settings );
+	if ( ! getBlockType( name ) ) {
+		registerBlockType( name, settings );
+	}
 };
 
 // Register blocks.
