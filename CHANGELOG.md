@@ -6,6 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.2] - 2023-06-01
+
+### Commits
+
+- Switch from `pronamic/wp-deployer` to `pronamic/pronamic-cli`. ([4a05c21](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/4a05c21240156f76017f09ca7ff79e3eb86afeb7))
+- Fixed duplicate block registration. ([c9ae497](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/c9ae497b6107625efbbe1f62a6f7ec370230571d))
+- Fixed loading WordPress Money and editor script translations. ([1091db8](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/1091db822118d655fcd8c2cf3377d2f99a192c19))
+- Use Jetpack autoloader. ([36ff8e9](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/36ff8e970f16d41658943b3661d5cd1d6ef354e8))
+- Updated .gitattributes ([1492d78](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/1492d78681b3ef9b4a8fa79af2302b4c619d36b1))
+
+### Composer
+
+- Added `automattic/jetpack-autoloader` `^2.11`.
+- Changed `wp-pay/core` from `^4.6` to `v4.9.2`.
+	Release notes: https://github.com/pronamic/wp-pay-core/releases/tag/v4.9.2
+
+Full set of changes: [`3.2.1...3.2.2`][3.2.2]
+
+[3.2.2]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.1...v3.2.2
+
 ## [3.2.1] - 2023-03-27
 
 ### Commits
