@@ -37,7 +37,8 @@
 			"composer/installers": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"roots/wordpress-core-installer": true
-		}
+		},
+		"wp-slug": "pronamic-pay-fundraising"
 	},
 	"require": {
 		"php": ">=7.4",
@@ -55,6 +56,7 @@
 		"roots/wordpress": "^6.0",
 		"sirbrillig/phpcs-import-detection": "^1.2",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
+		"wp-cli/wp-cli-bundle": "^2.6",
 		"wp-phpunit/wp-phpunit": "^6.1",
 		"yoast/phpunit-polyfills": "^1.0"
 	},
