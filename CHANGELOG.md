@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.4] - 2024-03-14
+
+### Commits
+
+- Coding standards. ([dc132c6](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/dc132c6b22bc185ddf294016166034859aa4a962))
+- Updated libraries. ([c8ca001](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/c8ca00103dd94ccf32f55448a894256448cb945f))
+
+### Composer
+
+- Changed `automattic/jetpack-autoloader` from `^2.11` to `v3.0.2`.
+	Release notes: https://github.com/Automattic/jetpack-autoloader/releases/tag/v3.0.2
+
+Full set of changes: [`3.2.3...3.2.4`][3.2.4]
+
+[3.2.4]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.3...v3.2.4
+
 ## [3.2.3] - 2023-09-11
 
 ### Commits
