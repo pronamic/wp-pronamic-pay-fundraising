@@ -92,7 +92,8 @@ class Blocks {
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-circle',
 			[
-				'render_callback' => function( $attributes, $content ) {
+				// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+				'render_callback' => function ( $attributes, $content ) {
 					ob_start();
 
 					include __DIR__ . '/../templates/block-fundraising-progress-circle.php';
@@ -106,7 +107,8 @@ class Blocks {
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-bar',
 			[
-				'render_callback' => function( $attributes, $content ) {
+				// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+				'render_callback' => function ( $attributes, $content ) {
 					ob_start();
 
 					include __DIR__ . '/../templates/block-fundraising-progress-bar.php';
@@ -120,6 +122,7 @@ class Blocks {
 		register_block_type_from_metadata(
 			__DIR__ . '/../js/dist/blocks/progress-text',
 			[
+				// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 				'render_callback' => function ( $attributes, $content ) {
 					ob_start();
 
