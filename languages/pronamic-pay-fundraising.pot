@@ -1,98 +1,126 @@
-# Copyright (C) 2021 Pronamic
+# Copyright (C) 2024 Pronamic
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pronamic Pay Fundraising Add-On 2.0.0\n"
+"Project-Id-Version: Pronamic Pay Fundraising Add-On 3.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-pay-fundraising\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-30T09:48:47+00:00\n"
+"POT-Creation-Date: 2024-03-26T12:27:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: pronamic-pay-fundraising\n"
 
 #. Plugin Name of the plugin
+#: pronamic-pay-fundraising.php
 msgid "Pronamic Pay Fundraising Add-On"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: pronamic-pay-fundraising.php
 msgid "https://www.pronamic.eu/plugins/pronamic-pay-fundraising/"
 msgstr ""
 
 #. Description of the plugin
+#: pronamic-pay-fundraising.php
 msgid "Extend the Pronamic Pay plugin with fundraising blocks."
 msgstr ""
 
 #. Author of the plugin
+#: pronamic-pay-fundraising.php
 msgid "Pronamic"
 msgstr ""
 
 #. Author URI of the plugin
+#: pronamic-pay-fundraising.php
 msgid "https://www.pronamic.eu/"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-circle/index.js:21
 msgid "Fundraising Progress Circle"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-circle/index.js:22
 msgid "Displays fundraising information with circular progress chart."
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/edit.js:51
+#: js/src/progress-circle/edit.js:31
+#: js/src/progress-circle/edit.js:58
+#: js/src/progress-text/edit.js:23
+#: js/src/progress-text/edit.js:38
 msgid "Raised"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/edit.js:44
+#: js/src/progress-circle/edit.js:35
+#: js/src/progress-circle/edit.js:51
 msgid "Target"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-circle/edit.js:39
+#: js/src/progress-circle/edit.js:65
+#: js/src/progress-text/edit.js:45
 msgid "Contributions"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/index.js:21
 msgid "Fundraising Progress Bar"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/index.js:22
 msgid "Displays fundraising raised and target amount with progress bar."
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/edit.js:29
 msgid "Raised:"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-bar/edit.js:33
 msgid "Target:"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-text/index.js:21
 msgid "Fundraising Progress"
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-text/index.js:22
 msgid "Displays fundraising raised amount and number of contributions."
 msgstr ""
 
 #: js/dist/index.js:1
+#: js/src/progress-text/edit.js:27
 msgid "contributions"
 msgstr ""
 
 #: js/dist/blocks/progress-bar/block.json
+#: js/src/progress-bar/block.json
 msgctxt "block title"
 msgid "Fundraising Progress Bar"
 msgstr ""
 
 #: js/dist/blocks/progress-circle/block.json
+#: js/src/progress-circle/block.json
 msgctxt "block title"
 msgid "Fundraising Progress Circle"
 msgstr ""
 
 #: js/dist/blocks/progress-text/block.json
+#: js/src/progress-text/block.json
 msgctxt "block title"
 msgid "Fundraising Progress"
 msgstr ""
