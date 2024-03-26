@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.5] - 2024-03-26
+
+### Composer
+
+- Changed `php` from `>=7.4` to `>=8.0`.
+- Changed `pronamic/wp-money` from `^2.2` to `v2.4.3`.
+	Release notes: https://github.com/pronamic/wp-money/releases/tag/v2.4.3
+- Changed `wp-pay/core` from `^4.8` to `v4.16.0`.
+	Release notes: https://github.com/pronamic/wp-pay-core/releases/tag/v4.16.0
+
+Full set of changes: [`3.2.4...3.2.5`][3.2.5]
+
+[3.2.5]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.4...v3.2.5
+
 ## [3.2.4] - 2024-03-14
 
 ### Commits
