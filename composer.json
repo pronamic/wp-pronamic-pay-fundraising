@@ -38,6 +38,9 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"roots/wordpress-core-installer": true
 		},
+		"platform": {
+			"php": "8.2"
+		},
 		"wp-slug": "pronamic-pay-fundraising"
 	},
 	"require": {
