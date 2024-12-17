@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.6] - 2024-12-17
+
+### Commits
+
+- Happy 2024. ([88f6802](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/88f6802aebe05f183b77afcda037cd9456dc7d27))
+
+Full set of changes: [`3.2.5...3.2.6`][3.2.6]
+
+[3.2.6]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.5...v3.2.6
+
 ## [3.2.5] - 2024-03-26
 
 ### Composer
