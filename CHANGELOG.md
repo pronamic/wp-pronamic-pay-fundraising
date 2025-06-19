@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.7] - 2025-06-19
+
+### Commits
+
+- Allow Jetpack autoloader 3, 4 and 5. ([b8bf5f5](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/b8bf5f5d7ffce99e59a14a8cd38fe2fba7bb7467))
+- Fixed file extension yml. ([5e4686b](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/5e4686bf644809baf741f3ca4d7157b43110ed9a))
+- Created deploy-to-wp-pronamic-directory. ([0db4a43](https://github.com/pronamic/wp-pronamic-pay-fundraising/commit/0db4a4323b8fbe4654ac3df967ae426a229f9a09))
+
+### Composer
+
+- Changed `automattic/jetpack-autoloader` from `^3.0` to `v5.0.7`.
+	Release notes: https://github.com/Automattic/jetpack-autoloader/releases/tag/v5.0.7
+
+Full set of changes: [`3.2.6...3.2.7`][3.2.7]
+
+[3.2.7]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.6...v3.2.7
+
 ## [3.2.6] - 2024-12-17
 
 ### Commits
