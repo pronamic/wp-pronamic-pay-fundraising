@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.2.8] - 2026-11-02
+
+### Composer
+
+- Changed `automattic/jetpack-autoloader` from `^3.0 || ^4.0 || ^5.0` to `^3.0 || ^4.0 || ^5.0 || ^6.0` to allow Jetpack Autoloader 6.x. Jetpack Autoloader 6.0.0 only raises its minimum PHP version to 7.4. Release notes: https://github.com/Automattic/jetpack-autoloader/blob/v6.0.0/CHANGELOG.md
+
+Full set of changes: [`3.2.7...3.2.8`][3.2.8]
+
+[3.2.8]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.7...v3.2.8
+
 ## [3.2.7] - 2025-06-19
 
 ### Commits
@@ -180,7 +190,7 @@ Full set of changes: [`3.0.3...3.1.0`][3.1.0]
 ## 1.0.0 - 2019-05-06
 - First release.
 
-[unreleased]: https://github.com/wp-pay/fundraising/compare/3.0.3...HEAD
+[unreleased]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/v3.2.8...HEAD
 [3.0.3]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/3.0.2...3.0.3
 [3.0.2]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/pronamic/wp-pronamic-pay-fundraising/compare/3.0.0...3.0.1
